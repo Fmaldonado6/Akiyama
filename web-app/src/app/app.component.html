@@ -1,0 +1,10 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav [mode]="isDesktop() ? 'side' : 'over'" class="sidenav  mat-elevation-z8" [opened]="true">
+    <sidenav></sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <title-bar></title-bar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

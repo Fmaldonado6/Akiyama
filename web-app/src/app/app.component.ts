@@ -1,3 +1,4 @@
+import { HostListener } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,29 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'web-app';
+  opened = false;
+  innerWidth = 0;
+
+  ngOnInit() {
+
+    this.innerWidth = window.innerWidth
+
+    if (this.isDesktop()) {
+      this.opened = true;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+
+    if (this.isDesktop()) {
+      this.opened = true
+    }
+  }
+
+  isDesktop(): boolean {
+    return this.innerWidth > 960
+  }
+
 }

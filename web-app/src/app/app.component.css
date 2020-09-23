@@ -1,0 +1,17 @@
+.sidenav-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.sidenav {
+  width: 300px;
+  background-color: rgb(14, 14, 14);
+
+}
+
+
+mat-sidenav-content {
+  background-color: #181818;
+
+}
