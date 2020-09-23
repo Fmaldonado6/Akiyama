@@ -1,0 +1,57 @@
+{
+  "name": "aruppi",
+  "version": "3.1.2",
+  "description": "Aruppi is a custom API to obtain data from the Japanese culture for the mobile app",
+  "main": "./src/api/api.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "aruppi",
+    "aruppi api",
+    "aruppi app",
+    "aruppi android"
+  ],
+  "author": {
+    "name": "Jéluchu",
+    "email": "infoaruppi@gmail.com",
+    "reason": "Android Developer and Others",
+    "url": "https://jeluchu.github.io/",
+    "social": {
+      "github": "https://github.com/Jeluchu",
+      "twitter": "https://twitter.com/Jeluchu"
+    }
+  },
+  "contributors": [
+    {
+      "name": "Darkangeel",
+      "url": "https://github.com/Darkangeel-hd",
+      "reason": "System administration authority (SYSADM)"
+    }
+  ],
+  "engines": {
+    "node": ">= 12.x",
+    "npm": ">= 6.14.x"
+  },
+  "bugs": {
+    "url": "https://github.com/aruppi/aruppi-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aruppi/aruppi-api.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "compose-middleware": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "got": "^11.3.0",
+    "helmet": "^3.23.3",
+    "hooman": "^1.2.6",
+    "node-fetch": "^2.6.1",
+    "rss-to-json": "^1.1.1",
+    "tough-cookie": "^4.0.0"
+  }
+}
