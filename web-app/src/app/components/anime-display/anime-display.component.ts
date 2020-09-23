@@ -1,6 +1,6 @@
-import { EpisodeModel } from './../../models/api/EpisodeModel';
 import { AnimeService } from './../../services/api/anime.service';
 import { Component, OnInit } from '@angular/core';
+import { EpisodeModel } from 'src/app/models/api/apiContent/EpisodeModel';
 
 @Component({
   selector: 'anime-display',
@@ -24,6 +24,12 @@ export class AnimeDisplayComponent implements OnInit {
       this.episodes = episodes.episodes
     })
 
+  }
+
+  scroll(element: HTMLElement, event) {
+    let scrollValue = element.scrollLeft
+    let scrollAmount = event.deltaY < 0 ? scrollValue + 150 : scrollValue - 150
+    element.scroll({ left: scrollAmount })
   }
 
 }

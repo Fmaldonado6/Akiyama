@@ -1,5 +1,9 @@
-<div class="anime-container">
+<span class="section-title">Latest Episodes</span>
+<div #container class="anime-container" (wheel)="scroll(container,$event)">
   <div class="anime" *ngFor="let episode of episodes">
     <img src="data:image/png;base64,{{episode.image}}">
+    <div class="anime-title-container">
+      <span class="anime-title">{{episode.title}}</span>
+    </div>
   </div>
 </div>

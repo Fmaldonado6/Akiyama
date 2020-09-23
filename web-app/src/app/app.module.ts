@@ -11,6 +11,7 @@ import { SidenavComponent } from './components/layout/sidenav/sidenav.component'
 import { TitleBarComponent } from './components/layout/title-bar/title-bar.component';
 import { AnimeDisplayComponent } from './components/anime-display/anime-display.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FlexLayoutModule,
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule

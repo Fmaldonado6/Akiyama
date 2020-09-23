@@ -12,3 +12,23 @@ html{
   font-family: 'Montserrat', sans-serif !important;
 
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #181818;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(66, 66, 66);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(58, 58, 58);
+  }
