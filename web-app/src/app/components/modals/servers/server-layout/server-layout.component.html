@@ -1,0 +1,27 @@
+<ng-container class="main" [ngSwitch]="currentStatus">
+
+  <div class="loading dialog" *ngSwitchCase="Status.loading" fxLayout="column">
+
+    <mat-spinner [diameter]="40"></mat-spinner>
+  </div>
+
+  <div class="container dialog" fxLayout="column" *ngSwitchCase="Status.loaded">
+    <div class="title-container" fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon class="back-icon clickable" (click)="backPressed()">chevron_left</mat-icon>
+      <span class="title">Select an option</span>
+    </div>
+    <div class="server-container" fxLayout="row wrap" fxLayoutAlign="space-between start">
+      <button *ngFor="let server of servers | slice: 1" mat-raised-button
+        (click)="changeRoute(server.url)">{{server.id}}</button>
+
+
+    </div>
+
+  </div>
+
+  <div class="loading dialog" *ngSwitchCase="Status.error" fxLayout="column">
+
+    <error (retry)="getServers()"></error>
+
+  </div>
+</ng-container>

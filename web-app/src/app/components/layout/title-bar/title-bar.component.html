@@ -1,3 +1,40 @@
-<div class="title-bar mat-elevation-z4">
-    <span class="title ">Akiyama</span>
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
+  <div class="title" fxLayout="row">
+    <img class="logo" src="assets/logo/htt_white.png">
+    <h3>Akiyama</h3>
+  </div>
+
+  <button mat-button *ngIf="isDesktop()" class="link" routerLink="/" [routerLinkActiveOptions]="{exact:true}"
+    routerLinkActive="selected-item">
+    <mat-icon class="icon">home</mat-icon>
+    Home
+  </button>
+  <button *ngIf="isDesktop()" mat-button class="link" routerLink="about" routerLinkActive="selected-item">
+    <mat-icon class="icon">help_outline</mat-icon>
+
+    About
+  </button>
+
+
+
+
+  <mat-form-field class="search-bar">
+    <mat-icon matSuffix>search</mat-icon>
+    <mat-label>Search</mat-label>
+    <input #search matInput (keyup.enter)="makeSearch(search.value)">
+  </mat-form-field>
+
+</mat-toolbar>
+
+<div class="bottom-bar mat-elevation-z8" *ngIf="!isDesktop()" fxLayout="row" fxLayoutAlign="space-around center">
+
+  <button mat-icon-button class="icon-link" routerLink="/" [routerLinkActiveOptions]="{exact:true}"
+    routerLinkActive="icon-link-active" fxLayout="row" fxLayoutAlign="center">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button mat-icon-button class="icon-link" routerLink="about" routerLinkActive="selected-item" fxLayout="row"
+    fxLayoutAlign="center">
+    <mat-icon>help_outline</mat-icon>
+  </button>
+
 </div>

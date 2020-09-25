@@ -1,0 +1,55 @@
+<ng-container [ngSwitch]="currentStatus">
+
+  <div class="loading dialog-loading" *ngSwitchCase="Status.loading">
+    <mat-spinner [diameter]="40"></mat-spinner>
+
+  </div>
+
+  <div class="loaded" [ngSwitch]="currentPage" *ngSwitchCase="Status.loaded">
+    <div class="dialog" fxLayout="column" *ngSwitchCase="Pages.info">
+      <div class="header">
+        <img [src]="getImage()">
+        <span class="title">{{this.modalData.animeInfo.title}}</span>
+      </div>
+      <div class="content" fxLayout="column">
+
+        <div class="section-title-container" fxLayout="row" fxLayoutAlign="space-between end">
+          <span class="section-title">Information</span>
+          <button mat-flat-button class="read-more" (click)="toggleFold()">
+            <mat-icon>{{buttonText.icon}}</mat-icon>
+            {{buttonText.text}}
+          </button>
+        </div>
+
+        <div class="collapsible clickable" [@panelState]="folded">
+          <span class="synopsis">{{this.modalData.animeInfo.synopsis}}</span>
+        </div>
+        <div #genres class="genres" (wheel)="scroll(genres,$event)">
+          <div class="genre" *ngFor="let genre of modalData.animeInfo.genres">{{genre}}</div>
+        </div>
+        <div class="section-title-container" fxLayout="row" fxLayoutAlign="space-between center">
+          <span class="section-title">Episodes</span>
+        </div>
+        <div class="episode-container" fxLayout="column">
+          <div class="episode" matRipple fxLayout="row" fxLayoutAlign="space-between center"
+            *ngFor="let episode of this.modalData.animeInfo.episodes | slice:1" (click)="getServers(episode.id)">
+            <span>Episode {{episode.episode}}</span>
+            <mat-icon>chevron_right</mat-icon>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dialog-server" *ngSwitchCase="Pages.servers">
+      <server-layout (back)="back()" (serverSelected)="serverSelected()" [episodeId]="selectedEpisode"></server-layout>
+    </div>
+
+  </div>
+
+  <div class="loading dialog-loading" *ngSwitchCase="Status.error">
+    <error (retry)="getAnimeInfo()"></error>
+
+  </div>
+
+</ng-container>

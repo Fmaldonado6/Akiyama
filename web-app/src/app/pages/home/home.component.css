@@ -1,3 +1,9 @@
-.main-container{
-    margin-top: 20px;
+.main-container {
+  margin-top: 20px;
+  padding: 10px;
 }
+
+anime-display {
+    position: relative;
+}
+

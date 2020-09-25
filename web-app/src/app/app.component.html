@@ -1,10 +1,11 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav [mode]="isDesktop() ? 'side' : 'over'" class="sidenav  mat-elevation-z8" [opened]="true">
-    <sidenav></sidenav>
-  </mat-sidenav>
+<ng-container  *ngIf="!watchPage">
 
-  <mat-sidenav-content>
-    <title-bar></title-bar>
+  <title-bar></title-bar>
+  <div class="background">
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+</ng-container>
+
+<main *ngIf="watchPage">
+  <router-outlet></router-outlet>
+</main>

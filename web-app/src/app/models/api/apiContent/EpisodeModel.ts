@@ -4,7 +4,7 @@ export class EpisodeModel {
     id: String
     title: String
     image: String
-    episodes: number
+    episode: number
     servers: ServerModel[]
 
 }

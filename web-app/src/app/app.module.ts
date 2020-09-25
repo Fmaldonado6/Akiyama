@@ -12,6 +12,14 @@ import { TitleBarComponent } from './components/layout/title-bar/title-bar.compo
 import { AnimeDisplayComponent } from './components/anime-display/anime-display.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AnimeInfoModal } from './components/modals/anime-info/anime-info.component';
+import { ServerLayoutComponent } from './components/modals/servers/server-layout/server-layout.component';
+import { WatchPage } from './pages/watch/watch.component';
+import { ServersListModal } from './components/modals/servers/servers-list/servers-list.component';
+import { SearchPage } from './pages/search/search.component';
+import { ErrorComponent } from './components/shared/error/error.component';
+import { AboutPage } from './pages/about/about.component';
+import { EmptyComponent } from './components/shared/empty/empty.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +27,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HomePage,
     SidenavComponent,
     TitleBarComponent,
-    AnimeDisplayComponent
+    AnimeDisplayComponent,
+    AnimeInfoModal,
+    ServerLayoutComponent,
+    WatchPage,
+    ServersListModal,
+    SearchPage,
+    ErrorComponent,
+    AboutPage,
+    EmptyComponent
   ],
   imports: [
     BrowserModule,

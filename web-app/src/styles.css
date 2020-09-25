@@ -1,34 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { 
-    height: 100%; 
+html,
+body {
+  height: 100%;
 
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 
-html{
-  background-color: #181818;
-  font-family: 'Montserrat', sans-serif !important;
+html {
+  background-color: #4365b1;
 
+}
+
+.animeModal mat-dialog-container {
+  padding: 0px !important;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 5px;
+  width: 10px;
+  height: 5px;
+
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #5c6bc0 ;
   }
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(192, 192, 192, 0.664);
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(122, 122, 122);
+
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #181818;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgb(66, 66, 66);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(58, 58, 58);
-  }
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(155, 155, 155, 0.363);
+}

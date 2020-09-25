@@ -1,0 +1,31 @@
+.main-container {
+  padding: 50px;
+}
+
+p {
+  text-align: justify;
+  font-size: 18px;
+  color: rgb(88, 88, 88);
+
+
+}
+
+.title {
+
+  color: rgb(0, 0, 0);
+  font-size: 1.75rem;
+  font-weight: 300 !important;
+
+}
+
+.link {
+  text-decoration: none;
+  font-weight: 500;
+  color: #5c6bc0;
+}
+
+.text-container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 70vw;
+}
