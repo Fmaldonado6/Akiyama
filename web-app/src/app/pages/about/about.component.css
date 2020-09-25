@@ -22,6 +22,15 @@ p {
   text-decoration: none;
   font-weight: 500;
   color: #5c6bc0;
+
+}
+
+.mio {
+  position: relative;
+  right: 0px;
+  bottom: 0;
+  width: 300px;
+  height: auto;
 }
 
 .text-container {

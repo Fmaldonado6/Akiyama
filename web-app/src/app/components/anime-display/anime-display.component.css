@@ -40,8 +40,10 @@
 
 ::-webkit-scrollbar {
   width: 10px;
-  height: 2px;
+  height: 4px;
 }
+
+
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
