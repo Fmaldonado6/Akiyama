@@ -1,4 +1,7 @@
 package com.fmaldonado.akiyama.data.models.apiContent
 
-class ServerModel {
+data class ServerModel(
+    val id: String,
+    val url: String
+) {
 }

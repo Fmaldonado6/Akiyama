@@ -1,4 +1,8 @@
 package com.fmaldonado.akiyama.data.models.responses
 
-class EpisodeResponse {
+import com.fmaldonado.akiyama.data.models.apiContent.EpisodeModel
+
+data class EpisodeResponse(
+    val episodes: List<EpisodeModel>
+) {
 }

@@ -1,4 +1,6 @@
 package com.fmaldonado.akiyama.data.network.exceptions
 
-class BadInput {
+import okhttp3.ResponseBody
+
+class BadInput(error: ResponseBody?) : AppError(error) {
 }
