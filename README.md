@@ -24,9 +24,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="./images/logo/htt_black.png" alt="Logo" width="80" height="80">
-  </a>
+    <img src="./images/logo/web-logo.png" alt="Logo" width="80" height="80">
 
   <h3 align="center">Akiyama</h3>
 
