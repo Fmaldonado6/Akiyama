@@ -1,21 +1,17 @@
-.container{
+.container {
   margin-bottom: 50px;
 }
 
-.anime-container {
-  margin-top: 20px;
-}
 
-.loaded{
-  
+.loaded {
+
   overflow-x: auto;
-  padding: 10px;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
 }
 
-.loading{
+.loading {
   height: 100%;
   width: 100%;
   min-height: 275px;
@@ -35,7 +31,7 @@
 ::-webkit-scrollbar-thumb {
   background-color: rgb(223, 223, 223);
 
-  
+
 }
 
 ::-webkit-scrollbar {
@@ -54,10 +50,11 @@
   margin-top: 20px;
 }
 
-.refresh-button{
-  background-color: #6374d4 ;
+.refresh-button {
+  background-color: #6374d4;
   color: white;
-  margin-right: 20px;
+  padding: 5px;
+  border-radius: 100%;
 }
 
 .section-title {
@@ -104,7 +101,7 @@
   transition: filter .3s ease;
 }
 
-.anime:hover{
+.anime:hover {
   filter: brightness(.6);
 }
 
@@ -116,3 +113,27 @@
 }
 
 
+@media(max-width:1234px) {
+  .anime {
+    margin: 10px;
+
+    width: 130px;
+    height: 170px;
+
+  }
+
+  .container {
+    margin-bottom: 0px;
+  }
+
+  .anime-container {
+    margin-top: 0px;
+  }
+
+  .section-title {
+    margin: 10px;
+    color: rgb(0, 0, 0);
+    font-size: 1.35rem;
+
+  }
+}

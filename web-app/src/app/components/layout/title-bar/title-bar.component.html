@@ -1,4 +1,4 @@
-<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center">
+<mat-toolbar *ngIf="!searchPage || isDesktop()" fxLayout="row" fxLayoutAlign="space-between center">
   <div class="title" fxLayout="row">
     <img class="logo" src="assets/logo/htt_white.png">
     <h3>Akiyama</h3>
@@ -9,21 +9,34 @@
     <mat-icon class="icon">home</mat-icon>
     Home
   </button>
+
   <button *ngIf="isDesktop()" mat-button class="link" routerLink="about" routerLinkActive="selected-item">
     <mat-icon class="icon">help_outline</mat-icon>
-
     About
   </button>
+  <a *ngIf="isDesktop()" mat-button class="link" target="_blank" href="https://twitter.com/Fmaldonado4202">
+    <img class="icon-img" src="assets/logo/twitter.svg">
+    Twitter
+  </a>
 
+  <a *ngIf="!isDesktop()" mat-icon-button  target="_blank" href="https://twitter.com/Fmaldonado4202">
+    <img class="icon-img" src="assets/logo/twitter.svg">
+  </a>
 
-
-
-  <mat-form-field class="search-bar">
+  <mat-form-field *ngIf="isDesktop()" class="search-bar">
     <mat-icon matSuffix>search</mat-icon>
     <mat-label>Search</mat-label>
     <input #search matInput (keyup.enter)="makeSearch(search.value)">
   </mat-form-field>
 
+</mat-toolbar>
+
+<mat-toolbar *ngIf="searchPage && !isDesktop()">
+  <mat-form-field class="search-bar">
+    <mat-icon matSuffix>search</mat-icon>
+    <mat-label>Search</mat-label>
+    <input #search matInput (keyup.enter)="makeSearch(search.value)">
+  </mat-form-field>
 </mat-toolbar>
 
 <div class="bottom-bar mat-elevation-z8" *ngIf="!isDesktop()" fxLayout="row" fxLayoutAlign="space-around center">
@@ -32,7 +45,11 @@
     routerLinkActive="icon-link-active" fxLayout="row" fxLayoutAlign="center">
     <mat-icon>home</mat-icon>
   </button>
-  <button mat-icon-button class="icon-link" routerLink="about" routerLinkActive="selected-item" fxLayout="row"
+  <button mat-icon-button class="icon-link" routerLink="search" routerLinkActive="icon-link-active" fxLayout="row"
+    fxLayoutAlign="center">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button mat-icon-button class="icon-link" routerLink="about" routerLinkActive="icon-link-active" fxLayout="row"
     fxLayoutAlign="center">
     <mat-icon>help_outline</mat-icon>
   </button>

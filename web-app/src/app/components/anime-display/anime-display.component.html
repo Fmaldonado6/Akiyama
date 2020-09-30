@@ -1,9 +1,7 @@
 <div class="container ">
   <div class="title-container" fxLayout="row" fxLayoutAlign="space-between center">
     <span class="section-title">{{title}}</span>
-    <button *ngIf="dataType != DataType.search" (click)="fetchData(true)" mat-icon-button color="primary" class="refresh-button mat-elevation-z4">
-      <mat-icon>refresh</mat-icon>
-    </button>
+  
   </div>
   <div class="anime-container" [ngSwitch]="currentStatus">
 

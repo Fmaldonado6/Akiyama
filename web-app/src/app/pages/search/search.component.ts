@@ -14,13 +14,14 @@ export class SearchPage implements OnInit {
   @ViewChild("display", { read: ViewContainerRef }) searchDisplay
 
   DataType = DataType
-  query: string
+  query: string = ""
   constructor(
     private animeService: AnimeService,
     private route: ActivatedRoute
   ) {
     this.route.queryParams.subscribe(params => {
-      this.query = params.search.replace(/_/g, ' ')
+      if (params.search != null)
+        this.query = params.search.replace(/_/g, ' ')
     })
   }
 

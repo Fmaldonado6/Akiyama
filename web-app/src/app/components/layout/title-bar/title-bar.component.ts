@@ -1,4 +1,4 @@
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { HostListener } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,13 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitleBarComponent implements OnInit {
   innerWidth = 0;
-
+  searchPage = false
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
     this.innerWidth = window.innerWidth
+    this.router.events.subscribe(val => {
+      if (val instanceof NavigationEnd) {
+        let route = val.url.split("?").shift()
+        if (route == '/search')
+          this.searchPage = true
+        else
+          this.searchPage = false
+
+      }
+    })
   }
 
   makeSearch(search: string) {
