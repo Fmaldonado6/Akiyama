@@ -7,6 +7,8 @@
     android:background="@color/colorPrimary"
     tools:context=".ui.activities.MainActivity">
 
+
+
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
@@ -56,8 +58,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:drawableRight="@drawable/search"
         android:backgroundTint="@android:color/white"
+        android:drawableRight="@drawable/search"
         android:drawableTint="@android:color/white"
         android:ems="10"
         android:hint="Search"
@@ -67,7 +69,7 @@
         android:singleLine="true"
         android:textColor="#FFFFFF"
         android:textColorHint="@android:color/white"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

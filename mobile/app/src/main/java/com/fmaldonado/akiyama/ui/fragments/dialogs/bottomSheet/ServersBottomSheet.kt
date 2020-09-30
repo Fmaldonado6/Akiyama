@@ -23,6 +23,7 @@ import com.google.gson.reflect.TypeToken
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import kotlinx.android.synthetic.main.error_layout.view.*
 import kotlinx.android.synthetic.main.server_sheet.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
@@ -109,7 +110,7 @@ class ServersBottomSheet : BottomSheetDialogFragment(), KodeinAware {
         }
 
 
-        retryButton.setOnClickListener {
+        errorGroup.retryButton.setOnClickListener {
             viewModel.getServers(episodeId)
         }
 

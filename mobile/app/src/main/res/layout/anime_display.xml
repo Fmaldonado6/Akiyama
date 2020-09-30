@@ -37,36 +37,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/recycler" />
 
-    <TextView
-        android:id="@+id/errorIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/error"
-
-        app:layout_constraintBottom_toTopOf="@+id/retryButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/recycler" />
-
-    <Button
-        android:id="@+id/retryButton"
-        android:layout_width="83dp"
-        android:layout_height="31dp"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="RETRY"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/progressBar" />
-
-    <androidx.constraintlayout.widget.Group
+    <include
         android:id="@+id/errorGroup"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        layout="@layout/error_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:visibility="invisible"
-        app:constraint_referenced_ids="retryButton,errorIcon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/recycler">
+
+    </include>
+
+    <include
+        android:id="@+id/emptyGroup"
+        layout="@layout/empty_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recycler">
+
+    </include>
 </androidx.constraintlayout.widget.ConstraintLayout>

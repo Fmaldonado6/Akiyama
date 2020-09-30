@@ -1,12 +1,14 @@
 package com.fmaldonado.akiyama.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.fmaldonado.akiyama.R
@@ -35,7 +37,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        toolbar.inflateMenu(R.menu.options)
+
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.twitter_button -> {
+                    val viewIntent = Intent(
+                        "android.intent.action.VIEW",
+                        Uri.parse("https://twitter.com/Fmaldonado4202")
+                    )
+                    startActivity(viewIntent)
+                }
+            }
+
+            true
+        }
     }
+
+
 
     private fun showToolbar() {
         toolbar.visibility = View.VISIBLE

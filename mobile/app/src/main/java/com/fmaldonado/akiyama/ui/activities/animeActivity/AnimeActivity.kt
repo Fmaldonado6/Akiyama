@@ -26,6 +26,8 @@ import kotlinx.android.synthetic.main.activity_anime.*
 import kotlinx.android.synthetic.main.activity_anime.errorGroup
 import kotlinx.android.synthetic.main.activity_anime.progressBar
 import kotlinx.android.synthetic.main.activity_anime.toolbar
+import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.error_layout.view.*
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
@@ -50,7 +52,7 @@ class AnimeActivity : AppCompatActivity(), KodeinAware {
         val gson = Gson()
         anime = gson.fromJson(animeString, AnimeModel::class.java)
         getInfo = intent.getBooleanExtra(ActivitiesArguments.GetInfo.value, false)
-        Log.d("Info",getInfo.toString())
+        Log.d("Info", getInfo.toString())
         synopsis.text = anime.synopsis
         toolbar.title = anime.title
 
@@ -78,7 +80,7 @@ class AnimeActivity : AppCompatActivity(), KodeinAware {
             setAnimeInfo()
         })
 
-        retryButton.setOnClickListener {
+        errorGroup.retryButton.setOnClickListener {
             viewModel.getAnimeInfo(anime.title)
         }
     }

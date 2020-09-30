@@ -24,6 +24,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import kotlinx.android.synthetic.main.anime_display.*
+import kotlinx.android.synthetic.main.error_layout.view.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.closestKodein
 import org.kodein.di.generic.instance
@@ -160,7 +161,7 @@ class AnimeDisplayFragment : Fragment(), KodeinAware {
             changeStatus(it)
         })
 
-        retryButton.setOnClickListener {
+        errorGroup.retryButton.setOnClickListener {
             getData()
         }
 
