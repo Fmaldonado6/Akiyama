@@ -65,6 +65,7 @@ export class AnimeInfoModal implements OnInit {
   }
 
   serverSelected() {
+    this.dialogRef.close()
   }
 
   back() {
