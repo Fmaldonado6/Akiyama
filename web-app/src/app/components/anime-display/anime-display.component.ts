@@ -28,10 +28,9 @@ export class AnimeDisplayComponent implements OnInit {
   }
 
   ngOnInit() {
+
     if (this.dataType != DataType.search)
       this.fetchData()
-
-
   }
 
   fetchData(force: Boolean = false) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-watch',
   templateUrl: './watch.component.html',
@@ -14,6 +14,7 @@ export class WatchPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private location: Location,
     private sanitizer: DomSanitizer,
     private router: Router) {
 
@@ -32,7 +33,7 @@ export class WatchPage implements OnInit {
   }
 
   back() {
-    this.router.navigate(["/"])
+    this.location.back()
   }
 
 }

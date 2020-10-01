@@ -41,10 +41,13 @@ export class AnimeInfoModal implements OnInit {
     @Inject(MAT_DIALOG_DATA) public modalData: ModalData) { }
 
   ngOnInit(): void {
+
+
     if (this.modalData.search)
       this.getAnimeInfo()
-    else
+    else {
       this.currentStatus = Status.loaded
+    }
   }
 
   scroll(element: HTMLElement, event) {
@@ -62,7 +65,6 @@ export class AnimeInfoModal implements OnInit {
   }
 
   serverSelected() {
-    this.dialogRef.close()
   }
 
   back() {

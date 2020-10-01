@@ -48,6 +48,7 @@ export class ServerLayoutComponent implements OnInit {
       }
     }
 
+
     this.router.navigate(["/watch"], extras)
   }
 
