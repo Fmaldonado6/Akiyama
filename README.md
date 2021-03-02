@@ -77,7 +77,7 @@ the api aswell-
 1. Fork it!
 2. Create a branch for the feature you want to make: `git checkout -b my-new-feature`
 3. Commit changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request
 
 **Note** both the angular and the android projects have environment variables to connect to your local Aruppi Api server. For default
