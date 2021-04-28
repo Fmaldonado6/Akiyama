@@ -8,29 +8,29 @@ import retrofit2.http.Path
 
 interface AruppiDataSource {
     @GET("lastEpisodes")
-    fun getEpisodes(): Response<EpisodeResponse>
+    suspend fun getEpisodes(): EpisodeResponse
 
     @GET("tv/latest/1")
-    fun getAnimes(): Response<AnimeResponse>
+    suspend fun getAnimes(): AnimeResponse
 
     @GET("movies/latest/1")
-    fun getMovies(): Response<MoviesResponse>
+    suspend fun getMovies(): MoviesResponse
 
     @GET("specials/latest/1")
-    fun getSpecials(): Response<SpecialsResponse>
+    suspend fun getSpecials(): SpecialsResponse
 
     @GET("ovas/latest/1")
-    fun getOvas(): Response<OvasResponse>
+    suspend fun getOvas(): OvasResponse
 
     @GET("search/{title}")
-    fun getSearch(@Path("title") title: String): Response<SearchResponse>
+    suspend fun getSearch(@Path("title") title: String): SearchResponse
 
     @GET("moreInfo/{title}")
-    fun getAnimeInfo(@Path("title") title: String): Response<AnimeInfoResponse>
+    suspend fun getAnimeInfo(@Path("title") title: String): AnimeInfoResponse
 
     @GET("getAnimeServers/{id}/{animeName}")
-    fun getServers(
+    suspend fun getServers(
         @Path("id") id: String,
         @Path("animeName") animeName: String
-    ): Response<ServerResponse>
+    ): ServerResponse
 }
