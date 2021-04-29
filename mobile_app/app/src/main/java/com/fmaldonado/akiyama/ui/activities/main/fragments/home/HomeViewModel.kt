@@ -32,6 +32,12 @@ constructor(
     val latestSpecials = animeRepository.latestSpecials
 
     fun getLatestEpisodes() {
+
+        if (latestEpisodes.value != null) {
+            latestEpisodesStatus.postValue(Status.Loaded)
+            return
+        }
+
         latestEpisodesStatus.postValue(Status.Loading)
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -44,6 +50,11 @@ constructor(
     }
 
     fun getLatestAnimes() {
+        if (latestAnimes.value != null) {
+            latestAnimesStatus.postValue(Status.Loaded)
+            return
+        }
+
         latestAnimesStatus.postValue(Status.Loading)
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -56,6 +67,11 @@ constructor(
     }
 
     fun getLatestMovies() {
+        if (latestMovies.value != null) {
+            latestMoviesStatus.postValue(Status.Loaded)
+            return
+        }
+
         latestMoviesStatus.postValue(Status.Loading)
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -68,6 +84,11 @@ constructor(
     }
 
     fun getLatestOvas() {
+        if (latestOvas.value != null){
+            latestOvasStatus.postValue(Status.Loaded)
+            return
+        }
+
         latestOvasStatus.postValue(Status.Loading)
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -80,6 +101,10 @@ constructor(
     }
 
     fun getLatestSpecials() {
+        if (latestSpecials.value != null){
+            latestSpecialsStatus.postValue(Status.Loaded)
+            return
+        }
         latestSpecialsStatus.postValue(Status.Loading)
         viewModelScope.launch(Dispatchers.IO) {
             try {

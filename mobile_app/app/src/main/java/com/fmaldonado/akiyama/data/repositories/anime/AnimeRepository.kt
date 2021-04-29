@@ -5,8 +5,10 @@ import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.data.network.AruppiDataSource
 import javax.inject.Inject
+import javax.inject.Singleton
 
 
+@Singleton
 class AnimeRepository
 @Inject
 constructor(

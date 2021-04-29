@@ -16,6 +16,10 @@ data class EpisodeResponse(
     val episodes: List<Episode>
 )
 
+data class SearchResponse(
+    val search: List<Anime>
+)
+
 data class ServerResponse(
     val servers: List<Server>
 )

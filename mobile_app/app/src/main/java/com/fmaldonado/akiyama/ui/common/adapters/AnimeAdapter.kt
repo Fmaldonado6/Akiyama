@@ -31,7 +31,7 @@ class AnimeAdapter(
 
         Glide.with(viewBinding.root)
             .load(byteArray)
-            .transform(CenterCrop(), RoundedCorners(16))
+            .transform(CenterCrop(), RoundedCorners(20))
             .into(viewBinding.imageView)
         viewBinding.animeTitle.apply {
             text = title

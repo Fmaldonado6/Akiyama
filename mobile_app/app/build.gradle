@@ -33,7 +33,7 @@ android {
         }
 
         debug {
-            buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:5000/api/v4/\""
+            buildConfigField "String", "BASE_URL", "\"http://192.168.0.110:5000/api/v4/\""
 
         }
     }
