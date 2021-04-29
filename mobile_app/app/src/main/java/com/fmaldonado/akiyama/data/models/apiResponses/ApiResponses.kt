@@ -16,21 +16,6 @@ data class EpisodeResponse(
     val episodes: List<Episode>
 )
 
-data class MoviesResponse(
-    val movies: List<Anime>
-)
-
-data class OvasResponse(
-    val ovas: List<Anime>
-)
-
-data class SearchResponse(
-    val search: List<Anime>
-)
-
-data class SpecialsResponse(
-    val specials: List<Anime>
-)
 data class ServerResponse(
     val servers: List<Server>
 )

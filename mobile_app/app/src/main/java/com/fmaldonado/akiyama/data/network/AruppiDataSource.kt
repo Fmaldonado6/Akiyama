@@ -14,13 +14,13 @@ interface AruppiDataSource {
     suspend fun getAnimes(): AnimeResponse
 
     @GET("movies/latest/1")
-    suspend fun getMovies(): MoviesResponse
+    suspend fun getMovies(): AnimeResponse
 
-    @GET("specials/latest/1")
-    suspend fun getSpecials(): SpecialsResponse
+    @GET("special/latest/1")
+    suspend fun getSpecials(): AnimeResponse
 
-    @GET("ovas/latest/1")
-    suspend fun getOvas(): OvasResponse
+    @GET("ova/latest/1")
+    suspend fun getOvas(): AnimeResponse
 
     @GET("search/{title}")
     suspend fun getSearch(@Path("title") title: String): SearchResponse

@@ -30,17 +30,17 @@ constructor(
     }
 
     suspend fun getLatestOvas() {
-        val ovas = aruppiDataSource.getOvas().ovas
+        val ovas = aruppiDataSource.getOvas().animes
         latestOvas.postValue(ovas)
     }
 
     suspend fun getLatestMovies() {
-        val movies = aruppiDataSource.getMovies().movies
+        val movies = aruppiDataSource.getMovies().animes
         latestMovies.postValue(movies)
     }
 
     suspend fun getLatestSpecials() {
-        val specials = aruppiDataSource.getSpecials().specials
+        val specials = aruppiDataSource.getSpecials().animes
         latestSpecials.postValue(specials)
     }
 }

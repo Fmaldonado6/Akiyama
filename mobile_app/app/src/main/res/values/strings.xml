@@ -4,4 +4,11 @@
     <string name="home_menu">Home</string>
     <string name="more_menu">More</string>
     <string name="search_text">Search</string>
+
+    <string name="recently_added_text">Recently Added</string>
+    <string name="latest_animes_text">Latest Animes</string>
+    <string name="latest_movies_text">Latest Movies</string>
+    <string name="latest_ovas_text">Latest Ovas</string>
+    <string name="latest_specials_text">Latest Specials</string>
+
 </resources>
