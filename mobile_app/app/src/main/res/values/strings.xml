@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Akiyama</string>
+
+    <string name="home_menu">Home</string>
+    <string name="more_menu">More</string>
+    <string name="search_text">Search</string>
 </resources>

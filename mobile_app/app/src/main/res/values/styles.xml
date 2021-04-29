@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.App.BottomNavigationView.Light" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView.Light</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView.Dark" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView.Dark</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView.Dark" parent="">
+        <item name="colorPrimary">@color/secondary_background_color</item>
+
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView.Light" parent="ThemeOverlay.MaterialComponents">
+        <item name="colorPrimary">@color/secondary_background_color</item>
+    </style>
+
+</resources>
