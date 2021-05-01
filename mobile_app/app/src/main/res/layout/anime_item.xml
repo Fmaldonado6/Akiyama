@@ -5,15 +5,15 @@
     android:layout_width="175dp"
     android:layout_height="200dp"
     android:paddingLeft="15dp"
+    android:focusable="true"
+    android:clickable="true"
     android:paddingEnd="15dp">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:clickable="true"
         android:elevation="10dp"
-        android:focusable="true"
         android:foreground="@drawable/anime_cover"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
