@@ -34,7 +34,11 @@ class AnimeDetailActivity : AppCompatActivity() {
             val byteArray = Base64.decode(it.poster, Base64.DEFAULT)
             binding.animeTitle.text = it.title
             binding.synopsis.text = it.synopsis
-            binding.status.text = it.debut
+            binding.status.text =
+                if (it.debut.equals("En emision"))
+                    resources.getString(R.string.airing_text)
+                else
+                    resources.getString(R.string.finished_text)
 
             setupGenresRecycler(it.genres)
             setupEpisodesRecyler(it.episodes)
@@ -77,9 +81,11 @@ class AnimeDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupEpisodesRecyler(episodes:List<Episode>) {
+    private fun setupEpisodesRecyler(episodes: List<Episode>) {
         val items = mutableListOf<EpisodesAdapter>()
         episodes.forEach {
+            if (it.nextEpisodeDate == null && episodes.first() == it)
+                return@forEach
             items.add(EpisodesAdapter(it))
         }
 
