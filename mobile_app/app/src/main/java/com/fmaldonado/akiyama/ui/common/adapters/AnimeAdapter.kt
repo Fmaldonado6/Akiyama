@@ -23,7 +23,7 @@ class AnimeAdapter(
 
         if (anime != null) {
             byteArray = Base64.decode(anime.image, Base64.DEFAULT)
-            title = anime.title
+            anime.title?.let { title = it }
         } else if (episode != null) {
             byteArray = Base64.decode(episode.image, Base64.DEFAULT)
             title = episode.title

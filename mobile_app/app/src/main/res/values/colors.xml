@@ -6,9 +6,12 @@
 
     <color name="background_color">#FFFFFFFF</color>
     <color name="secondary_background_color">#FAFAFA</color>
+    <color name="secondary_background_color_alpha">#85FAFAFA</color>
+
     <color name="dark_background_color">#202125</color>
 
     <color name="text_color">#FF000000</color>
+    <color name="secondary_text_color">#737373</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

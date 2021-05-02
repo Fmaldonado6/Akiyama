@@ -1,6 +1,6 @@
 package com.fmaldonado.akiyama.ui.activities.main.fragments.home
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,13 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.databinding.AnimeSectionBinding
 import com.fmaldonado.akiyama.databinding.HomeFragmentBinding
+import com.fmaldonado.akiyama.ui.activities.animeDetail.AnimeDetailActivity
+import com.fmaldonado.akiyama.ui.common.ParcelableNames
 import com.fmaldonado.akiyama.ui.common.adapters.AnimeAdapter
 import com.xwray.groupie.GroupieAdapter
+import com.xwray.groupie.GroupieViewHolder
+import com.xwray.groupie.Item
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -81,7 +84,16 @@ class HomeFragment : Fragment() {
         }
 
         val adapter = GroupieAdapter().apply { this.addAll(items) }
+        adapter.setOnItemClickListener { item: Item<GroupieViewHolder>, view: View ->
+            val animeItem = item as AnimeAdapter
 
+            val intent = Intent(context, AnimeDetailActivity::class.java)
+            Log.d("Pressed","Yes")
+            if (animeItem.anime != null)
+                intent.putExtra(ParcelableNames.Anime.value, animeItem.anime)
+            startActivity(intent)
+
+        }
         view.animeList.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             this.adapter = adapter
