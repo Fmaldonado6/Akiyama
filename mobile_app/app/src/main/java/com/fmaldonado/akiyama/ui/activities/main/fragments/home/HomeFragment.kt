@@ -16,6 +16,7 @@ import com.fmaldonado.akiyama.databinding.HomeFragmentBinding
 import com.fmaldonado.akiyama.ui.activities.animeDetail.AnimeDetailActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableNames
 import com.fmaldonado.akiyama.ui.common.adapters.AnimeAdapter
+import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.ServersBottomSheet
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -26,6 +27,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var binding: HomeFragmentBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -77,8 +79,6 @@ class HomeFragment : Fragment() {
             items.add(AnimeAdapter(episode = it))
         }
 
-        if (anime != null)
-            Log.d("Count", anime.size.toString())
         anime?.forEach {
             items.add(AnimeAdapter(anime = it))
         }
@@ -87,11 +87,14 @@ class HomeFragment : Fragment() {
         adapter.setOnItemClickListener { item: Item<GroupieViewHolder>, view: View ->
             val animeItem = item as AnimeAdapter
 
-            val intent = Intent(context, AnimeDetailActivity::class.java)
-            Log.d("Pressed","Yes")
-            if (animeItem.anime != null)
+            if (animeItem.anime != null) {
+                val intent = Intent(context, AnimeDetailActivity::class.java)
                 intent.putExtra(ParcelableNames.Anime.value, animeItem.anime)
-            startActivity(intent)
+                startActivity(intent)
+            } else if (animeItem.episode != null) {
+                ServersBottomSheet.newInstance(animeItem.episode)
+                    .show(requireActivity().supportFragmentManager, this.tag)
+            }
 
         }
         view.animeList.apply {

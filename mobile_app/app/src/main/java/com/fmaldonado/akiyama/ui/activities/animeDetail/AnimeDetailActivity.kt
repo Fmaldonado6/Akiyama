@@ -96,9 +96,11 @@ class AnimeDetailActivity : AppCompatActivity() {
 
         adapter.setOnItemClickListener { item: Item<GroupieViewHolder>, view: View ->
             val episodeItem = item as EpisodesAdapter
-            ServersBottomSheet.newInstance(episodeItem.episode).apply {
-                this.show(supportFragmentManager, this.tag)
-            }
+
+            if (episodeItem.clickable)
+                ServersBottomSheet.newInstance(episodeItem.episode).apply {
+                    this.show(supportFragmentManager, this.tag)
+                }
         }
 
         binding.episodesList.apply {

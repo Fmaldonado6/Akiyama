@@ -48,7 +48,7 @@ export class Episode {
     title: string = ""
     poster: string = ""
     episode: number = 0
-    servers: Server[] = []
+    servers?: Server[]
     nextEpisodeDate?= null
 }
 

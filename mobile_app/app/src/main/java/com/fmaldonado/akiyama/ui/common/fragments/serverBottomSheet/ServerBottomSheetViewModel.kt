@@ -22,6 +22,10 @@ constructor(
     val currentStatus = MutableLiveData(Status.Loading)
     val servers = MutableLiveData<List<Server>>()
     fun getEpisodeServers(episodeId: String) {
+
+        if(servers.value != null)
+            return
+
         viewModelScope.launch(Dispatchers.IO) {
             currentStatus.postValue(Status.Loading)
             try {
@@ -32,6 +36,11 @@ constructor(
 
             }
         }
+    }
+
+    fun setServers(servers:List<Server>){
+        this.servers.value = servers
+        this.currentStatus.value = Status.Loaded
     }
 
 }

@@ -13,6 +13,7 @@ import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.databinding.ServerBottomSheetBinding
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.ParcelableNames
+import com.fmaldonado.akiyama.ui.common.Status
 import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.adapters.ServerAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -57,13 +58,16 @@ class ServersBottomSheet : BottomSheetDialogFragment() {
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         viewModel.servers.observe(this, {
-            Log.d("Count",it.size.toString())
             setupRecycler(it)
         })
 
         episode?.let {
-            Log.d("Buenas","Si")
-            viewModel.getEpisodeServers(it.id)
+            Log.d("Count",(it.servers == null).toString())
+
+            if (it.servers == null)
+                viewModel.getEpisodeServers(it.id)
+            else
+                viewModel.setServers(it.servers)
         }
 
         viewModel.currentStatus.observe(this, {
@@ -79,12 +83,12 @@ class ServersBottomSheet : BottomSheetDialogFragment() {
 
         val adapter = GroupieAdapter().apply { addAll(items) }
 
-        adapter.setOnItemClickListener{ item: Item<GroupieViewHolder>, view: View ->
+        adapter.setOnItemClickListener { item: Item<GroupieViewHolder>, view: View ->
 
         }
 
         binding.serversList.apply {
-            layoutManager = GridLayoutManager(context,2)
+            layoutManager = GridLayoutManager(context, 2)
             this.adapter = adapter
         }
     }

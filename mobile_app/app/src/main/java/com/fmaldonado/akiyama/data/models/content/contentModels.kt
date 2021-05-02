@@ -17,7 +17,7 @@ data class Episode(
     val title: String = "",
     val poster: String = "",
     val episode: Float = 0f,
-    val servers: List<Server> = mutableListOf(),
+    val servers: List<Server>? = null,
     val nextEpisodeDate: String? = null
 ) : Parcelable
 

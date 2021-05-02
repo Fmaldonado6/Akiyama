@@ -8,8 +8,11 @@ import com.fmaldonado.akiyama.databinding.EpisodeItemBinding
 import com.xwray.groupie.viewbinding.BindableItem
 
 class EpisodesAdapter(val episode: Episode) : BindableItem<EpisodeItemBinding>() {
+    var clickable = true
+
     override fun bind(viewBinding: EpisodeItemBinding, position: Int) {
         val text = if (episode.nextEpisodeDate != null) {
+            clickable = false
             val textLabel = viewBinding.root.context.getString(R.string.next_episode_text)
             "$textLabel: ${episode.nextEpisodeDate}"
         } else {
