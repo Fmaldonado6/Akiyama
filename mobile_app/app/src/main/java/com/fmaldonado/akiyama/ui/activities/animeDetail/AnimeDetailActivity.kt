@@ -3,8 +3,7 @@ package com.fmaldonado.akiyama.ui.activities.animeDetail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
-import android.widget.TextView
-import androidx.activity.viewModels
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -16,9 +15,13 @@ import com.fmaldonado.akiyama.databinding.ActivityAnimeDetailBinding
 import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.EpisodesAdapter
 import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.GenresAdapter
 import com.fmaldonado.akiyama.ui.common.ParcelableNames
+import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.ServersBottomSheet
 import com.xwray.groupie.GroupieAdapter
+import com.xwray.groupie.GroupieViewHolder
+import com.xwray.groupie.Item
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AnimeDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAnimeDetailBinding
     private var anime: Anime? = null
@@ -90,6 +93,13 @@ class AnimeDetailActivity : AppCompatActivity() {
         }
 
         val adapter = GroupieAdapter().apply { addAll(items) }
+
+        adapter.setOnItemClickListener { item: Item<GroupieViewHolder>, view: View ->
+            val episodeItem = item as EpisodesAdapter
+            ServersBottomSheet.newInstance(episodeItem.episode).apply {
+                this.show(supportFragmentManager, this.tag)
+            }
+        }
 
         binding.episodesList.apply {
             layoutManager = LinearLayoutManager(context)

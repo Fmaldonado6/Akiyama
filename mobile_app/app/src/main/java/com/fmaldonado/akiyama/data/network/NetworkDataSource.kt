@@ -9,7 +9,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface AruppiDataSource {
+interface NetworkDataSource {
     @GET("episodes")
     suspend fun getEpisodes(): List<Episode>
 
@@ -34,8 +34,10 @@ interface AruppiDataSource {
         @Path("animeTitle") title: String
     ): Anime
 
-    @GET("servers/{id}")
+    @GET("episodes/{id}/{title}")
     suspend fun getServers(
         @Path("id") id: String,
+        @Path("title") title: String,
+
     ): List<Server>
 }

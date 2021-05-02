@@ -7,7 +7,7 @@ import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.databinding.EpisodeItemBinding
 import com.xwray.groupie.viewbinding.BindableItem
 
-class EpisodesAdapter(private val episode: Episode) : BindableItem<EpisodeItemBinding>() {
+class EpisodesAdapter(val episode: Episode) : BindableItem<EpisodeItemBinding>() {
     override fun bind(viewBinding: EpisodeItemBinding, position: Int) {
         val text = if (episode.nextEpisodeDate != null) {
             val textLabel = viewBinding.root.context.getString(R.string.next_episode_text)

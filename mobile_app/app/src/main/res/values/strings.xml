@@ -20,6 +20,7 @@
     <string name="episodes_label_text">Episode</string>
     <string name="next_episode_text">Next Episode</string>
 
+    <string name="select_an_option_text">Select an option</string>
 
     <string name="more_text">More</string>
     <string name="less_text">Less</string>

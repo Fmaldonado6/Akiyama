@@ -27,6 +27,10 @@ export interface SearchResponse {
     search: Anime[]
 }
 
+export interface ServersResponse {
+    servers: Server[]
+}
+
 export class Anime {
     id: string = ""
     title: string = ""

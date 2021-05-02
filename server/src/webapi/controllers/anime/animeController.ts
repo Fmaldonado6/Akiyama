@@ -1,4 +1,4 @@
-import { OvasResponse, SpecialsReponse, AnimeInfo, MoviesResponse, SearchResponse } from './../../../core/domain/models';
+import { OvasResponse, SpecialsReponse, AnimeInfo, MoviesResponse, SearchResponse, ServersResponse } from './../../../core/domain/models';
 import { BaseController } from "../baseController";
 import axios from 'axios'
 import { Request, Response } from "express";
@@ -15,6 +15,7 @@ class AnimeController extends BaseController {
     config() {
         this.router.get("/latest", (req, res) => this.getLatestAnimes(req, res))
         this.router.get("/episodes", (req, res) => this.getLatestEpisodes(req, res))
+        this.router.get("/episodes/:id/:title", (req, res) => this.getEpisodeServers(req, res))
         this.router.get("/specials", (req, res) => this.getLatestSpecials(req, res))
         this.router.get("/ovas", (req, res) => this.getLatestOvas(req, res))
         this.router.get("/movies", (req, res) => this.getLatestMovies(req, res))
@@ -75,6 +76,20 @@ class AnimeController extends BaseController {
         } catch (error) {
             console.error(error)
             res.sendStatus(500)
+        }
+    }
+
+    async getEpisodeServers(req: Request, res: Response) {
+        try {
+            const animeId = req.params.id
+            const animeTitle = req.params.title
+
+            console.log(animeId)
+            const servers = await axios.get<ServersResponse>(`${this.BASE_URL}/GetAnimeServers/${animeId}/${animeTitle}`)
+
+            res.status(200).json(servers.data.servers)
+        } catch (error) {
+
         }
     }
 

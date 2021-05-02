@@ -1,7 +1,7 @@
 package com.fmaldonado.akiyama.di
 
 import com.fmaldonado.akiyama.BuildConfig
-import com.fmaldonado.akiyama.data.network.AruppiDataSource
+import com.fmaldonado.akiyama.data.network.NetworkDataSource
 import com.fmaldonado.akiyama.data.network.interceptor.NetworkInterceptor
 import dagger.Module
 import dagger.Provides
@@ -19,7 +19,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideAruppiDataSource(networkInterceptor: NetworkInterceptor): AruppiDataSource {
+    fun provideAruppiDataSource(networkInterceptor: NetworkInterceptor): NetworkDataSource {
         val specs = listOf(ConnectionSpec.CLEARTEXT, ConnectionSpec.MODERN_TLS)
         val okHttpClient =
             OkHttpClient.Builder()
@@ -31,7 +31,7 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(AruppiDataSource::class.java)
+            .create(NetworkDataSource::class.java)
     }
 
     @Singleton

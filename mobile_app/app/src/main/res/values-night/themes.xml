@@ -17,5 +17,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/secondary_background_color</item>
         <!-- Customize your theme here. -->
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceOverlay.Rounded</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceOverlay.Rounded</item>
+
     </style>
 </resources>

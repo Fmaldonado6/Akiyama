@@ -18,4 +18,9 @@
         <item name="colorPrimary">@color/secondary_background_color</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.Rounded" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="cornerSize">8dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
 </resources>
