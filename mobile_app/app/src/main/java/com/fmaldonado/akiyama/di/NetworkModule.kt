@@ -27,7 +27,7 @@ object NetworkModule {
                 .build()
 
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl("${BuildConfig.BASE_URL}animes/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

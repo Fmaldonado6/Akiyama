@@ -1,87 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.animeDetail.AnimeDetailActivity">
+    android:fillViewport="true"
+    tools:context=".ui.activities.animeDetail.AnimeDetailActivity"
+    tools:layout_editor_absoluteX="213dp"
+    tools:layout_editor_absoluteY="430dp">
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:foreground="@drawable/light_ripple"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:background="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_icon" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/animeBackground"
-        android:layout_width="0dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="10dp"
-        android:foreground="@drawable/anime_background"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backButton"
-        tools:srcCompat="@tools:sample/avatars" />
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#00FFFFFF"
+            android:foreground="@drawable/light_ripple"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back_icon" />
 
-    <ImageView
-        android:id="@+id/animeCover"
-        android:layout_width="120dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/animeBackground"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/animeBackground"
-        tools:src="@tools:sample/avatars" />
+        <ImageView
+            android:id="@+id/animeBackground"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="10dp"
+            android:foreground="@drawable/anime_background"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backButton"
+            tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/animeTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
-        android:text="TextView"
-        android:textSize="23sp"
-        app:layout_constraintEnd_toEndOf="@+id/animeBackground"
-        app:layout_constraintStart_toEndOf="@+id/animeCover"
-        app:layout_constraintTop_toTopOf="@+id/animeBackground" />
+        <ImageView
+            android:id="@+id/animeCover"
+            android:layout_width="120dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/animeBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/animeBackground"
+            tools:src="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/synopsis"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:textColor="@color/secondary_text_color"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favoritesButton" />
+        <TextView
+            android:id="@+id/animeTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="20dp"
+            android:text="TextView"
+            android:textSize="23sp"
+            app:layout_constraintEnd_toEndOf="@+id/animeBackground"
+            app:layout_constraintStart_toEndOf="@+id/animeCover"
+            app:layout_constraintTop_toTopOf="@+id/animeBackground" />
 
-    <TextView
-        android:id="@+id/favoritesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:foreground="@drawable/light_ripple"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="5dp"
-        android:text="@string/add_to_favorties_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/animeBackground"
-        app:drawableTopCompat="@drawable/favorite_icon" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/synopsis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:maxLines="3"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/secondary_text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/favoritesButton" />
+
+        <TextView
+            android:id="@+id/favoritesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/light_ripple"
+            android:padding="5dp"
+            android:text="@string/add_to_favorties_text"
+            app:drawableTopCompat="@drawable/favorite_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animeBackground" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:text="TextView"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/animeCover"
+            app:layout_constraintTop_toBottomOf="@+id/animeTitle" />
+
+        <TextView
+            android:id="@+id/moreButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
+            android:focusable="true"
+
+            android:foreground="@drawable/light_ripple"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="@string/more_text"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/synopsis" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/genresList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/moreButton" />
+
+        <TextView
+            android:id="@+id/episodesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/episodes_text"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/genresList" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/episodesList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/episodesText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
+
+
+

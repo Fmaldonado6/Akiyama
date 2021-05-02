@@ -13,4 +13,15 @@
 
     <string name="add_to_favorties_text">Add to Favorites</string>
 
+    <string name="finished_text">Finished</string>
+    <string name="airing_text">Airing</string>
+
+    <string name="episodes_text">Episodes</string>
+    <string name="episodes_label_text">Episode</string>
+    <string name="next_episode_text">Next Episode</string>
+
+
+    <string name="more_text">More</string>
+    <string name="less_text">Less</string>
+
 </resources>

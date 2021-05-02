@@ -22,10 +22,10 @@ class AnimeAdapter(
         lateinit var byteArray: ByteArray
 
         if (anime != null) {
-            byteArray = Base64.decode(anime.image, Base64.DEFAULT)
-            anime.title?.let { title = it }
+            byteArray = Base64.decode(anime.poster, Base64.DEFAULT)
+            anime.title.let { title = it }
         } else if (episode != null) {
-            byteArray = Base64.decode(episode.image, Base64.DEFAULT)
+            byteArray = Base64.decode(episode.poster, Base64.DEFAULT)
             title = episode.title
         }
 

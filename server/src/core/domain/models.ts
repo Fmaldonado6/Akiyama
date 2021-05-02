@@ -18,6 +18,15 @@ export interface AnimeInfo {
     info: Anime
 }
 
+
+export interface MoviesResponse {
+    movies: Anime[]
+}
+
+export interface SearchResponse {
+    search: Anime[]
+}
+
 export class Anime {
     id: string = ""
     title: string = ""
@@ -36,6 +45,7 @@ export class Episode {
     poster: string = ""
     episode: number = 0
     servers: Server[] = []
+    nextEpisodeDate?= null
 }
 
 export class Server {

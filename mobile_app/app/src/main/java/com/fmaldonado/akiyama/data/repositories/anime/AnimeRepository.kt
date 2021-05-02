@@ -22,28 +22,33 @@ constructor(
     val latestSpecials = MutableLiveData<List<Anime>>()
 
     suspend fun getLatestAnimes() {
-        val animes = aruppiDataSource.getAnimes().animes
+        val animes = aruppiDataSource.getAnimes()
         latestAnimes.postValue(animes)
     }
 
     suspend fun getLatestEpisodes() {
-        val episodes = aruppiDataSource.getEpisodes().episodes
+        val episodes = aruppiDataSource.getEpisodes()
         latestEpisodes.postValue(episodes)
     }
 
     suspend fun getLatestOvas() {
-        val ovas = aruppiDataSource.getOvas().animes
+        val ovas = aruppiDataSource.getOvas()
         latestOvas.postValue(ovas)
     }
 
     suspend fun getLatestMovies() {
-        val movies = aruppiDataSource.getMovies().animes
+        val movies = aruppiDataSource.getMovies()
         latestMovies.postValue(movies)
     }
 
     suspend fun getLatestSpecials() {
-        val specials = aruppiDataSource.getSpecials().animes
+        val specials = aruppiDataSource.getSpecials()
         latestSpecials.postValue(specials)
+    }
+
+    suspend fun getAnimeInfo(animeId: String,animeTitle:String): Anime {
+
+        return aruppiDataSource.getAnimeInfo(animeId.split("/").last(),animeTitle)
     }
 }
 
