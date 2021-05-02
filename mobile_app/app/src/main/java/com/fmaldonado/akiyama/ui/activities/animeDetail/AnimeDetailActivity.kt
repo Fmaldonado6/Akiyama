@@ -35,7 +35,7 @@ class AnimeDetailActivity : AppCompatActivity() {
             binding.animeTitle.text = it.title
             binding.synopsis.text = it.synopsis
             binding.status.text =
-                if (it.debut.equals("En emision"))
+                if (it.debut == "En emision")
                     resources.getString(R.string.airing_text)
                 else
                     resources.getString(R.string.finished_text)

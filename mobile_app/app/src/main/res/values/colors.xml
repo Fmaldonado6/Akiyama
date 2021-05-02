@@ -6,7 +6,7 @@
 
     <color name="background_color">#FFFFFFFF</color>
     <color name="secondary_background_color">#FAFAFA</color>
-    <color name="secondary_background_color_alpha">#85FAFAFA</color>
+    <color name="secondary_background_color_alpha">#C4FAFAFA</color>
 
     <color name="dark_background_color">#202125</color>
 

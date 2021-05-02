@@ -12,7 +12,7 @@
         android:foreground="@drawable/light_ripple"
         android:clickable="true"
         android:focusable="true"
-        android:padding="10dp"
+        android:padding="13dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
