@@ -14,6 +14,7 @@ import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.databinding.AnimeSectionBinding
 import com.fmaldonado.akiyama.databinding.HomeFragmentBinding
 import com.fmaldonado.akiyama.ui.activities.animeDetail.AnimeDetailActivity
+import com.fmaldonado.akiyama.ui.activities.search.SearchActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.adapters.AnimeAdapter
 import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.ServersBottomSheet
@@ -67,6 +68,10 @@ class HomeFragment : Fragment() {
         viewModel.latestOvasStatus.observe(viewLifecycleOwner, { binding.ovasStatus = it })
         viewModel.latestSpecialsStatus.observe(viewLifecycleOwner, { binding.specialsStatus = it })
 
+        binding.searchBar.setOnClickListener {
+            val intent = Intent(context, SearchActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setUpRecycler(

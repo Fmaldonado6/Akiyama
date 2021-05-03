@@ -16,6 +16,8 @@
     <string name="finished_text">Finished</string>
     <string name="airing_text">Airing</string>
 
+    <string name="empty_search_text">No results for your search</string>
+
     <string name="episodes_text">Episodes</string>
     <string name="episodes_label_text">Episode</string>
     <string name="next_episode_text">Next Episode</string>

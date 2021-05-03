@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Akiyama"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activities.search.SearchActivity" android:windowSoftInputMode="stateVisible"/>
         <activity
             android:name=".ui.activities.watch.WatchActivity"
             android:theme="@style/Theme.Akiyama.Fullscreen" />

@@ -19,6 +19,7 @@ class AnimeController extends BaseController {
         this.router.get("/specials", (req, res) => this.getLatestSpecials(req, res))
         this.router.get("/ovas", (req, res) => this.getLatestOvas(req, res))
         this.router.get("/movies", (req, res) => this.getLatestMovies(req, res))
+        this.router.get("/search/:search", (req, res) => this.getSearch(req, res))
         this.router.get("/animeInfo/:animeId/:animeTitle", (req, res) => this.getAnimeInfo(req, res))
     }
 
@@ -113,6 +114,20 @@ class AnimeController extends BaseController {
         }
     }
 
+    
+    async getSearch(req: Request, res: Response) {
+        try {
+            const search = req.params.search
+
+            const animes = await axios.get<SearchResponse>(`${this.BASE_URL}/Search/${search}`)
+
+            res.status(200).json(animes.data.search)
+
+        } catch (error) {
+            console.error(error)
+            res.sendStatus(500)
+        }
+    }
 }
 
 export const animeController = new AnimeController()
