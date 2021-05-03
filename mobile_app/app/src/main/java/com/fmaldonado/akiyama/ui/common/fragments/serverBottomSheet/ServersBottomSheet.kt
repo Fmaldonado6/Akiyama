@@ -79,6 +79,8 @@ class ServersBottomSheet : BottomSheetDialogFragment() {
     private fun setupRecycler(servers: List<Server>) {
         val items = mutableListOf<ServerAdapter>()
         servers.forEach {
+            if (it.server == "stape")
+                return@forEach
             items.add(ServerAdapter(it))
         }
 

@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Akiyama"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.watch.WatchActivity"></activity>
+        <activity
+            android:name=".ui.activities.watch.WatchActivity"
+            android:theme="@style/Theme.Akiyama.Fullscreen" />
         <activity android:name=".ui.activities.animeDetail.AnimeDetailActivity" />
         <activity android:name=".ui.activities.main.MainActivity">
             <intent-filter>
