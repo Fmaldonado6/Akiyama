@@ -14,7 +14,7 @@ import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.databinding.ActivityAnimeDetailBinding
 import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.EpisodesAdapter
 import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.GenresAdapter
-import com.fmaldonado.akiyama.ui.common.ParcelableNames
+import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.ServersBottomSheet
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -32,7 +32,7 @@ class AnimeDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        anime = intent?.extras?.getParcelable(ParcelableNames.Anime.value)
+        anime = intent?.extras?.getParcelable(ParcelableKeys.ANIME_PARCELABLE)
         anime?.let {
             val byteArray = Base64.decode(it.poster, Base64.DEFAULT)
             binding.animeTitle.text = it.title

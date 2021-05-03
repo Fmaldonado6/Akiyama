@@ -8,7 +8,7 @@ data class Server(
     val server: String = "",
     val title: String = "",
     val allowMobile: Boolean = false,
-    val url: String = ""
+    val code: String = ""
 ) : Parcelable
 
 @Parcelize

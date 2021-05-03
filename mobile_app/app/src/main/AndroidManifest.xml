@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Akiyama"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.animeDetail.AnimeDetailActivity"></activity>
+        <activity android:name=".ui.activities.watch.WatchActivity"></activity>
+        <activity android:name=".ui.activities.animeDetail.AnimeDetailActivity" />
         <activity android:name=".ui.activities.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

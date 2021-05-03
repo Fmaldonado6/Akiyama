@@ -14,7 +14,7 @@ import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.databinding.AnimeSectionBinding
 import com.fmaldonado.akiyama.databinding.HomeFragmentBinding
 import com.fmaldonado.akiyama.ui.activities.animeDetail.AnimeDetailActivity
-import com.fmaldonado.akiyama.ui.common.ParcelableNames
+import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.adapters.AnimeAdapter
 import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.ServersBottomSheet
 import com.xwray.groupie.GroupieAdapter
@@ -89,7 +89,7 @@ class HomeFragment : Fragment() {
 
             if (animeItem.anime != null) {
                 val intent = Intent(context, AnimeDetailActivity::class.java)
-                intent.putExtra(ParcelableNames.Anime.value, animeItem.anime)
+                intent.putExtra(ParcelableKeys.ANIME_PARCELABLE, animeItem.anime)
                 startActivity(intent)
             } else if (animeItem.episode != null) {
                 ServersBottomSheet.newInstance(animeItem.episode)

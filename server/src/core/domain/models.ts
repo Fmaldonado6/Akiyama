@@ -56,5 +56,5 @@ export class Server {
     server: string = ""
     title: string = ""
     allowMobile: boolean = false
-    url: string = ""
+    code: string = ""
 }

@@ -1,5 +1,6 @@
 package com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.databinding.ServerBottomSheetBinding
+import com.fmaldonado.akiyama.ui.activities.watch.WatchActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
-import com.fmaldonado.akiyama.ui.common.ParcelableNames
 import com.fmaldonado.akiyama.ui.common.Status
 import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.adapters.ServerAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -62,7 +63,7 @@ class ServersBottomSheet : BottomSheetDialogFragment() {
         })
 
         episode?.let {
-            Log.d("Count",(it.servers == null).toString())
+            Log.d("Count", (it.servers == null).toString())
 
             if (it.servers == null)
                 viewModel.getEpisodeServers(it.id)
@@ -84,7 +85,10 @@ class ServersBottomSheet : BottomSheetDialogFragment() {
         val adapter = GroupieAdapter().apply { addAll(items) }
 
         adapter.setOnItemClickListener { item: Item<GroupieViewHolder>, view: View ->
-
+            val serverItem = item as ServerAdapter
+            val intent = Intent(context, WatchActivity::class.java)
+            intent.putExtra(ParcelableKeys.SERVER_PARCELABLE, serverItem.server)
+            startActivity(intent)
         }
 
         binding.serversList.apply {
