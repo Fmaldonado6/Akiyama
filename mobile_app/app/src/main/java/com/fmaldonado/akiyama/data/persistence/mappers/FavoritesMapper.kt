@@ -21,20 +21,22 @@ object FavoritesMapper {
             debut = anime.debut,
             poster = anime.poster,
             synopsis = anime.synopsis,
-            type = anime.type
+            type = anime.type,
+            genres = anime.genres
         )
 
         val episodes = mutableListOf<FavoritesEpisodesEntity>()
 
         anime.episodes.forEach {
-            episodes.add(
-                FavoritesEpisodesEntity(
-                    id = it.id,
-                    animeId = anime.id,
-                    title = anime.title,
-                    episode = it.episode
+            if (it.id.isNotEmpty())
+                episodes.add(
+                    FavoritesEpisodesEntity(
+                        id = it.id,
+                        animeId = anime.id,
+                        title = anime.title,
+                        episode = it.episode
+                    )
                 )
-            )
         }
 
         return FavoritesWithEpisodesEntity(favorite, episodes)

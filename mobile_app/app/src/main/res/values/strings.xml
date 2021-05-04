@@ -7,6 +7,8 @@
     <string name="more_menu">More</string>
     <string name="favorites_menu">Favorites</string>
     <string name="search_text">Search</string>
+    <string name="search_favorites_text">Search favorites</string>
+
 
     <string name="retry_text">Retry</string>
 
@@ -16,7 +18,7 @@
     <string name="latest_ovas_text">Latest Ovas</string>
     <string name="latest_specials_text">Latest Specials</string>
 
-    <string name="add_to_favorites_text">Add to Favorites</string>
+    <string name="add_to_favorites_text">Added to Favorites</string>
     <string name="remove_from_favorites_text">Remove from Favorites</string>
 
     <string name="finished_text">Finished</string>

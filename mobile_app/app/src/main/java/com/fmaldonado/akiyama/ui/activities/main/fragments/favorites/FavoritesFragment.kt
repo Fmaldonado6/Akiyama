@@ -13,6 +13,7 @@ import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.databinding.FavoritesFragmentBinding
 import com.fmaldonado.akiyama.ui.activities.animeDetail.AnimeDetailActivity
+import com.fmaldonado.akiyama.ui.activities.filterFavorites.FilterFavorites
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.Status
 import com.fmaldonado.akiyama.ui.common.adapters.AnimeListAdapter
@@ -51,6 +52,11 @@ class FavoritesFragment : Fragment() {
         })
 
         viewModel.currentStatus.observe(viewLifecycleOwner, { binding.currentStatus = it })
+
+        binding.searchBar.setOnClickListener {
+            val intent = Intent(context, FilterFavorites::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupRecycler(animes: List<Anime>) {

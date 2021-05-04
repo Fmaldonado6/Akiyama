@@ -48,7 +48,7 @@
                 android:focusable="true"
                 android:foreground="@drawable/light_ripple"
                 android:padding="15dp"
-                android:text="@string/search_text"
+                android:text="@string/search_favorites_text"
                 android:textSize="16sp"
                 app:drawableEndCompat="@drawable/search_icon"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,6 @@
 package com.fmaldonado.akiyama.data.persistence.converters
 
+import android.util.Log
 import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 

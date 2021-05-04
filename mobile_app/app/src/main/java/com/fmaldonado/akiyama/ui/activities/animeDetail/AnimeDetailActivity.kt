@@ -4,6 +4,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -53,7 +54,6 @@ class AnimeDetailActivity : AppCompatActivity() {
                     resources.getString(R.string.airing_text)
                 else
                     resources.getString(R.string.finished_text)
-
             setupGenresRecycler(it.genres)
             setupEpisodesRecyler(it.episodes)
             Glide.with(this)
