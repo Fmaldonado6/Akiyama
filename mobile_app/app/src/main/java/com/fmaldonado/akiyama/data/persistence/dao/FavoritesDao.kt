@@ -19,7 +19,7 @@ abstract class FavoritesDao {
     @Insert
     abstract suspend fun insertFavoritesEpisodes(episodes: List<FavoritesEpisodesEntity>)
 
-    suspend fun insertFavoritesDao(favorite: FavoritesWithEpisodesEntity) {
+    suspend fun insertFullFavorite(favorite: FavoritesWithEpisodesEntity) {
         this.insertFavoritesEpisodes(favorite.episodes)
         this.insertFavorites(favorite.anime)
     }

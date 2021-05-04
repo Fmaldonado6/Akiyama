@@ -1,4 +1,4 @@
-package com.fmaldonado.akiyama.ui.activities.search.adapters
+package com.fmaldonado.akiyama.ui.common.adapters
 
 import android.util.Base64
 import android.view.View
@@ -7,12 +7,10 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.data.models.content.Anime
-import com.fmaldonado.akiyama.data.models.content.Episode
-import com.fmaldonado.akiyama.databinding.AnimeItemBinding
 import com.fmaldonado.akiyama.databinding.SearchItemBinding
 import com.xwray.groupie.viewbinding.BindableItem
 
-class SearchAdapter(
+class AnimeListAdapter(
     val anime: Anime,
 ) : BindableItem<SearchItemBinding>() {
 

@@ -19,18 +19,11 @@ class SearchActivityViewModel
 constructor(
     private val animeRepository: AnimeRepository
 ) : ViewModel() {
-    private var isCurrentlySearching = false
+    var isCurrentlySearching = false
     val currentStatus = MutableLiveData(Status.Loading)
     val searchResults = animeRepository.currentSearch
     val currentSearchQuery = animeRepository.currentSearchQuery
-    fun initView() {
-        animeRepository.currentSearch.observeForever {
-            if (it.isEmpty())
-                currentStatus.postValue(Status.Empty)
-            else if (!isCurrentlySearching)
-                currentStatus.postValue(Status.Loaded)
-        }
-    }
+    val currentSearch = animeRepository.currentSearch
 
     fun makeSearch(search: String) {
         viewModelScope.launch(Dispatchers.IO) {

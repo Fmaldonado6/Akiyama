@@ -1,25 +1,18 @@
 package com.fmaldonado.akiyama.ui.activities.search
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
-import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.databinding.ActivitySearchBinding
 import com.fmaldonado.akiyama.ui.activities.animeDetail.AnimeDetailActivity
-import com.fmaldonado.akiyama.ui.activities.search.adapters.SearchAdapter
+import com.fmaldonado.akiyama.ui.common.adapters.AnimeListAdapter
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
-import com.fmaldonado.akiyama.ui.common.adapters.AnimeAdapter
+import com.fmaldonado.akiyama.ui.common.Status
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -37,10 +30,16 @@ class SearchActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.searchBar.requestFocus()
         binding.searchBar.setText(viewModel.currentSearchQuery)
-        viewModel.initView()
+
         viewModel.currentStatus.observe(this, { binding.currentStatus = it })
         viewModel.searchResults.observe(this, {
-            setupRecycler(it)
+            when (it.isEmpty()) {
+                true -> viewModel.currentStatus.value = Status.Empty
+                else -> {
+                    viewModel.currentStatus.value = Status.Loaded
+                    setupRecycler(it)
+                }
+            }
         })
 
         binding.backButton.setOnClickListener { finish() }
@@ -57,15 +56,15 @@ class SearchActivity : AppCompatActivity() {
 
 
     private fun setupRecycler(searchResults: List<Anime>) {
-        val items = mutableListOf<SearchAdapter>()
+        val items = mutableListOf<AnimeListAdapter>()
         searchResults.forEach {
-            items.add(SearchAdapter(it))
+            items.add(AnimeListAdapter(it))
         }
 
         val adapter = GroupieAdapter().apply { addAll(items) }
 
         adapter.setOnItemClickListener { item: Item<GroupieViewHolder>, view: View ->
-            val animeItem = item as SearchAdapter
+            val animeItem = item as AnimeListAdapter
             val intent = Intent(this, AnimeDetailActivity::class.java)
             intent.putExtra(ParcelableKeys.ANIME_PARCELABLE, animeItem.anime)
             startActivity(intent)

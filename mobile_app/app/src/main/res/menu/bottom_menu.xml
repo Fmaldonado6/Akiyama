@@ -5,6 +5,10 @@
         android:icon="@drawable/home_icon_outline"
         android:title="@string/home_menu" />
     <item
+        android:id="@+id/favorites"
+        android:icon="@drawable/favorites_icon_outline"
+        android:title="@string/favorites_menu" />
+    <item
         android:id="@+id/more"
         android:icon="@drawable/more_icon"
         android:title="@string/more_menu" />

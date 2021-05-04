@@ -30,4 +30,7 @@ data class FavoritesEntity(
     @NotNull
     @ColumnInfo(name = "rating")
     val rating: String = "",
+    @NotNull
+    @ColumnInfo(name = "genres")
+    val genres: List<String> = mutableListOf(),
 )

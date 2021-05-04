@@ -18,4 +18,7 @@ data class FavoritesEpisodesEntity(
     @NotNull
     @ColumnInfo(name = "title")
     val title: String = "",
+    @NotNull
+    @ColumnInfo(name = "episode")
+    val episode: Float = 0f,
 )

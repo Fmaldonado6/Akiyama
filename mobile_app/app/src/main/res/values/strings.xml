@@ -5,6 +5,7 @@
 
     <string name="home_menu">Home</string>
     <string name="more_menu">More</string>
+    <string name="favorites_menu">Favorites</string>
     <string name="search_text">Search</string>
 
     <string name="retry_text">Retry</string>
@@ -21,6 +22,7 @@
     <string name="airing_text">Airing</string>
 
     <string name="empty_search_text">No results for your search</string>
+    <string name="empty_favorites_text">You have not added any favorites!</string>
 
     <string name="episodes_text">Episodes</string>
     <string name="episodes_label_text">Episode</string>
