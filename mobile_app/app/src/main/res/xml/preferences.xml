@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        android:icon="@drawable/help_outline_icon"
+        android:key="about"
+        android:title="@string/preferences_about_text" />
+    <Preference
+        android:icon="@drawable/twitter_icon"
+        android:key="twitter"
+        android:title="@string/preferences_twitter_text" />
+    <Preference
+        android:icon="@drawable/version_icon"
+        android:key="version"
+        android:title="@string/preferences_version_text" />
+    <Preference
+        android:icon="@drawable/code_icon"
+        android:key="sourceCode"
+        android:title="@string/preferences_source_code_text" />
+
+</PreferenceScreen>

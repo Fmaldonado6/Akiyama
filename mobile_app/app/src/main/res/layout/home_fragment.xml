@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.fmaldonado.akiyama.ui.common.Status"/>
+        <variable
+            name="episodesStatus"
+            type="Status" />
+
+        <variable
+            name="animesStatus"
+            type="Status" />
+
+        <variable
+            name="moviesStatus"
+            type="Status" />
+
+        <variable
+            name="ovasStatus"
+            type="Status" />
+
+        <variable
+            name="specialsStatus"
+            type="Status" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="520dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:text="@string/home_menu"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/rounded_textfield"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/light_ripple"
+                android:padding="15dp"
+                android:text="@string/search_text"
+                android:textSize="16sp"
+                app:drawableEndCompat="@drawable/search_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <include
+                android:id="@+id/latestEpisode"
+                layout="@layout/anime_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/searchBar"
+                app:status="@{episodesStatus}"
+                app:title="@{@string/recently_added_text}" />
+
+
+            <include
+                android:id="@+id/latestAnime"
+                layout="@layout/anime_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:status="@{animesStatus}"
+                app:title="@{@string/latest_animes_text}"
+                tools:layout_editor_absoluteY="163dp" />
+
+            <include
+                android:id="@+id/latestMovies"
+                layout="@layout/anime_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:status="@{moviesStatus}"
+                app:title="@{@string/latest_movies_text}"
+                tools:layout_editor_absoluteY="163dp" />
+
+            <include
+                android:id="@+id/latestOvas"
+                layout="@layout/anime_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:status="@{ovasStatus}"
+                app:title="@{@string/latest_ovas_text}"
+                tools:layout_editor_absoluteY="163dp" />
+
+            <include
+                android:id="@+id/latestSpecials"
+                layout="@layout/anime_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:status="@{specialsStatus}"
+                app:title="@{@string/latest_specials_text}"
+                tools:layout_editor_absoluteY="163dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</layout>

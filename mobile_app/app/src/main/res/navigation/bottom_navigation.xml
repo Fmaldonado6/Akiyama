@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.fmaldonado.akiyama.ui.activities.main.fragments.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/more"
+        android:name="com.fmaldonado.akiyama.ui.activities.main.fragments.more.MoreFragment"
+        android:label="fragment_more"
+        tools:layout="@layout/fragment_more" />
+</navigation>

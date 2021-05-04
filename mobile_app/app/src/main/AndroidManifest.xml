@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fmaldonado.akiyama">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".AkiyamaApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Akiyama"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activities.about.AboutActivity"/>
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/Theme.Akiyama.OpenSource" />
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+            android:theme="@style/Theme.Akiyama.OpenSource" />
+        <activity
+            android:name=".ui.activities.search.SearchActivity"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name=".ui.activities.watch.WatchActivity"
+            android:theme="@style/Theme.Akiyama.Fullscreen" />
+        <activity android:name=".ui.activities.animeDetail.AnimeDetailActivity" />
+        <activity android:name=".ui.activities.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

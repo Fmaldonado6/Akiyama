@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_200">#6f8ede</color>
+    <color name="blue_500">#5778cf</color>
+    <color name="blue_700">#4e6cba</color>
+
+    <color name="background_color">#FFFFFFFF</color>
+    <color name="secondary_background_color">#FAFAFA</color>
+    <color name="secondary_background_color_alpha">#C4FAFAFA</color>
+
+    <color name="dark_background_color">#202125</color>
+
+    <color name="text_color">#FF000000</color>
+    <color name="secondary_text_color">#737373</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

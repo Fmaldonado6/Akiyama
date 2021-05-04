@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Akiyama</string>
+
+    <string name="open_source_licenses">Open Source Licenses</string>
+
+    <string name="home_menu">Home</string>
+    <string name="more_menu">More</string>
+    <string name="search_text">Search</string>
+
+    <string name="retry_text">Retry</string>
+
+    <string name="recently_added_text">Recently Added</string>
+    <string name="latest_animes_text">Latest Animes</string>
+    <string name="latest_movies_text">Latest Movies</string>
+    <string name="latest_ovas_text">Latest Ovas</string>
+    <string name="latest_specials_text">Latest Specials</string>
+
+    <string name="add_to_favorties_text">Add to Favorites</string>
+
+    <string name="finished_text">Finished</string>
+    <string name="airing_text">Airing</string>
+
+    <string name="empty_search_text">No results for your search</string>
+
+    <string name="episodes_text">Episodes</string>
+    <string name="episodes_label_text">Episode</string>
+    <string name="next_episode_text">Next Episode</string>
+
+    <string name="select_an_option_text">Select an option</string>
+
+    <string name="more_text">More</string>
+    <string name="less_text">Less</string>
+
+    <string name="preferences_about_text">About</string>
+    <string name="preferences_twitter_text">Twitter</string>
+    <string name="preferences_version_text">Version: %1$s</string>
+    <string name="preferences_source_code_text">Source Code</string>
+
+    <string name="work_in_progress_text">Work in progress</string>
+
+    <string name="about_p1">
+        Akiyama is an open-source anime website that uses the Unofficial AnimeFLV REST API,
+        developed with the objective of learning and improving my coding skills.
+    </string>
+
+    <string name="about_p2">
+        All the content that can be found in this applications is hosted in third party servers such
+        as Mega, YourUpload, FEMBED, etc. All of this services are available for free online. For any
+        legal trouble, related to the content shown in this website, must be addressed with the owners
+        of the servers that are storing this content, as we are not affiliated nor collaborating with
+        them.
+    </string>
+
+    <string name="icon_credits"><a class="link" href='https://pngtree.com/so/coffee-mug-clipart'>coffee mug clipart png from pngtree.com</a></string>
+
+</resources>

@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Akiyama" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorPrimaryVariant">@color/blue_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue_200</item>
+        <item name="colorSecondaryVariant">@color/blue_200</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="background">@color/background_color</item>
+
+        <item name="android:windowBackground">@color/secondary_background_color</item>
+        <item name="android:textColor">@color/text_color</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/secondary_background_color</item>
+        <!-- Customize your theme here. -->
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceOverlay.Rounded</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceOverlay.Rounded</item>
+    </style>
+</resources>
