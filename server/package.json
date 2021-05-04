@@ -5,7 +5,7 @@
   "main": "build/webapi/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && node build/webapi/index.js",
+    "start": "node build/webapi/index.js",
     "build-w": "tsc --w",
     "dev": "nodemon build/webapi/index.js"
   },
