@@ -27,6 +27,8 @@
   </h3>
 </p>
 
+<br>
+
 <p align="center">
     <img  src="images/screenshots/4.jpg" alt="Logo" width="33%" >
   <img  src="images/screenshots/3.jpg" alt="Logo" width="33%" >
@@ -35,6 +37,7 @@
    <img  src="images/screenshots/1.jpg" alt="Logo" width="33%" >
     <img  src="images/screenshots/2.jpg" alt="Logo" width="33%" >
 </p>
+<br>
 
 <!-- ABOUT THE PROJECT -->
 
