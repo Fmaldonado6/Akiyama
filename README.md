@@ -21,10 +21,10 @@
 
   <h1 align="center">Akiyama</h1>
 
-  <h2 align="center">
+  <h3 align="center">
     An open source website and android app to watch anime
     <br />
-  </h2>
+  </h3>
 </p>
 
 <p align="center">
