@@ -17,7 +17,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="./images/logo/web-logo.png" alt="Logo" width="80" height="80">
+    <img src="./images/logo/logo.png" alt="Logo" width="80" height="80">
 
   <h1 align="center">Akiyama</h1>
 
