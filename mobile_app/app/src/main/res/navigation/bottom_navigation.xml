@@ -15,4 +15,9 @@
         android:name="com.fmaldonado.akiyama.ui.activities.main.fragments.more.MoreFragment"
         android:label="fragment_more"
         tools:layout="@layout/fragment_more" />
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.fmaldonado.akiyama.ui.activities.main.fragments.favorites.FavoritesFragment"
+        android:label="favorites_fragment"
+        tools:layout="@layout/favorites_fragment" />
 </navigation>

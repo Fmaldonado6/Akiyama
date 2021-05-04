@@ -6,3 +6,9 @@ enum class Status(value: Int) {
     Empty(3),
     Error(4),
 }
+
+enum class FavoritesStatus(value: Int) {
+    Added(0),
+    Removed(1),
+    Error(2)
+}

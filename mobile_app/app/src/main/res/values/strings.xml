@@ -5,7 +5,10 @@
 
     <string name="home_menu">Home</string>
     <string name="more_menu">More</string>
+    <string name="favorites_menu">Favorites</string>
     <string name="search_text">Search</string>
+    <string name="search_favorites_text">Search favorites</string>
+
 
     <string name="retry_text">Retry</string>
 
@@ -15,12 +18,19 @@
     <string name="latest_ovas_text">Latest Ovas</string>
     <string name="latest_specials_text">Latest Specials</string>
 
-    <string name="add_to_favorties_text">Add to Favorites</string>
+    <string name="add_to_favorites_text">Added to Favorites</string>
+    <string name="remove_from_favorites_text">Remove from Favorites</string>
 
     <string name="finished_text">Finished</string>
     <string name="airing_text">Airing</string>
 
     <string name="empty_search_text">No results for your search</string>
+    <string name="empty_favorites_text">You have not added any favorites!</string>
+
+    <string name="added_to_favorites_text">Added to favorites!</string>
+    <string name="removed_from_favorites_text">Removed from favorites!</string>
+    <string name="error_favorites_text">Couldn\'t add to favorites</string>
+
 
     <string name="episodes_text">Episodes</string>
     <string name="episodes_label_text">Episode</string>

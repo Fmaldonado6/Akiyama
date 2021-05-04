@@ -1,9 +1,16 @@
 package com.fmaldonado.akiyama.ui.activities.animeDetail
 
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
+import android.util.Log
 import android.view.View
+import android.widget.TextView
+import androidx.activity.viewModels
+import androidx.annotation.ColorInt
+import androidx.databinding.BindingAdapter
+import androidx.databinding.BindingConversion
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -14,6 +21,7 @@ import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.databinding.ActivityAnimeDetailBinding
 import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.EpisodesAdapter
 import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.GenresAdapter
+import com.fmaldonado.akiyama.ui.common.FavoritesStatus
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.ServersBottomSheet
 import com.google.android.material.snackbar.Snackbar
@@ -25,6 +33,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AnimeDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAnimeDetailBinding
+    private val viewModel: AnimeDetailViewModel by viewModels()
     private var anime: Anime? = null
     private var expandedSynopsis = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +43,9 @@ class AnimeDetailActivity : AppCompatActivity() {
 
 
         anime = intent?.extras?.getParcelable(ParcelableKeys.ANIME_PARCELABLE)
+
         anime?.let {
+            viewModel.getIsFavorite(it.id)
             val byteArray = Base64.decode(it.poster, Base64.DEFAULT)
             binding.animeTitle.text = it.title
             binding.synopsis.text = it.synopsis
@@ -43,7 +54,6 @@ class AnimeDetailActivity : AppCompatActivity() {
                     resources.getString(R.string.airing_text)
                 else
                     resources.getString(R.string.finished_text)
-
             setupGenresRecycler(it.genres)
             setupEpisodesRecyler(it.episodes)
             Glide.with(this)
@@ -71,12 +81,28 @@ class AnimeDetailActivity : AppCompatActivity() {
         }
 
         binding.favoritesButton.setOnClickListener {
+            anime?.let { viewModel.addFavorite(it) }
+        }
+
+        viewModel.showToast.observe(this, {
+
+
+            val text = when (it) {
+                FavoritesStatus.Added -> resources.getString(R.string.add_to_favorites_text)
+                FavoritesStatus.Removed -> resources.getString(R.string.removed_from_favorites_text)
+                else -> resources.getString(R.string.error_favorites_text)
+            }
+
             Snackbar.make(
-                it,
-                resources.getText(R.string.work_in_progress_text),
+                binding.favoritesButton,
+                text,
                 Snackbar.LENGTH_SHORT
             ).show()
-        }
+        })
+
+        viewModel.isFavorite.observe(this, { binding.isFavorite = it })
+
+
     }
 
     private fun setupGenresRecycler(genres: List<String>) {
@@ -117,4 +143,5 @@ class AnimeDetailActivity : AppCompatActivity() {
             this.adapter = adapter
         }
     }
+
 }
