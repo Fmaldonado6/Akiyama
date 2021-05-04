@@ -13,9 +13,6 @@ import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.databinding.ActivityWatchBinding
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
-import com.google.android.exoplayer2.ExoPlayerFactory
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.SimpleExoPlayer
 import dagger.hilt.android.AndroidEntryPoint
 
 class WatchActivity : AppCompatActivity() {

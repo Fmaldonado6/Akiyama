@@ -1,6 +1,5 @@
 package com.fmaldonado.akiyama.data.network
 
-import com.fmaldonado.akiyama.data.models.apiResponses.*
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.data.models.content.Server
