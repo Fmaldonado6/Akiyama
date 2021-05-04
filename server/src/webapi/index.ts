@@ -26,18 +26,7 @@ class Server {
 
     routes() {
         this.app.use("/animes", animeController.router)
-        this.app.use("/", (req, res) => {
-            res.json({
-                "message":"Buenas",
-                "entries":{
-                    "LatestAnimes":"animes/latest",
-                    "Episodes":"animes/episodes",
-                    "Specials":"animes/specials",
-                    "Ovas":"animes/ovas",
-                    "Anime info":"animes/animeInfo/:title",
-                }
-            })
-        })
+       
     }
 
 

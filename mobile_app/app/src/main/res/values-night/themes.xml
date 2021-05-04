@@ -19,6 +19,5 @@
         <!-- Customize your theme here. -->
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceOverlay.Rounded</item>
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceOverlay.Rounded</item>
-
     </style>
 </resources>

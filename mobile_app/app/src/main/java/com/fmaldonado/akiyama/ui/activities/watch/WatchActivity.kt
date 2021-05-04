@@ -28,7 +28,7 @@ class WatchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWatchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         server = intent?.extras?.getParcelable(ParcelableKeys.SERVER_PARCELABLE)
         server?.let {
             binding.webView.settings.javaScriptEnabled = true
@@ -41,14 +41,9 @@ class WatchActivity : AppCompatActivity() {
                 ): Boolean {
                     return true
                 }
-
-
             }
             binding.webView.loadUrl(it.code)
-
         }
-
-
     }
 
     override fun onDestroy() {

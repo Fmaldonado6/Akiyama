@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        android:icon="@drawable/help_outline_icon"
+        android:key="about"
+        android:title="About" />
+    <Preference
+        android:icon="@drawable/twitter_icon"
+        android:key="twitter"
+        android:title="Twitter" />
+    <Preference
+        android:icon="@drawable/code_icon"
+        android:key="sourceCode"
+        android:title="Source Code" />
+
+</PreferenceScreen>
