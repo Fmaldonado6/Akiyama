@@ -72,6 +72,13 @@ class HomeFragment : Fragment() {
             val intent = Intent(context, SearchActivity::class.java)
             startActivity(intent)
         }
+
+        binding.latestEpisode.errorLayout.retry.setOnClickListener { viewModel.getLatestEpisodes() }
+        binding.latestAnime.errorLayout.retry.setOnClickListener { viewModel.getLatestAnimes() }
+        binding.latestMovies.errorLayout.retry.setOnClickListener { viewModel.getLatestMovies() }
+        binding.latestSpecials.errorLayout.retry.setOnClickListener { viewModel.getLatestSpecials() }
+        binding.latestOvas.errorLayout.retry.setOnClickListener { viewModel.getLatestOvas() }
+
     }
 
     private fun setUpRecycler(

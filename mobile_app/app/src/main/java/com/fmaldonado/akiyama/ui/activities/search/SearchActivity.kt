@@ -43,8 +43,10 @@ class SearchActivity : AppCompatActivity() {
             setupRecycler(it)
         })
 
+        binding.backButton.setOnClickListener { finish() }
+
         binding.searchBar.setOnEditorActionListener { v, actionId, event ->
-            if(actionId == EditorInfo.IME_ACTION_SEARCH){
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 viewModel.makeSearch(v.text.toString())
                 true
             } else {

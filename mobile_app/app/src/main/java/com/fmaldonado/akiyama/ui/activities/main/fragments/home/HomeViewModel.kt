@@ -46,6 +46,7 @@ constructor(
                 latestEpisodesStatus.postValue(Status.Loaded)
             } catch (e: Exception) {
                 Log.e("Error", "Error", e)
+                latestEpisodesStatus.postValue(Status.Error)
             }
         }
     }
@@ -63,6 +64,7 @@ constructor(
                 latestAnimesStatus.postValue(Status.Loaded)
             } catch (e: Exception) {
                 Log.e("Error", "Error", e)
+                latestAnimesStatus.postValue(Status.Error)
             }
         }
     }
@@ -80,6 +82,8 @@ constructor(
                 latestMoviesStatus.postValue(Status.Loaded)
             } catch (e: Exception) {
                 Log.e("Error", "Error", e)
+                latestMoviesStatus.postValue(Status.Error)
+
             }
         }
     }
@@ -97,6 +101,7 @@ constructor(
                 latestOvasStatus.postValue(Status.Loaded)
             } catch (e: Exception) {
                 Log.e("Error", "Error", e)
+                latestOvasStatus.postValue(Status.Error)
             }
         }
     }
@@ -113,7 +118,9 @@ constructor(
                 latestSpecialsStatus.postValue(Status.Loaded)
             } catch (e: Exception) {
                 Log.e("Error", "Error", e)
+                latestSpecialsStatus.postValue(Status.Error)
             }
+
         }
     }
 

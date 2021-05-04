@@ -23,4 +23,8 @@
         <item name="cornerFamily">rounded</item>
     </style>
 
+    <style name="Theme.Akiyama.ActionBar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/secondary_background_color</item>
+    </style>
+
 </resources>

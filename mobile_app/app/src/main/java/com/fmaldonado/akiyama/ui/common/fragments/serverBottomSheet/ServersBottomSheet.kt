@@ -62,13 +62,18 @@ class ServersBottomSheet : BottomSheetDialogFragment() {
             setupRecycler(it)
         })
 
+
         episode?.let {
             Log.d("Count", (it.servers == null).toString())
 
-            if (it.servers == null)
-                viewModel.getEpisodeServers(it.id)
-            else
+            if (it.servers == null) {
+                val id = it.id
+                viewModel.getEpisodeServers(id)
+                binding.errorLayout.retry.setOnClickListener { viewModel.getEpisodeServers(id) }
+            } else
                 viewModel.setServers(it.servers)
+
+
         }
 
         viewModel.currentStatus.observe(this, {

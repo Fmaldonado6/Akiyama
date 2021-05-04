@@ -1,5 +1,6 @@
 package com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,7 +24,7 @@ constructor(
     val servers = MutableLiveData<List<Server>>()
     fun getEpisodeServers(episodeId: String) {
 
-        if(servers.value != null)
+        if (servers.value != null)
             return
 
         viewModelScope.launch(Dispatchers.IO) {
@@ -33,12 +34,14 @@ constructor(
                 servers.postValue(episodeServers)
                 currentStatus.postValue(Status.Loaded)
             } catch (e: Exception) {
+                Log.d("Server error", "error", e)
+                currentStatus.postValue(Status.Error)
 
             }
         }
     }
 
-    fun setServers(servers:List<Server>){
+    fun setServers(servers: List<Server>) {
         this.servers.value = servers
         this.currentStatus.value = Status.Loaded
     }

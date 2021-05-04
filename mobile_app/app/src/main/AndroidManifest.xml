@@ -13,7 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Akiyama"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activities.about.AboutActivity"></activity>
+        <activity android:name=".ui.activities.about.AboutActivity"/>
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/Theme.Akiyama.OpenSource" />
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+            android:theme="@style/Theme.Akiyama.OpenSource" />
         <activity
             android:name=".ui.activities.search.SearchActivity"
             android:windowSoftInputMode="stateVisible" />

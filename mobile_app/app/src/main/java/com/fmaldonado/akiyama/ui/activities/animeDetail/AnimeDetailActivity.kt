@@ -16,6 +16,7 @@ import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.EpisodesAdapter
 import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.GenresAdapter
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.ServersBottomSheet
+import com.google.android.material.snackbar.Snackbar
 import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -67,6 +68,14 @@ class AnimeDetailActivity : AppCompatActivity() {
                 if (expandedSynopsis) resources.getString(R.string.less_text) else resources.getString(
                     R.string.more_text
                 )
+        }
+
+        binding.favoritesButton.setOnClickListener {
+            Snackbar.make(
+                it,
+                resources.getText(R.string.work_in_progress_text),
+                Snackbar.LENGTH_SHORT
+            ).show()
         }
     }
 

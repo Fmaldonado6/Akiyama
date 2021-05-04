@@ -9,10 +9,29 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.ui.activities.about.AboutActivity
+import java.lang.Exception
 
 class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.preferences)
+        try {
+            val pInfo =
+                requireContext()
+                    .packageManager?.getPackageInfo(requireContext().packageName, 0)
+
+            pInfo?.let {
+                val pref = findPreference(PreferenceKeys.VERSION) as Preference?
+                pref?.let {
+                    it.title = String.format(
+                        resources.getString(R.string.preferences_version_text),
+                        pInfo.versionName
+                    )
+                }
+            }
+
+        } catch (e: Exception) {
+            Log.e(this.tag, "Error", e)
+        }
     }
 
     override fun onPreferenceTreeClick(preference: Preference?): Boolean {
