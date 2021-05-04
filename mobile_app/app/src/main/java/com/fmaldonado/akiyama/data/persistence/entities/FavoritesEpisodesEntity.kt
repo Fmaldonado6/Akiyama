@@ -6,8 +6,17 @@ import org.jetbrains.annotations.NotNull
 
 @Entity(
     tableName = "favoritesEpisodes",
-
-    )
+    indices = [Index(value = ["animeId"])],
+    foreignKeys = [
+        ForeignKey(
+            entity = FavoritesEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["animeId"],
+            onDelete = CASCADE,
+            onUpdate = CASCADE
+        )
+    ]
+)
 data class FavoritesEpisodesEntity(
     @PrimaryKey(autoGenerate = false)
     @NotNull

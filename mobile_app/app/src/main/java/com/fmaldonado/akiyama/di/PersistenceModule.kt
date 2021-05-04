@@ -17,9 +17,10 @@ object PersistenceModule {
     @Singleton
     @Provides
     fun provideDatabase(app: AkiyamaApplication): Database =
-        Room.databaseBuilder(app, Database::class.java, Database.DATABASE_NAME).build()
+        Room.databaseBuilder(app, Database::class.java, Database.DATABASE_NAME)
+            .fallbackToDestructiveMigration().build()
 
     @Singleton
     @Provides
-    fun provideFavoritesDao(db:Database):FavoritesDao = db.favoritesDao()
+    fun provideFavoritesDao(db: Database): FavoritesDao = db.favoritesDao()
 }

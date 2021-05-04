@@ -9,7 +9,7 @@ import com.fmaldonado.akiyama.data.persistence.entities.FavoritesEntity
 import com.fmaldonado.akiyama.data.persistence.entities.FavoritesEpisodesEntity
 
 @Database(
-    version = 1,
+    version = 2,
     entities = [
         FavoritesEntity::class,
         FavoritesEpisodesEntity::class]

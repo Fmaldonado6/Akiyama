@@ -23,6 +23,18 @@ constructor(
         favorites.postValue(_favorites)
     }
 
+    suspend fun removeFavorite(anime: Anime) {
+        val favorite = FavoritesMapper.animeToFavoritesMapper(anime)
+        favoritesDao.removeFavorite(favorite.anime)
+        _favorites.remove(anime)
+        favorites.postValue(_favorites)
+    }
+
+
+    suspend fun isFavorite(id: String): Boolean {
+        return favoritesDao.favoriteExists(id) != null
+    }
+
     suspend fun loadFavorites() {
         val favorites = favoritesDao.getFavoritesDao()
         val animes = FavoritesMapper.favoritesListToAnimeListMapper(favorites)
