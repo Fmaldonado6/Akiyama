@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node build/webapi/index.js",
     "build-w": "tsc --w",
-    "dev": "nodemon build/webapi/index.js"
+    "dev": "nodemon build/webapi/index.js",
+    "build": "tsc",
+    "postinstall": "npm run build"
+
   },
   "author": "",
   "license": "ISC",
