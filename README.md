@@ -26,13 +26,12 @@
 <p align="center">
     <img src="./images/logo/web-logo.png" alt="Logo" width="80" height="80">
 
-  <h3 align="center">Akiyama</h3>
+  <h1 align="center">Akiyama</h1>
 
-  <p align="center">
+  <h2 align="center">
     An open source website and android app to watch anime
     <br />
- 
-  </p>
+  </h2>
 </p>
 
 
@@ -43,7 +42,7 @@
 ## About The Project
 
 
-Akiyama is an open source website and android app to watch anime using the Aruppi API, developed with the objective of learning and improving my coding skills
+Akiyama is an open source website and android app to watch anime using the unofficial [AnimeFLV API](https://github.com/Jeluchu/animeflv), developed with the objective of learning and improving my coding skills
 
 All the content that can be found in this application is hosted in third party servers such as Mega, YourUpload, FEMBED, etc. All this services are available for free online. For any legal trouble, related to the content shown in this website, must be addressed with the owners of the servers that are storing this content, as we are not affilliated nor colaborating with them.
 
@@ -66,13 +65,23 @@ Before cloning the repo make sure you have installed
 - [**NPM**](https://www.google.com/search?q=how+to+install+npm) (version >= 6.14.x)
 - [**Android Studio**](https://developer.android.com/studio) 
 
-### Prerequisites
+## Starting a local development server
 
-We are using the [**Aruppi Api**](https://github.com/aruppi/aruppi-api) so make you sure to download and setup
-the api aswell-
+- Once you have forked or downloaded the project, go into de server directory and install the server dependencies with 
+```
+  npm install
+```
+- Then you can start the server with
+```
+  npm run build && npm run start
+``` 
+
+## Note
+- By default the android project is configured to run in an emulator, so the API url is 10.0.2.2:4000 which is the equivalent to localhost:4000, if you want to debug the app in a physical device make sure to look inside the file mobile_app/app/build.gradle, then look into the buildTypes and change the url in buildConfigField inside debug to your local ip address.
 
 
-### Contribution 
+
+## Contribution 
 
 1. Fork it!
 2. Create a branch for the feature you want to make: `git checkout -b my-new-feature`
