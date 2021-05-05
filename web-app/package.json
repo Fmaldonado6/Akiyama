@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href \"https://fmaldonado6.github.io/Akiyama/\"",
+    "build": "ng build --prod ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "publish": "npx angular-cli-ghpages --dir=dist/web-app/"
+    "publish": "ng deploy --base-href=https://fmaldonado6.github.io/Akiyama/"
   },
   "private": true,
   "dependencies": {

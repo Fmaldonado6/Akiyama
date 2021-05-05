@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 
-$mat-google: (
+$mat-akiyama: (
   50: #eaf2ff,
   100: #cadeff,
   200: #a6c8ff,
@@ -46,8 +46,9 @@ $mat-google: (
   )
 );
 
-$web-app-primary: mat-palette($mat-google,700);
-$web-app-accent: mat-palette($mat-google, 300);
+$web-app-primary: mat-palette($mat-akiyama,700);
+$web-app-accent: mat-palette($mat-akiyama, 300);
+$web-app-: mat-palette($mat-akiyama, 300);
 
 // The warn palette is optional (defaults to red).
 $web-app-warn: mat-palette($mat-red);

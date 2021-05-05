@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                     getString(R.string.new_update_text),
                     Snackbar.LENGTH_SHORT
                 ).setAction("Download") {
-                    viewModel.checkLatestVersion(manual)
+                    DownloadDialog().show(supportFragmentManager, "dialog")
                 }.show()
                 UpdateStatus.Updated ->
                     if (it.manualClick) Snackbar.make(
