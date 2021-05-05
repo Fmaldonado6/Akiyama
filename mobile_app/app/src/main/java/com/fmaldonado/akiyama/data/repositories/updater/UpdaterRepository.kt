@@ -30,7 +30,7 @@ constructor(
     private var version: GithubVersion? = null
 
     suspend fun lookForNewVersion(manualClick: Boolean) {
-        if (manualClick){
+        if (manualClick) {
             hasNewVersion.postValue(UpdateEvents(UpdateStatus.Looking, manualClick))
             delay(1000)
         }
@@ -38,8 +38,10 @@ constructor(
         version?.let {
             if (it.prerelease)
                 return
-            val status =
-                if (it.tag_name != BuildConfig.VERSION_NAME) UpdateStatus.NewUpdate else UpdateStatus.Updated
+            val status = if (it.tag_name != BuildConfig.VERSION_NAME && !BuildConfig.DEBUG)
+                UpdateStatus.NewUpdate
+            else
+                UpdateStatus.Updated
             hasNewVersion.postValue(
                 UpdateEvents(
                     status,
