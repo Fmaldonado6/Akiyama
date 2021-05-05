@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { AnimeLayoutComponent } from './components/anime-layout/anime-layout.component';
+import { AnimeItemComponent } from './components/anime-item/anime-item.component';
 
 
 
 @NgModule({
   declarations: [
-    AnimeLayoutComponent
+    AnimeLayoutComponent,
+    AnimeItemComponent
   ],
   imports: [
     CommonModule,

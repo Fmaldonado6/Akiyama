@@ -1,3 +1,33 @@
 <div class="layout">
-  <h2>Recently Added</h2>
+  <h2>{{ title }}</h2>
+  <ng-container [ngSwitch]="info.currentStatus">
+    <div class="animes-container" *ngSwitchCase="Status.loaded">
+      <div class="arrow-container left" (click)="scrollLeft(animes)">
+        <mat-icon>chevron_left</mat-icon>
+      </div>
+      <div class="arrow-container right" (click)="scrollRight(animes)">
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div #animes class="scroll-container">
+        <ng-container *ngIf="info.type == Type.Anime">
+          <anime-item
+            *ngFor="let anime of info.animeList; let i = index"
+            [anime]="anime"
+            [ngClass]="{ 'fix-margin': i == info.animeList.length - 1 }"
+          ></anime-item>
+        </ng-container>
+        <ng-container *ngIf="info.type == Type.Episode">
+          <anime-item
+            *ngFor="let episode of info.episodeList; let i = index"
+            [episode]="episode"
+            [ngClass]="{ 'fix-margin': i == info.animeList.length - 1 }"
+          ></anime-item>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="loading" *ngSwitchCase="Status.loading">
+      <mat-spinner [diameter]="40"></mat-spinner>
+    </div>
+  </ng-container>
 </div>

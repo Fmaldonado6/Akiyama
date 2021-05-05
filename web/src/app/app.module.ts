@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { LayoutComponent } from './core/components/layout/layout.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,7 @@ import { NgModule } from '@angular/core';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    HttpClientModule,
     BrowserAnimationsModule,
   ],
   providers: [],

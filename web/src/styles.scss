@@ -137,7 +137,7 @@ body {
   @include angular-material-color($web-theme-dark);
   --background: #242529;
   --secondary-background: #202125;
-  --secondary-background-alpha: #b2202125;
+  --secondary-background-alpha: #202125b3;
   --dark-background: #fafafa;
   --text-color: #ffffffff;
   --secondary-text-color: #aaaaaa;
@@ -158,4 +158,27 @@ h2 {
 
 .container {
   padding: 30px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+
+  background: var(--secondary-background-alpha);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--background);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

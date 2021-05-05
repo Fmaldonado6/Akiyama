@@ -4,5 +4,9 @@
     <input placeholder="Search" matInput />
     <mat-icon>search</mat-icon>
   </div>
-  <anime-layout></anime-layout>
+  <anime-layout title="Recently added" [info]="episodesInfo"></anime-layout>
+  <anime-layout title="Latest animes" [info]="animeInfo"></anime-layout>
+  <anime-layout title="Latest movies" [info]="moviesInfo"></anime-layout>
+  <anime-layout title="Latest ovas" [info]="ovasInfo"></anime-layout>
+  <anime-layout title="Latest specials" [info]="specialsInfo"></anime-layout>
 </div>
