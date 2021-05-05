@@ -1,0 +1,13 @@
+.sidenav {
+  width: 300px;
+  background-color: var(--background);
+    border: none;
+}
+
+.sidenav-container {
+  height: 100vh;
+}
+
+mat-sidenav-content {
+    background-color: var(--secondary-background);
+}
