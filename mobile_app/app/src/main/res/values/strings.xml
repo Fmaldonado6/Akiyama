@@ -43,10 +43,17 @@
 
     <string name="preferences_about_text">About</string>
     <string name="preferences_twitter_text">Twitter</string>
+    <string name="preferences_updates_text">Check for updates</string>
     <string name="preferences_version_text">Version: %1$s</string>
     <string name="preferences_source_code_text">Source Code</string>
 
     <string name="work_in_progress_text">Work in progress</string>
+
+    <string name="looking_for_update_text">Looking for updates...</string>
+    <string name="updated_text">No updates available</string>
+    <string name="new_update_text">New update available</string>
+    <string name="error_update_text">Couldn\'t get latest update</string>
+
 
     <string name="about_p1">
         Akiyama is an open-source anime website that uses the Unofficial AnimeFLV REST API,

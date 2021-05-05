@@ -1,6 +1,7 @@
 package com.fmaldonado.akiyama.di
 
 import com.fmaldonado.akiyama.BuildConfig
+import com.fmaldonado.akiyama.data.network.LatestVersionDataSource
 import com.fmaldonado.akiyama.data.network.NetworkDataSource
 import com.fmaldonado.akiyama.data.network.interceptor.NetworkInterceptor
 import dagger.Module
@@ -32,6 +33,29 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NetworkDataSource::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideOkHttpClient(networkInterceptor: NetworkInterceptor): OkHttpClient {
+        return OkHttpClient.Builder().addInterceptor(networkInterceptor).build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideLatestVersionDataSource(networkInterceptor: NetworkInterceptor): LatestVersionDataSource {
+        val specs = listOf(ConnectionSpec.CLEARTEXT, ConnectionSpec.MODERN_TLS)
+        val okHttpClient =
+            OkHttpClient.Builder()
+                .addInterceptor(networkInterceptor)
+                .build()
+
+        return Retrofit.Builder()
+            .baseUrl(BuildConfig.GITHUB_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(LatestVersionDataSource::class.java)
     }
 
     @Singleton

@@ -11,6 +11,10 @@
         android:key="twitter"
         android:title="@string/preferences_twitter_text" />
     <Preference
+        android:icon="@drawable/download_icon"
+        android:key="updates"
+        android:title="@string/preferences_updates_text" />
+    <Preference
         android:icon="@drawable/version_icon"
         android:key="version"
         android:title="@string/preferences_version_text" />
