@@ -1,13 +1,18 @@
 <div class="container" [ngSwitch]="currentStatus">
   <h1>Favorites</h1>
   <div class="input-container" class="search">
-    <input placeholder="Search favorites" #input matInput />
+    <input
+      placeholder="Search favorites"
+      (input)="filter(input.value)"
+      #input
+      matInput
+    />
     <mat-icon>search</mat-icon>
   </div>
 
   <div class="search-results" *ngSwitchCase="Status.loaded">
     <anime-item-list
-      *ngFor="let anime of favorites"
+      *ngFor="let anime of filteredFavorites"
       [anime]="anime"
       (click)="changeToDetail(anime)"
     ></anime-item-list>
@@ -19,5 +24,4 @@
   <div class="empty" *ngSwitchCase="Status.empty">
     <empty message="You haven't added any favorites"></empty>
   </div>
-
 </div>
