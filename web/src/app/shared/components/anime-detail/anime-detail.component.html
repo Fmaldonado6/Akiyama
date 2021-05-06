@@ -24,10 +24,10 @@
         ></icon-button>
       </div>
       <div class="synopsis-container">
-        <p>
+        <p [ngClass]="{ expanded: expandedSynopsis }">
           {{ anime.synopsis }}
         </p>
-        <button mat-button color="primary">More</button>
+        <button mat-button color="primary" (click)="expand()">More</button>
       </div>
       <div class="genres-container">
         <div class="genre" *ngFor="let genre of anime.genres">

@@ -114,6 +114,16 @@
   font-size: 15px;
   display: flex;
   flex-direction: column;
+
+  p {
+    height: 43px;
+    overflow: hidden;
+  }
+
+  .expanded{
+    height: fit-content;
+  }
+
   button {
     margin-left: auto;
   }

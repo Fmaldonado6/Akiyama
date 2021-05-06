@@ -23,6 +23,7 @@ export class AnimeDetailComponent implements OnInit {
   Status = Status
   currentStatus = Status.loading
   isFavorite = false
+  expandedSynopsis = false
   label = {
     favorite: "Remove from favorites",
     notFavorite: "Add to favorites"
@@ -64,8 +65,12 @@ export class AnimeDetailComponent implements OnInit {
       this.favoritesService.removeFavorite(this.anime)
     else
       this.favoritesService.addFavorite(this.anime)
-      
+
     this.isFavorite = this.favoritesService.isFavorite(this.anime)
+  }
+
+  expand() {
+    this.expandedSynopsis = !this.expandedSynopsis
   }
 
   close() {
