@@ -1,0 +1,115 @@
+{
+  "configVersion": 1,
+  "timestamp": 1620326919313,
+  "index": "https://fmaldonado6.github.io/Akiyama/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://fmaldonado6.github.io/Akiyama/1.c470214c3289b5c705b4.js",
+        "https://fmaldonado6.github.io/Akiyama/5.92d66f47736c94a2dfcb.js",
+        "https://fmaldonado6.github.io/Akiyama/6.d44c1a30c6d600e47c57.js",
+        "https://fmaldonado6.github.io/Akiyama/7.89211745bd0c203959ab.js",
+        "https://fmaldonado6.github.io/Akiyama/8.c0f36e601783996525ce.js",
+        "https://fmaldonado6.github.io/Akiyama/favicon.ico",
+        "https://fmaldonado6.github.io/Akiyama/index.html",
+        "https://fmaldonado6.github.io/Akiyama/main.e8c11b62fddbd4d34656.js",
+        "https://fmaldonado6.github.io/Akiyama/manifest.webmanifest",
+        "https://fmaldonado6.github.io/Akiyama/polyfills.1f48151810f71fa38e45.js",
+        "https://fmaldonado6.github.io/Akiyama/runtime.b38d023cbaa5792e8827.js",
+        "https://fmaldonado6.github.io/Akiyama/styles.37d08de1b9f45533e764.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/akiyama_icon.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/favicon.ico",
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-128x128.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-144x144.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-152x152.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-192x192.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-384x384.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-512x512.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-72x72.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-96x96.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/ipad_splash.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/ipadpro1_splash.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/ipadpro2_splash.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/ipadpro3_splash.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphone5_splash.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphone6_splash.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphoneplus_splash.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphonex_splash.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphonexr_splash.png",
+        "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphonexsmax_splash.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://fmaldonado6.github.io/Akiyama/1.c470214c3289b5c705b4.js": "a011718062ffb2c5e8b3ff45d044d8367b3ee4af",
+    "https://fmaldonado6.github.io/Akiyama/5.92d66f47736c94a2dfcb.js": "e1941cd5664f7ea6783e1db9c97eed04d089b59a",
+    "https://fmaldonado6.github.io/Akiyama/6.d44c1a30c6d600e47c57.js": "c08acb9a39759547f97a05e23091ec4f348511b1",
+    "https://fmaldonado6.github.io/Akiyama/7.89211745bd0c203959ab.js": "f688825b349bc38f430855d58a563462b851bdef",
+    "https://fmaldonado6.github.io/Akiyama/8.c0f36e601783996525ce.js": "30e097a5ec7a5438169a7a80fbc04b4b658935df",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/akiyama_icon.png": "050c0461fc99a0bd0e44792b69d621892ce753c0",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/favicon.ico": "90f4de9df984998269b5c4fb401f37da76dcfade",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-128x128.png": "0dd93ce3c21a3f35d9f374e1f5dae0953490c2bf",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-144x144.png": "5ddc39e03aa5b346967b7c25206b8a2dfd19d26f",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-152x152.png": "3fe2f34a89b98e9112a185bb14cf70639f212ce7",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-192x192.png": "29e9f2bfdf4a347401bb9f676177cc9398276240",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-384x384.png": "f0b3a87b4e12351b9dda268198110b4e2886c8e7",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-512x512.png": "4a2c022c5e6c966a2960d8ec0ace0077f12d0215",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-72x72.png": "aa9a101de94ad942ca2b0dc1b3da7006b51ce1be",
+    "https://fmaldonado6.github.io/Akiyama/assets/icons/icon-96x96.png": "17ca144eabbb6b8b106857bb6467f3aa1cde4446",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/ipad_splash.png": "deb7d7715bda0a606ba5e48142eafd4233fd044b",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/ipadpro1_splash.png": "49472393d5785f4a3b62be668b98a9295d4ed4ac",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/ipadpro2_splash.png": "75bada3ac16887de04eaa28a7fdeaea64fc086d8",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/ipadpro3_splash.png": "2b3d767e73ca95aaff4f55000e0498a333516c12",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphone5_splash.png": "54403df843cb54b285b843da1b5018e07b41d6f3",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphone6_splash.png": "8a9cb53b93ebb8bb46a690e1ccc461c74426470e",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphoneplus_splash.png": "babea0799ca13488f0945c6b094dc4a3e47dfeb1",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphonex_splash.png": "abc516dd131a48b21c69f3a1c83650a4514234d1",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphonexr_splash.png": "60d551ea4ec79301e25cb4373cd520fd501b5378",
+    "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphonexsmax_splash.png": "971ec928b266f55134e9a5375f598325d2f1f0c1",
+    "https://fmaldonado6.github.io/Akiyama/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "https://fmaldonado6.github.io/Akiyama/index.html": "805f107534ce034c7da42d0817de7bff3622b473",
+    "https://fmaldonado6.github.io/Akiyama/main.e8c11b62fddbd4d34656.js": "41e60b6f596789a615cafcd9d15ebf80724eef24",
+    "https://fmaldonado6.github.io/Akiyama/manifest.webmanifest": "958af44d2931453d4bcb906c56d7db05f65e383d",
+    "https://fmaldonado6.github.io/Akiyama/polyfills.1f48151810f71fa38e45.js": "506855517e1835c4f3db5c7d25569b95bee71560",
+    "https://fmaldonado6.github.io/Akiyama/runtime.b38d023cbaa5792e8827.js": "b99843756e8c8105bf006f046c40df0e673d6bc7",
+    "https://fmaldonado6.github.io/Akiyama/styles.37d08de1b9f45533e764.css": "6e35c1d6b89c63da07fc89ac0cb17453dd606eb0"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
