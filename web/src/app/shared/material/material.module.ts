@@ -1,3 +1,4 @@
+import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatRippleModule } from '@angular/material/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -66,6 +67,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
         MatProgressSpinnerModule,
         MatProgressBarModule,
         MatDialogModule,
+        MatBottomSheetModule,
         MatRippleModule,
         MatTooltipModule,
         MatSnackBarModule,
@@ -81,6 +83,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
         MatInputModule,
         MatAutocompleteModule,
         MatDatepickerModule,
+        MatBottomSheetModule,
         MatFormFieldModule,
         MatRadioModule,
         MatSelectModule,

@@ -1,6 +1,9 @@
+import { AnimeDetailComponent } from '../anime-detail/anime-detail.component';
+import { MatDialog } from '@angular/material/dialog';
 import { NavigationExtras, Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 import { Anime, Episode, InfoItem, Status, Type } from 'src/app/core/models/modelst';
+import { DarkMode } from 'src/app/app.component';
 
 @Component({
   selector: 'anime-layout',
@@ -14,22 +17,21 @@ export class AnimeLayoutComponent implements OnInit {
   Type = Type
 
   constructor(
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void { }
 
   changeToDetail(anime: Anime) {
 
-    const id = anime.id.split("/").pop()
-
-    const extras: NavigationExtras = {
-      state: {
-        data: anime
+    this.dialog.open(AnimeDetailComponent,
+      {
+        data: { anime: anime },
+        panelClass: DarkMode.enabled ? 'modal-dark' : 'modal',
       }
-    }
+    )
 
-    this.router.navigate([`anime/${id}/${anime.title}`], extras)
   }
 
 

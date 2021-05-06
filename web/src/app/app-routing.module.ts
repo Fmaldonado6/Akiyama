@@ -6,10 +6,7 @@ const routes: Routes = [
     path: "",
     loadChildren: () => import('./screens/home/home.module').then(m => m.HomeModule)
   },
-  {
-    path: "anime",
-    loadChildren: () => import('./screens/anime/anime.module').then(m => m.AnimeModule)
-  },
+
 ];
 
 @NgModule({

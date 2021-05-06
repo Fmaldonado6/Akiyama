@@ -2,7 +2,8 @@
   <mat-sidenav
     class="sidenav"
     opened="true"
-    [mode]="1500 > 1234 ? 'side' : 'over'"
+    mode="side"
+    *ngIf="innerWidth >= 1234"
   >
     <div
       class="sidenav-item"

@@ -72,3 +72,12 @@ anime-item {
     transform: scale(2);
   }
 }
+
+@media (max-width: 1000px) {
+  .arrow-container {
+    padding: 5px;
+    mat-icon {
+      transform: scale(1.25);
+    }
+  }
+}

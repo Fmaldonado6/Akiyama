@@ -1,0 +1,27 @@
+.bottom-sheet {
+  min-height: 200px;
+}
+
+.servers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  span {
+    width: 40%;
+    border: 1px solid var(--primary);
+    padding: 7px 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 100%;
+}

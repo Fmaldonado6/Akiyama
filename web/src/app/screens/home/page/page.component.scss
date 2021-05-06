@@ -20,8 +20,14 @@
     outline: none;
   }
 
-  mat-icon{
-      margin-right: 20px;
-      color: var(--secondary-text-color);
-    }
+  mat-icon {
+    margin-right: 20px;
+    color: var(--secondary-text-color);
+  }
+}
+
+@media (max-width: 1000px) {
+  .search {
+    width: 100%;
+  }
 }

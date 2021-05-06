@@ -1,7 +1,7 @@
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Anime, Episode } from '../../models/modelst';
+import { Anime, Episode, Server } from '../../models/modelst';
 import { DataService } from '../data.service';
 
 @Injectable({
@@ -59,6 +59,11 @@ export class AnimeService extends DataService {
 
   getAnimeInfo(id: string, name: string) {
     return this.http.get<Anime>(`${this.url}/animes/${id}/${name}`).pipe(catchError(this.handleError))
+
+  }
+
+  getEpisoderServers(id: string) {
+    return this.http.get<Server[]>(`${this.url}/animes/episodes/${id}`).pipe(catchError(this.handleError))
 
   }
 
