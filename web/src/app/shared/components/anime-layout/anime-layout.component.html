@@ -13,6 +13,7 @@
           <anime-item
             *ngFor="let anime of info.animeList; let i = index"
             [anime]="anime"
+            (click)="changeToDetail(anime)"
             [ngClass]="{ 'fix-margin': i == info.animeList.length - 1 }"
           ></anime-item>
         </ng-container>

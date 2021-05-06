@@ -112,9 +112,12 @@ $web-theme-dark: mat-dark-theme(
 @include angular-material-theme($web-theme);
 
 :root {
+  --primary: #6681c5;
+  --secondary: #6f8ede;
   --background: #ffffffff;
   --secondary-background: #fafafa;
   --secondary-background-alpha: #c4fafafa;
+  --secondary-background-lighter: #cfcfcf;
   --dark-background: #202125;
   --text-color: #000000;
   --secondary-text-color: #737373;
@@ -137,10 +140,13 @@ body {
   @include angular-material-color($web-theme-dark);
   --background: #242529;
   --secondary-background: #202125;
+  --secondary-background-lighter: #292a2e;
   --secondary-background-alpha: #202125b3;
   --dark-background: #fafafa;
   --text-color: #ffffffff;
   --secondary-text-color: #aaaaaa;
+  --primary: #6681c5;
+  --secondary: #99ade1;
   background-color: var(--secondary-background);
   color: var(--text-color);
   width: 100vw;
@@ -182,3 +188,5 @@ h2 {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");

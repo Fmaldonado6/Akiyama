@@ -4,6 +4,16 @@
     opened="true"
     [mode]="1500 > 1234 ? 'side' : 'over'"
   >
+    <div
+      class="sidenav-item"
+      *ngFor="let item of sidenavItems"
+      [routerLink]="item.path"
+      routerLinkActive="selected-item"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <mat-icon class="material-icons-outlined">{{ item.icon }}</mat-icon>
+      <span>{{ item.title }}</span>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

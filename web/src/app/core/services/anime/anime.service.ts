@@ -57,5 +57,10 @@ export class AnimeService extends DataService {
     return this.http.get<Anime[]>(`${this.url}/animes/movies`).pipe(catchError(this.handleError))
   }
 
+  getAnimeInfo(id: string, name: string) {
+    return this.http.get<Anime>(`${this.url}/animes/${id}/${name}`).pipe(catchError(this.handleError))
+
+  }
+
 
 }
