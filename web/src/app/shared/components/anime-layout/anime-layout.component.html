@@ -1,5 +1,7 @@
 <div class="layout">
-  <h2>{{ title }}</h2>
+  <div class="container">
+    <h2>{{ title }}</h2>
+  </div>
   <ng-container [ngSwitch]="info.currentStatus">
     <div class="animes-container" *ngSwitchCase="Status.loaded">
       <div class="arrow-container left" (click)="scrollLeft(animes)">
