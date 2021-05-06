@@ -14,14 +14,10 @@
   scroll-behavior: smooth;
 }
 
-.fix-margin {
-  margin-right: 0px !important;
-}
 
 anime-item {
-  margin-right: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding: 0px 20px;
+
 }
 
 .info {
@@ -52,7 +48,7 @@ anime-item {
 
 .arrow-container {
   position: absolute;
-  height: 93%;
+  height: 100%;
   top: 50%;
   transform: translateY(-50%);
   opacity: 0;
