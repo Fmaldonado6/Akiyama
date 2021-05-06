@@ -40,11 +40,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getLatestEpisodes()
-        viewModel.getLatestAnimes()
-        viewModel.getLatestMovies()
-        viewModel.getLatestOvas()
-        viewModel.getLatestSpecials()
+        fetch()
 
         viewModel.latestEpisodes.observe(viewLifecycleOwner, {
             setUpRecycler(binding.latestEpisode, it)
@@ -78,7 +74,18 @@ class HomeFragment : Fragment() {
         binding.latestMovies.errorLayout.retry.setOnClickListener { viewModel.getLatestMovies() }
         binding.latestSpecials.errorLayout.retry.setOnClickListener { viewModel.getLatestSpecials() }
         binding.latestOvas.errorLayout.retry.setOnClickListener { viewModel.getLatestOvas() }
+        binding.swipeToRefresh.setOnRefreshListener {
+            fetch(false)
+            binding.swipeToRefresh.isRefreshing = false
+        }
+    }
 
+    private fun fetch(useCache: Boolean = true) {
+        viewModel.getLatestEpisodes(useCache = useCache)
+        viewModel.getLatestAnimes(useCache = useCache)
+        viewModel.getLatestMovies(useCache = useCache)
+        viewModel.getLatestOvas(useCache = useCache)
+        viewModel.getLatestSpecials(useCache = useCache)
     }
 
     private fun setUpRecycler(

@@ -1,10 +1,12 @@
 package com.fmaldonado.akiyama.ui.activities.search
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fmaldonado.akiyama.data.models.content.Anime
@@ -17,6 +19,7 @@ import com.xwray.groupie.GroupieAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class SearchActivity : AppCompatActivity() {
@@ -46,12 +49,19 @@ class SearchActivity : AppCompatActivity() {
 
         binding.searchBar.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                viewModel.makeSearch(v.text.toString())
+                viewModel.makeSearch(v.text.toString().toLowerCase(Locale.ROOT))
+                hideKeyBoard()
                 true
             } else {
                 false
             }
         }
+    }
+
+    private fun hideKeyBoard() {
+        val im = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = currentFocus
+        view?.let { im.hideSoftInputFromWindow(view.windowToken, 0) }
     }
 
 

@@ -1,9 +1,11 @@
 package com.fmaldonado.akiyama.ui.activities.filterFavorites
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,6 +54,7 @@ class FilterFavorites : AppCompatActivity() {
             setupRecycler(favorites, it.toString())
         }
     }
+
 
     private fun setupRecycler(searchResults: List<Anime>, filter: String = "") {
         val items = mutableListOf<AnimeListAdapter>()

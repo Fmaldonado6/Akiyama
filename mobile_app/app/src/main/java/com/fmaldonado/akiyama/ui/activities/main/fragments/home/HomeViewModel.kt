@@ -32,9 +32,9 @@ constructor(
     val latestOvas = animeRepository.latestOvas
     val latestSpecials = animeRepository.latestSpecials
 
-    fun getLatestEpisodes() {
+    fun getLatestEpisodes(useCache: Boolean = true) {
 
-        if (latestEpisodes.value != null) {
+        if (latestEpisodes.value != null && useCache) {
             latestEpisodesStatus.postValue(Status.Loaded)
             return
         }
@@ -51,8 +51,8 @@ constructor(
         }
     }
 
-    fun getLatestAnimes() {
-        if (latestAnimes.value != null) {
+    fun getLatestAnimes(useCache: Boolean = true) {
+        if (latestAnimes.value != null && useCache) {
             latestAnimesStatus.postValue(Status.Loaded)
             return
         }
@@ -69,8 +69,8 @@ constructor(
         }
     }
 
-    fun getLatestMovies() {
-        if (latestMovies.value != null) {
+    fun getLatestMovies(useCache: Boolean = true) {
+        if (latestMovies.value != null && useCache) {
             latestMoviesStatus.postValue(Status.Loaded)
             return
         }
@@ -88,8 +88,8 @@ constructor(
         }
     }
 
-    fun getLatestOvas() {
-        if (latestOvas.value != null){
+    fun getLatestOvas(useCache: Boolean = true) {
+        if (latestOvas.value != null && useCache) {
             latestOvasStatus.postValue(Status.Loaded)
             return
         }
@@ -106,8 +106,8 @@ constructor(
         }
     }
 
-    fun getLatestSpecials() {
-        if (latestSpecials.value != null){
+    fun getLatestSpecials(useCache: Boolean = true) {
+        if (latestSpecials.value != null && useCache) {
             latestSpecialsStatus.postValue(Status.Loaded)
             return
         }

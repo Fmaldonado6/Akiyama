@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         val navController = navHost.navController
         binding.bottomNav.setupWithNavController(navController)
         viewModel.checkLatestVersion()
-
         viewModel.hasNewVersion.observe(this, {
             val manual = it.manualClick
             when (it.status) {
