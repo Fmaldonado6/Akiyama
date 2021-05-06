@@ -16,13 +16,14 @@
       <span mat-list-icon class="fa fa-twitter" aria-hidden="true"></span>
       <div mat-line>Twitter</div>
     </a>
-    <mat-list-item
-      mat-ripple
-      (click)="toggle.toggle(); toggleDarkMode(toggle.checked)"
-    >
-      <mat-icon mat-list-icon>settings_ethernet</mat-icon>
+    <mat-list-item mat-ripple (click)="toggleDarkMode(!darkMode)">
+      <mat-icon mat-list-icon>brightness_3</mat-icon>
       <div mat-line>Dark mode</div>
-      <mat-slide-toggle #toggle [checked]="darkMode"></mat-slide-toggle>
+      <mat-slide-toggle
+        (click)="$event.preventDefault()"
+        #toggle
+        [checked]="darkMode"
+      ></mat-slide-toggle>
     </mat-list-item>
     <mat-list-item mat-ripple>
       <mat-icon mat-list-icon>settings_ethernet</mat-icon>

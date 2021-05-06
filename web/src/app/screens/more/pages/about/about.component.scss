@@ -1,9 +1,20 @@
 p {
-  line-height: 25px;
+  line-height: 30px;
   font-size: 16px;
   text-align: justify;
 }
 
 a{
     color: var(--secondary);
+}
+
+.container {
+  margin: 0px auto;
+  width: 50%;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 100%;
+  }
 }
