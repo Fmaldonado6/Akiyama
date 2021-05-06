@@ -1,0 +1,17 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-text-color);
+
+    mat-icon{
+        margin-bottom: 25px;
+        transform: scale(2.25);
+    }
+
+    span{
+        text-align: center;
+        font-size: 16px;
+    }
+}

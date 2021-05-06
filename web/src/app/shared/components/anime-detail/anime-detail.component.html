@@ -16,7 +16,12 @@
         </div>
       </div>
       <div class="buttons">
-        <icon-button label="Add to favorites" icon="favorites"></icon-button>
+        <icon-button
+          [ngClass]="{ favorite: isFavorite }"
+          [label]="isFavorite ? label.favorite : label.notFavorite"
+          [icon]="isFavorite ? icons.favorite : icons.notFavorite"
+          (click)="favoritesToggle()"
+        ></icon-button>
       </div>
       <div class="synopsis-container">
         <p>

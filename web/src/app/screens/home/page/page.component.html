@@ -1,12 +1,14 @@
 <div class="container">
   <h1>Home</h1>
-  <div class="input-container" class="search">
-    <input placeholder="Search" matInput />
+  <div class="input-container" class="search" routerLink="/search">
+    <span placeholder="Search" #input matInput>Search</span>
     <mat-icon>search</mat-icon>
   </div>
-  <anime-layout title="Recently added" [info]="episodesInfo"></anime-layout>
-  <anime-layout title="Latest animes" [info]="animeInfo"></anime-layout>
-  <anime-layout title="Latest movies" [info]="moviesInfo"></anime-layout>
-  <anime-layout title="Latest ovas" [info]="ovasInfo"></anime-layout>
-  <anime-layout title="Latest specials" [info]="specialsInfo"></anime-layout>
+  <ng-container>
+    <anime-layout title="Recently added" [info]="episodesInfo"></anime-layout>
+    <anime-layout title="Latest animes" [info]="animeInfo"></anime-layout>
+    <anime-layout title="Latest movies" [info]="moviesInfo"></anime-layout>
+    <anime-layout title="Latest ovas" [info]="ovasInfo"></anime-layout>
+    <anime-layout title="Latest specials" [info]="specialsInfo"></anime-layout>
+  </ng-container>
 </div>

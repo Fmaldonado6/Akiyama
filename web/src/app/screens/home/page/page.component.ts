@@ -11,13 +11,11 @@ import { AnimeService } from 'src/app/core/services/anime/anime.service';
   styleUrls: ['./page.component.scss']
 })
 export class PageComponent implements OnInit, OnDestroy {
-
   animeInfo = new InfoItem()
   episodesInfo = new InfoItem(Type.Episode)
   specialsInfo = new InfoItem()
   ovasInfo = new InfoItem()
   moviesInfo = new InfoItem()
-
   constructor(
     private animeService: AnimeService,
     private router: Router
@@ -33,6 +31,8 @@ export class PageComponent implements OnInit, OnDestroy {
     this.getSpecials()
     this.getOvas()
   }
+
+ 
 
 
   getAnimes() {

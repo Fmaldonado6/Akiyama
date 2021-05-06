@@ -1,0 +1,22 @@
+.anime-item {
+  display: flex;
+  padding: 10px;
+  border-radius: 20px;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+  img {
+    width: 100px;
+    margin-right: 20px;
+    height: 75px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  mat-icon {
+    margin-left: auto;
+  }
+  &:hover {
+    background-color: var(--background);
+  }
+}

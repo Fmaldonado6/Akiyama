@@ -1,4 +1,4 @@
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Anime, Episode, Server } from '../../models/modelst';
@@ -9,6 +9,7 @@ import { DataService } from '../data.service';
 })
 export class AnimeService extends DataService {
 
+  animeObserver = new BehaviorSubject<Anime[]>([])
   animes = []
   ovas = []
   specials = []
@@ -18,6 +19,7 @@ export class AnimeService extends DataService {
 
   setAnimes(animes: Anime[]) {
     this.animes = animes
+    this.animeObserver.next(animes)
   }
 
   setOvas(ovas: Anime[]) {
@@ -42,7 +44,12 @@ export class AnimeService extends DataService {
   }
 
   fetchAnimes() {
-    return this.http.get<Anime[]>(`${this.url}/animes/latest`).pipe(catchError(this.handleError))
+    return this.http.get<Anime[]>(`${this.url}/animes/latest`).pipe(
+      catchError(this.handleError),
+      map(e => {
+        this.setAnimes(e)
+        return e
+      }))
   }
 
   fetchSpecials() {
@@ -64,8 +71,10 @@ export class AnimeService extends DataService {
 
   getEpisoderServers(id: string) {
     return this.http.get<Server[]>(`${this.url}/animes/episodes/${id}`).pipe(catchError(this.handleError))
-
   }
 
+  search(query: string) {
+    return this.http.get<Anime[]>(`${this.url}/animes/search/${query}`).pipe(catchError(this.handleError))
+  }
 
 }

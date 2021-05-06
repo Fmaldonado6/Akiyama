@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { IconButtonComponent } from './components/icon-button/icon-button.component';
 import { AnimeDetailComponent } from './components/anime-detail/anime-detail.component';
 import { ServersComponent } from './components/servers/servers.component';
+import { AnimeItemListComponent } from './components/anime-item-list/anime-item-list.component';
+import { EmptyComponent } from './components/empty/empty.component';
 
 
 
@@ -16,7 +18,9 @@ import { ServersComponent } from './components/servers/servers.component';
     AnimeItemComponent,
     IconButtonComponent,
     AnimeDetailComponent,
-    ServersComponent
+    ServersComponent,
+    AnimeItemListComponent,
+    EmptyComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,9 @@ import { ServersComponent } from './components/servers/servers.component';
     MaterialModule,
     IconButtonComponent,
     AnimeLayoutComponent,
-    AnimeDetailComponent
+    AnimeDetailComponent,
+    EmptyComponent,
+    AnimeItemListComponent
   ]
 })
 export class SharedModule { }
