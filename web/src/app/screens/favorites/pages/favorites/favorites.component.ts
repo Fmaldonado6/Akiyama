@@ -15,6 +15,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   Status = Status
   currentStatus = Status.empty
   favorites: Anime[] = []
+  filteredFavorites: Anime[] = []
   subscription: Subscription
   constructor(
     private favoritesService: FavoritesService,
@@ -29,12 +30,22 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription = this.favoritesService.favorites.asObservable().subscribe(e => {
       this.favorites = e
+      this.filteredFavorites = e
       if (this.favorites.length != 0)
         this.currentStatus = Status.loaded
       else
         this.currentStatus = Status.empty
 
     })
+  }
+
+  filter(query: string) {
+
+    if (query == "" || !query)
+      this.filteredFavorites = this.favorites
+    else
+      this.filteredFavorites = this.favorites.filter(e => e.title.toLowerCase().includes(query.toLowerCase()))
+
   }
 
 

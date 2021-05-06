@@ -6,6 +6,17 @@
   height: 150px;
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
+}
+
+.settings {
+  margin: 0px auto;
+  width: 50%;
+}
+
+@media (max-width: 1000px) {
+  .settings {
+    width: 100%;
+  }
 }
