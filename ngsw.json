@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1620329555212,
+  "timestamp": 1620335848015,
   "index": "https://fmaldonado6.github.io/Akiyama/index.html",
   "assetGroups": [
     {
@@ -14,14 +14,14 @@
         "https://fmaldonado6.github.io/Akiyama/1.cc23e856e6edc4c72cfe.js",
         "https://fmaldonado6.github.io/Akiyama/5.2303f6cfc85df7a1a536.js",
         "https://fmaldonado6.github.io/Akiyama/6.cf42dcc95b1a03e686d9.js",
-        "https://fmaldonado6.github.io/Akiyama/7.0e051b0178281ef8c1f0.js",
+        "https://fmaldonado6.github.io/Akiyama/7.cb6f339d033239172a56.js",
         "https://fmaldonado6.github.io/Akiyama/8.c0f36e601783996525ce.js",
         "https://fmaldonado6.github.io/Akiyama/favicon.ico",
         "https://fmaldonado6.github.io/Akiyama/index.html",
         "https://fmaldonado6.github.io/Akiyama/main.b494c7d306b0d302ec13.js",
         "https://fmaldonado6.github.io/Akiyama/manifest.webmanifest",
         "https://fmaldonado6.github.io/Akiyama/polyfills.1f48151810f71fa38e45.js",
-        "https://fmaldonado6.github.io/Akiyama/runtime.f05829ad79fa39fe2ec8.js",
+        "https://fmaldonado6.github.io/Akiyama/runtime.c85c7c77e91198d7320c.js",
         "https://fmaldonado6.github.io/Akiyama/styles.1af11373de3f12d64e54.css"
       ],
       "patterns": []
@@ -63,7 +63,7 @@
     "https://fmaldonado6.github.io/Akiyama/1.cc23e856e6edc4c72cfe.js": "84dddfa9392b817edd1c688f89c051026daf1c19",
     "https://fmaldonado6.github.io/Akiyama/5.2303f6cfc85df7a1a536.js": "0988e37a9e55a1e9116fecf01440357cd08a2121",
     "https://fmaldonado6.github.io/Akiyama/6.cf42dcc95b1a03e686d9.js": "dc16e98f4b91419925fe1b4d73139cb4b5e5443f",
-    "https://fmaldonado6.github.io/Akiyama/7.0e051b0178281ef8c1f0.js": "b857272e5bd6cf9e9f434bf6417d8aa645b677a7",
+    "https://fmaldonado6.github.io/Akiyama/7.cb6f339d033239172a56.js": "26bfee4753fde352209dda1470e90368800d84da",
     "https://fmaldonado6.github.io/Akiyama/8.c0f36e601783996525ce.js": "30e097a5ec7a5438169a7a80fbc04b4b658935df",
     "https://fmaldonado6.github.io/Akiyama/assets/icons/akiyama_icon.png": "050c0461fc99a0bd0e44792b69d621892ce753c0",
     "https://fmaldonado6.github.io/Akiyama/assets/icons/favicon.ico": "90f4de9df984998269b5c4fb401f37da76dcfade",
@@ -86,11 +86,11 @@
     "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphonexr_splash.png": "60d551ea4ec79301e25cb4373cd520fd501b5378",
     "https://fmaldonado6.github.io/Akiyama/assets/splashscreens/iphonexsmax_splash.png": "971ec928b266f55134e9a5375f598325d2f1f0c1",
     "https://fmaldonado6.github.io/Akiyama/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://fmaldonado6.github.io/Akiyama/index.html": "9d69bee6caa727ad589b3c4cafeb3b9f3f7b7f31",
+    "https://fmaldonado6.github.io/Akiyama/index.html": "f08bee49ff98142ff6e12f642792187117685def",
     "https://fmaldonado6.github.io/Akiyama/main.b494c7d306b0d302ec13.js": "889359211451e4e7be4aa8f6a124a52c2e1da89c",
     "https://fmaldonado6.github.io/Akiyama/manifest.webmanifest": "958af44d2931453d4bcb906c56d7db05f65e383d",
     "https://fmaldonado6.github.io/Akiyama/polyfills.1f48151810f71fa38e45.js": "506855517e1835c4f3db5c7d25569b95bee71560",
-    "https://fmaldonado6.github.io/Akiyama/runtime.f05829ad79fa39fe2ec8.js": "d75eceaf9ff5f2110ce8c8cdb8c0a577a8d7f46e",
+    "https://fmaldonado6.github.io/Akiyama/runtime.c85c7c77e91198d7320c.js": "50c6899e5250cd1dab56c1b3cfc40dc8e5b9c230",
     "https://fmaldonado6.github.io/Akiyama/styles.1af11373de3f12d64e54.css": "12a3933e33bca66d66fe2104fab453dbdda97b3b"
   },
   "navigationUrls": [
