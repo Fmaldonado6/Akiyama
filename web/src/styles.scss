@@ -252,7 +252,7 @@ h3 {
   .modal-dark,
   .modal {
     max-width: 100vw !important;
-    max-height: 100vh !important;
+    max-height: -webkit-fill-available !important;
   }
 }
 
