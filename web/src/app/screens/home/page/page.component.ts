@@ -47,6 +47,8 @@ export class PageComponent implements OnInit, OnDestroy {
       this.animeInfo.animeList = e
       this.animeService.animes = e
       this.animeInfo.currentStatus = Status.loaded
+    },()=>{
+      this.animeInfo.currentStatus = Status.error
     })
   }
 
@@ -60,6 +62,8 @@ export class PageComponent implements OnInit, OnDestroy {
       this.moviesInfo.animeList = e
       this.animeService.movies = e
       this.moviesInfo.currentStatus = Status.loaded
+    },()=>{
+      this.moviesInfo.currentStatus = Status.error
     })
   }
 
@@ -73,6 +77,8 @@ export class PageComponent implements OnInit, OnDestroy {
       this.episodesInfo.episodeList = e
       this.animeService.episodes = e
       this.episodesInfo.currentStatus = Status.loaded
+    },()=>{
+      this.episodesInfo.currentStatus = Status.error
     })
   }
 
@@ -86,6 +92,8 @@ export class PageComponent implements OnInit, OnDestroy {
       this.specialsInfo.animeList = e
       this.animeService.specials = e
       this.specialsInfo.currentStatus = Status.loaded
+    },()=>{
+      this.specialsInfo.currentStatus = Status.error
     })
   }
 
@@ -99,6 +107,8 @@ export class PageComponent implements OnInit, OnDestroy {
       this.ovasInfo.animeList = e
       this.animeService.ovas = e
       this.ovasInfo.currentStatus = Status.loaded
+    },()=>{
+      this.ovasInfo.currentStatus = Status.error
     })
   }
 

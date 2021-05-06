@@ -3,7 +3,7 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { AnimeDetailComponent } from '../anime-detail/anime-detail.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationExtras, Router } from '@angular/router';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Anime, Episode, InfoItem, Status, Type } from 'src/app/core/models/modelst';
 import { DarkMode } from 'src/app/app.component';
 
@@ -15,6 +15,7 @@ import { DarkMode } from 'src/app/app.component';
 export class AnimeLayoutComponent implements OnInit {
   @Input() info: InfoItem
   @Input() title: string = ""
+  @Output() retry = new EventEmitter()
   Status = Status
   Type = Type
 
@@ -35,6 +36,10 @@ export class AnimeLayoutComponent implements OnInit {
       }
     )
 
+  }
+
+  retryClicked() {
+    this.retry.emit()
   }
 
   openEpisodeServersBottomSheet(episode: Episode) {

@@ -52,6 +52,8 @@ export class ServersComponent implements OnInit {
     this.animeService.getEpisoderServers(this.episode.id).subscribe(e => {
       this.servers = e
       this.currentStatus = Status.loaded
+    }, () => {
+      this.currentStatus = Status.error
     })
   }
 

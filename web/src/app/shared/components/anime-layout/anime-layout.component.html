@@ -28,8 +28,11 @@
       </div>
     </div>
 
-    <div class="loading" *ngSwitchCase="Status.loading">
+    <div class="info" *ngSwitchCase="Status.loading">
       <mat-spinner [diameter]="40"></mat-spinner>
+    </div>
+    <div class="info" *ngSwitchCase="Status.error">
+      <error (click)="retryClicked()"></error>
     </div>
   </ng-container>
 </div>

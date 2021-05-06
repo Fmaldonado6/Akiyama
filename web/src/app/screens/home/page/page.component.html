@@ -5,10 +5,30 @@
     <mat-icon>search</mat-icon>
   </div>
   <ng-container>
-    <anime-layout title="Recently added" [info]="episodesInfo"></anime-layout>
-    <anime-layout title="Latest animes" [info]="animeInfo"></anime-layout>
-    <anime-layout title="Latest movies" [info]="moviesInfo"></anime-layout>
-    <anime-layout title="Latest ovas" [info]="ovasInfo"></anime-layout>
-    <anime-layout title="Latest specials" [info]="specialsInfo"></anime-layout>
+    <anime-layout
+      title="Recently added"
+      (retry)="getEpisodes()"
+      [info]="episodesInfo"
+    ></anime-layout>
+    <anime-layout
+      title="Latest animes"
+      (retry)="getAnimes()"
+      [info]="animeInfo"
+    ></anime-layout>
+    <anime-layout
+      title="Latest movies"
+      (retry)="getMovies()"
+      [info]="moviesInfo"
+    ></anime-layout>
+    <anime-layout
+      title="Latest ovas"
+      (retry)="getOvas()"
+      [info]="ovasInfo"
+    ></anime-layout>
+    <anime-layout
+      title="Latest specials"
+      (retry)="getSpecials()"
+      [info]="specialsInfo"
+    ></anime-layout>
   </ng-container>
 </div>

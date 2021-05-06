@@ -1,0 +1,21 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  mat-icon {
+    color: var(--secondary-text-color);
+    margin-bottom: 25px;
+    transform: scale(2.25);
+  }
+
+  span {
+    text-align: center;
+    font-size: 16px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    width: 50px;
+    border: 2px solid var(--primary);
+  }
+}

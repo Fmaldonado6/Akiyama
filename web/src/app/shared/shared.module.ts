@@ -9,6 +9,7 @@ import { AnimeDetailComponent } from './components/anime-detail/anime-detail.com
 import { ServersComponent } from './components/servers/servers.component';
 import { AnimeItemListComponent } from './components/anime-item-list/anime-item-list.component';
 import { EmptyComponent } from './components/empty/empty.component';
+import { ErrorComponent } from './components/error/error.component';
 
 
 
@@ -20,7 +21,8 @@ import { EmptyComponent } from './components/empty/empty.component';
     AnimeDetailComponent,
     ServersComponent,
     AnimeItemListComponent,
-    EmptyComponent
+    EmptyComponent,
+    ErrorComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { EmptyComponent } from './components/empty/empty.component';
     IconButtonComponent,
     AnimeLayoutComponent,
     AnimeDetailComponent,
+    ErrorComponent,
     EmptyComponent,
     AnimeItemListComponent
   ]

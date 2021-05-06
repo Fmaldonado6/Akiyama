@@ -48,7 +48,6 @@ export class LayoutComponent implements OnInit {
   onResize(event) {
     this.innerWidth = window.innerWidth;
 
-    this.opened = this.innerWidth >= 1234
   }
 
 }
