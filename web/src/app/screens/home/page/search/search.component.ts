@@ -1,9 +1,9 @@
+import { DarkModeService } from 'src/app/core/services/darkMode/dark-mode.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { Anime, Status } from 'src/app/core/models/modelst';
 import { AnimeService } from 'src/app/core/services/anime/anime.service';
 import { AnimeDetailComponent } from 'src/app/shared/components/anime-detail/anime-detail.component';
-import { DarkMode } from 'src/app/app.component';
 
 @Component({
   selector: 'app-search',
@@ -17,7 +17,8 @@ export class SearchComponent implements OnInit {
   results: Anime[] = []
   constructor(
     private animeService: AnimeService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private darkModeService: DarkModeService
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +44,7 @@ export class SearchComponent implements OnInit {
     this.dialog.open(AnimeDetailComponent,
       {
         data: { anime: anime },
-        panelClass: DarkMode.enabled ? 'modal-dark' : 'modal',
+        panelClass: this.darkModeService.enabled ? 'modal-dark' : 'modal',
       }
     )
   }

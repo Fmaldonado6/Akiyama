@@ -1,8 +1,7 @@
+import { DarkModeService } from './core/services/darkMode/dark-mode.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 
-export class DarkMode {
-  static enabled = false
-}
+
 
 @Component({
   selector: 'app-root',
@@ -12,10 +11,15 @@ export class DarkMode {
 export class AppComponent implements OnInit {
   title = 'web';
   darkMode = false
+
+  constructor(private darkModeService: DarkModeService) {
+
+  }
+
   ngOnInit(): void {
-    this.darkMode = DarkMode.enabled = window.matchMedia('(prefers-color-scheme:dark)').matches
-    window.matchMedia('(prefers-color-scheme:dark)').addEventListener("change", e => {
-      this.darkMode = DarkMode.enabled = e.matches
+
+    this.darkModeService.enabled.asObservable().subscribe(e => {
+      this.darkMode = e
     })
 
   }
