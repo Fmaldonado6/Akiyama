@@ -40,7 +40,6 @@ export class AnimeDetailComponent implements OnInit {
       data: {
         episode: episode
       }
-
     })
   }
 

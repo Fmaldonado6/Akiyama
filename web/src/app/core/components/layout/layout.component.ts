@@ -31,6 +31,7 @@ export class LayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
   }
 
   @HostListener('window:resize', ['$event'])

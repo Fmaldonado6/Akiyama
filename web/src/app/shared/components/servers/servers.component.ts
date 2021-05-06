@@ -1,3 +1,4 @@
+import { NavigationExtras, Router } from '@angular/router';
 import { AnimeService } from 'src/app/core/services/anime/anime.service';
 import { Episode, Server, Status } from 'src/app/core/models/modelst';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -19,15 +20,32 @@ export class ServersComponent implements OnInit {
   servers: Server[] = []
   constructor(
     private animeService: AnimeService,
+    private router: Router,
     @Inject(MAT_BOTTOM_SHEET_DATA) private sheetData: SheetData
   ) { }
 
   ngOnInit(): void {
     this.episode = this.sheetData.episode
-    this.getServers()
+    if (!this.episode.servers)
+      this.getServers()
+    else {
+      this.servers = this.episode.servers
+      this.currentStatus = Status.loaded
+    }
+  }
+
+  openServer(server: Server) {
+    const extras: NavigationExtras = {
+      queryParams: {
+        url: server.code
+      }
+    }
+
+    this.router.navigate([`/watch`], extras)
   }
 
   getServers() {
+    this.currentStatus = Status.loading
     this.animeService.getEpisoderServers(this.episode.id).subscribe(e => {
       this.servers = e
       this.currentStatus = Status.loaded

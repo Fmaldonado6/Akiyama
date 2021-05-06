@@ -1,0 +1,15 @@
+<button mat-icon-button class="back-button" (click)="back()">
+  <mat-icon> chevron_left </mat-icon>
+</button>
+<div class="screen">
+  <div class="frame-container">
+    <iframe
+      [src]="this.url"
+      title="Episode"
+      sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"
+      webkitallowfullscreen="true"
+      mozallowfullscreen="true"
+      allowfullscreen="true"
+    ></iframe>
+  </div>
+</div>

@@ -21,6 +21,7 @@
           <anime-item
             *ngFor="let episode of info.episodeList; let i = index"
             [episode]="episode"
+            (click)="openEpisodeServersBottomSheet(episode)"
             [ngClass]="{ 'fix-margin': i == info.animeList.length - 1 }"
           ></anime-item>
         </ng-container>

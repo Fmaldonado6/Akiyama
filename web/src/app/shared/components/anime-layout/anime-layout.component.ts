@@ -1,3 +1,5 @@
+import { ServersComponent } from './../servers/servers.component';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { AnimeDetailComponent } from '../anime-detail/anime-detail.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationExtras, Router } from '@angular/router';
@@ -18,6 +20,7 @@ export class AnimeLayoutComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private bottomSheet: MatBottomSheet,
     private dialog: MatDialog,
   ) { }
 
@@ -34,6 +37,14 @@ export class AnimeLayoutComponent implements OnInit {
 
   }
 
+  openEpisodeServersBottomSheet(episode: Episode) {
+    this.bottomSheet.open(ServersComponent, {
+      panelClass: DarkMode.enabled ? 'bottomSheet-dark' : '',
+      data: {
+        episode: episode
+      }
+    })
+  }
 
   scrollLeft(view: HTMLElement) {
     view.scrollLeft -= view.clientWidth - 150

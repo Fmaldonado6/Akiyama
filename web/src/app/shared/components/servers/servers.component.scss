@@ -1,5 +1,6 @@
 .bottom-sheet {
   min-height: 200px;
+  padding: 10px;
 }
 
 .servers-container {
@@ -11,6 +12,7 @@
     width: 40%;
     border: 1px solid var(--primary);
     padding: 7px 10px;
+    cursor:pointer;
     border-radius: 20px;
     text-align: center;
     font-size: 16px;

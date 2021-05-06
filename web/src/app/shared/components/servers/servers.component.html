@@ -2,7 +2,12 @@
   <h3>Select an option</h3>
   <ng-container *ngSwitchCase="Status.loaded">
     <div class="servers-container">
-      <span mat-ripple *ngFor="let server of servers">{{ server.title }}</span>
+      <span
+        mat-ripple
+        *ngFor="let server of servers"
+        (click)="openServer(server)"
+        >{{ server.title }}</span
+      >
     </div>
   </ng-container>
   <div class="loading" *ngSwitchCase="Status.loading">
