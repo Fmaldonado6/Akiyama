@@ -3,8 +3,8 @@ import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Anime, Status } from 'src/app/core/models/modelst';
 import { FavoritesService } from 'src/app/core/services/favorites/favorites.service';
-import { DarkMode } from 'src/app/app.component';
 import { AnimeDetailComponent } from 'src/app/shared/components/anime-detail/anime-detail.component';
+import { DarkModeService } from 'src/app/core/services/darkMode/dark-mode.service';
 
 @Component({
   selector: 'app-favorites',
@@ -18,7 +18,8 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   subscription: Subscription
   constructor(
     private favoritesService: FavoritesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private darkModeService: DarkModeService
   ) { }
   ngOnDestroy(): void {
     if (!this.subscription)
@@ -41,7 +42,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     this.dialog.open(AnimeDetailComponent,
       {
         data: { anime: anime },
-        panelClass: DarkMode.enabled ? 'modal-dark' : 'modal',
+        panelClass: this.darkModeService.enabled.value ? 'modal-dark' : 'modal',
       }
     )
   }

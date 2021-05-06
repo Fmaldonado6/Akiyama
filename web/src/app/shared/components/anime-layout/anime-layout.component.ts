@@ -1,3 +1,4 @@
+import { DarkModeService } from 'src/app/core/services/darkMode/dark-mode.service';
 import { ServersComponent } from './../servers/servers.component';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { AnimeDetailComponent } from '../anime-detail/anime-detail.component';
@@ -5,7 +6,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { NavigationExtras, Router } from '@angular/router';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Anime, Episode, InfoItem, Status, Type } from 'src/app/core/models/modelst';
-import { DarkMode } from 'src/app/app.component';
 
 @Component({
   selector: 'anime-layout',
@@ -23,6 +23,7 @@ export class AnimeLayoutComponent implements OnInit {
     private router: Router,
     private bottomSheet: MatBottomSheet,
     private dialog: MatDialog,
+    private darkModeService: DarkModeService
   ) { }
 
   ngOnInit(): void { }
@@ -32,7 +33,7 @@ export class AnimeLayoutComponent implements OnInit {
     this.dialog.open(AnimeDetailComponent,
       {
         data: { anime: anime },
-        panelClass: DarkMode.enabled ? 'modal-dark' : 'modal',
+        panelClass: this.darkModeService.enabled.value ? 'modal-dark' : 'modal',
       }
     )
 
@@ -44,7 +45,7 @@ export class AnimeLayoutComponent implements OnInit {
 
   openEpisodeServersBottomSheet(episode: Episode) {
     const bottom = this.bottomSheet.open(ServersComponent, {
-      panelClass: DarkMode.enabled ? 'bottomSheet-dark' : '',
+      panelClass: this.darkModeService.enabled.value ? 'bottomSheet-dark' : '',
       data: {
         episode: episode
       }

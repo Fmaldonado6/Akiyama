@@ -6,7 +6,7 @@ import { AnimeService } from 'src/app/core/services/anime/anime.service';
 import { Anime, Status, Episode } from 'src/app/core/models/modelst';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { DarkMode } from 'src/app/app.component';
+import { DarkModeService } from 'src/app/core/services/darkMode/dark-mode.service';
 
 interface ModalData {
   anime: Anime
@@ -35,6 +35,7 @@ export class AnimeDetailComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<AnimeDetailComponent>,
     private bottomSheet: MatBottomSheet,
+    private darkModeService: DarkModeService,
     private favoritesService: FavoritesService,
     @Inject(MAT_DIALOG_DATA) private modalData: ModalData
   ) { }
@@ -49,7 +50,7 @@ export class AnimeDetailComponent implements OnInit {
     if (episode.nextEpisodeDate)
       return
     const bottom = this.bottomSheet.open(ServersComponent, {
-      panelClass: DarkMode.enabled ? 'bottomSheet-dark' : '',
+      panelClass: this.darkModeService.enabled.value ? 'bottomSheet-dark' : '',
       data: {
         episode: episode
       }
