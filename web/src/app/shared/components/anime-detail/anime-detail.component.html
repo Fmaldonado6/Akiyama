@@ -1,0 +1,56 @@
+<div class="dialog" [ngSwitch]="currentStatus">
+  <button mat-icon-button class="close" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <ng-container *ngSwitchCase="Status.loaded">
+    <div class="background">
+      <img src="data:image/png;base64,{{ anime.poster }}" />
+    </div>
+
+    <div class="content">
+      <div class="header">
+        <img src="data:image/png;base64,{{ anime.poster }}" />
+        <div class="title">
+          <h2>{{ anime.title }}</h2>
+          <span>{{ anime.debut }}</span>
+        </div>
+      </div>
+      <div class="buttons">
+        <icon-button label="Add to favorites" icon="favorites"></icon-button>
+      </div>
+      <div class="synopsis-container">
+        <p>
+          {{ anime.synopsis }}
+        </p>
+        <button mat-button color="primary">More</button>
+      </div>
+      <div class="genres-container">
+        <div class="genre" *ngFor="let genre of anime.genres">
+          <span>{{ genre }}</span>
+        </div>
+      </div>
+      <div class="episodes-container">
+        <h3>Episodes</h3>
+        <ng-container *ngFor="let episode of anime.episodes; let i = index">
+          <div
+            class="episode"
+            mat-ripple
+            (click)="openServersBottomSheet(episode)"
+            *ngIf="episode.nextEpisodeDate && i == 0 ? true : i != 0"
+          >
+            <span *ngIf="!episode.nextEpisodeDate"
+              >Episode {{ episode.episode }}</span
+            >
+            <span *ngIf="episode.nextEpisodeDate"
+              >Next episode {{ episode.nextEpisodeDate }}</span
+            >
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="loading" *ngSwitchCase="Status.loading">
+    <mat-spinner [diameter]="40"></mat-spinner>
+  </div>
+</div>
