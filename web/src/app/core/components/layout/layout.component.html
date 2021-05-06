@@ -1,0 +1,39 @@
+<mat-sidenav-container
+  class="sidenav-container"
+  *ngIf="innerWidth >= 1234; else mobile"
+>
+  <mat-sidenav class="sidenav" [opened]="opened" mode="side">
+    <div
+      class="sidenav-item"
+      *ngFor="let item of sidenavItems"
+      [routerLink]="item.path"
+      matRipple
+      routerLinkActive="selected-item"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <mat-icon class="material-icons-outlined">{{ item.icon }}</mat-icon>
+      <span>{{ item.title }}</span>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #mobile>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <nav class="bottom-nav" *ngIf="opened">
+    <a
+      class="bottom-nav__destination"
+      *ngFor="let item of sidenavItems"
+      [routerLink]="item.path"
+      routerLinkActive="bottom-nav__destination--active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span class="bottom-nav__label">{{ item.title }}</span>
+    </a>
+  </nav>
+</ng-template>

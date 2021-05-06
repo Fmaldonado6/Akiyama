@@ -1,0 +1,34 @@
+<div class="container">
+  <h1>Home</h1>
+  <div class="input-container" class="search" routerLink="/search">
+    <span placeholder="Search" #input matInput>Search</span>
+    <mat-icon>search</mat-icon>
+  </div>
+  <ng-container>
+    <anime-layout
+      title="Recently added"
+      (retry)="getEpisodes()"
+      [info]="episodesInfo"
+    ></anime-layout>
+    <anime-layout
+      title="Latest animes"
+      (retry)="getAnimes()"
+      [info]="animeInfo"
+    ></anime-layout>
+    <anime-layout
+      title="Latest movies"
+      (retry)="getMovies()"
+      [info]="moviesInfo"
+    ></anime-layout>
+    <anime-layout
+      title="Latest ovas"
+      (retry)="getOvas()"
+      [info]="ovasInfo"
+    ></anime-layout>
+    <anime-layout
+      title="Latest specials"
+      (retry)="getSpecials()"
+      [info]="specialsInfo"
+    ></anime-layout>
+  </ng-container>
+</div>

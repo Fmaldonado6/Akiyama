@@ -1,0 +1,65 @@
+.sidenav {
+  width: 300px;
+  background-color: var(--background);
+  border: none;
+}
+
+.sidenav-container {
+  height: 100vh;
+}
+
+mat-sidenav-content {
+  background-color: var(--secondary-background);
+}
+
+.selected-item {
+  color: var(--secondary) !important;
+}
+
+.bottom-nav {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  height: 56px;
+  ngx-bottom-nav {
+    background-color: var(--background) !important;
+  }
+}
+
+.content {
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+
+.sidenav-item {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  margin: 20px 0px;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+  transition: background-color 0.3s ease;
+  mat-icon {
+    margin: 0px 20px 0px 15px;
+  }
+  span {
+    font-size: 20px;
+  }
+
+  &:hover {
+    background-color: var(--secondary-background-lighter);
+  }
+}
+
+mat-list-item {
+  font-weight: 100 !important;
+  color: rgb(177, 177, 177) !important;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    border-radius 0.3s ease;
+  margin-top: 10px;
+  display: flex;
+  width: 100;
+  height: 50px !important;
+}

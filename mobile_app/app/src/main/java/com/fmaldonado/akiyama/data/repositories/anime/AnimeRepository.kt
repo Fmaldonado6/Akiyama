@@ -15,7 +15,7 @@ class AnimeRepository
 constructor(
     private val networkDataSource: NetworkDataSource
 ) {
-    var currentSearchQuery:String = ""
+    var currentSearchQuery: String = ""
     val currentSearch = MutableLiveData<List<Anime>>()
     val latestAnimes = MutableLiveData<List<Anime>>()
     val latestEpisodes = MutableLiveData<List<Episode>>()
@@ -53,6 +53,7 @@ constructor(
         val split = episodeId.split("/")
         return networkDataSource.getServers(split.first(), split.last())
     }
+
 
     suspend fun makeSearch(search: String) {
         currentSearchQuery = search

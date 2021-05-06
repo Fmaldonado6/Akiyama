@@ -1,0 +1,19 @@
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  display: inline-flex;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  mat-icon {
+    margin-bottom: 5px;
+  }
+
+  &:hover {
+    background-color: var(--background);
+  }
+}

@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         val navController = navHost.navController
         binding.bottomNav.setupWithNavController(navController)
         viewModel.checkLatestVersion()
-
         viewModel.hasNewVersion.observe(this, {
             val manual = it.manualClick
             when (it.status) {
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                     getString(R.string.new_update_text),
                     Snackbar.LENGTH_SHORT
                 ).setAction("Download") {
-                    viewModel.checkLatestVersion(manual)
+                    DownloadDialog().show(supportFragmentManager, "dialog")
                 }.show()
                 UpdateStatus.Updated ->
                     if (it.manualClick) Snackbar.make(

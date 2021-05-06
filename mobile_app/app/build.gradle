@@ -21,8 +21,8 @@ android {
         applicationId "com.fmaldonado.akiyama"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 3
-        versionName "v2.1"
+        versionCode 4
+        versionName "v2.1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -85,6 +85,10 @@ dependencies {
     implementation "androidx.room:room-runtime:2.3.0"
     implementation "androidx.room:room-ktx:2.3.0"
     kapt "androidx.room:room-compiler:2.3.0"
+
+    //Webview
+    implementation 'org.adblockplus:adblock-android-webview:3.14'
+
 
     //Default
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

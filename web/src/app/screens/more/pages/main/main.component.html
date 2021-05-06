@@ -1,0 +1,33 @@
+<div class="title-container">
+  <h1>Akiyama</h1>
+</div>
+<div class="settings">
+  <mat-list>
+    <mat-list-item mat-ripple routerLink="about">
+      <mat-icon mat-list-icon>help_outline</mat-icon>
+      <div mat-line>About</div>
+    </mat-list-item>
+    <a
+      mat-list-item
+      mat-ripple
+      href="https://twitter.com/Fmaldonado4202"
+      target="_blank"
+    >
+      <span mat-list-icon class="fa fa-twitter" aria-hidden="true"></span>
+      <div mat-line>Twitter</div>
+    </a>
+    <mat-list-item mat-ripple>
+      <mat-icon mat-list-icon>settings_ethernet</mat-icon>
+      <div mat-line>Version: {{ version }}</div>
+    </mat-list-item>
+    <a
+      mat-list-item
+      mat-ripple
+      href="https://github.com/Fmaldonado6/Akiyama"
+      target="_blank"
+    >
+      <mat-icon mat-list-icon>code</mat-icon>
+      <div mat-line>Source code</div>
+    </a>
+  </mat-list>
+</div>

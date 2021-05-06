@@ -1,0 +1,23 @@
+<div class="container" [ngSwitch]="currentStatus">
+  <h1>Favorites</h1>
+  <div class="input-container" class="search">
+    <input placeholder="Search favorites" #input matInput />
+    <mat-icon>search</mat-icon>
+  </div>
+
+  <div class="search-results" *ngSwitchCase="Status.loaded">
+    <anime-item-list
+      *ngFor="let anime of favorites"
+      [anime]="anime"
+      (click)="changeToDetail(anime)"
+    ></anime-item-list>
+  </div>
+  <div class="loading" *ngSwitchCase="Status.loading">
+    <mat-spinner [diameter]="40"></mat-spinner>
+  </div>
+
+  <div class="empty" *ngSwitchCase="Status.empty">
+    <empty message="You haven't added any favorites"></empty>
+  </div>
+
+</div>

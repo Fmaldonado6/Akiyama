@@ -1,0 +1,83 @@
+.layout {
+  margin: 30px 0px;
+}
+
+.animes-container {
+  position: relative;
+}
+
+.scroll-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.fix-margin {
+  margin-right: 0px !important;
+}
+
+anime-item {
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.left {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.6530987394957983) 100%
+  );
+}
+
+.right {
+  right: 0px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.6530987394957983) 100%
+  );
+}
+
+.arrow-container {
+  position: absolute;
+  height: 93%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  padding: 0px 10px;
+  z-index: 10;
+  justify-self: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  mat-icon {
+    transform: scale(2);
+  }
+}
+
+@media (max-width: 1000px) {
+  .arrow-container {
+    padding: 5px;
+    mat-icon {
+      transform: scale(1.25);
+    }
+  }
+}

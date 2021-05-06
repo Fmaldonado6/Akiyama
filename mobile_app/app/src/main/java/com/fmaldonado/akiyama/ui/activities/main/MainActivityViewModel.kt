@@ -3,6 +3,7 @@ package com.fmaldonado.akiyama.ui.activities.main
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fmaldonado.akiyama.data.repositories.anime.AnimeRepository
 import com.fmaldonado.akiyama.data.repositories.updater.UpdaterRepository
 import com.fmaldonado.akiyama.ui.common.UpdateEvents
 import com.fmaldonado.akiyama.ui.common.UpdateStatus
@@ -16,7 +17,8 @@ import javax.inject.Inject
 class MainActivityViewModel
 @Inject
 constructor(
-    private val updaterRepository: UpdaterRepository
+    private val updaterRepository: UpdaterRepository,
+    private val animeRepository: AnimeRepository
 ) : ViewModel() {
 
     val hasNewVersion = updaterRepository.hasNewVersion
@@ -29,5 +31,6 @@ constructor(
             }
         }
     }
+
 
 }
