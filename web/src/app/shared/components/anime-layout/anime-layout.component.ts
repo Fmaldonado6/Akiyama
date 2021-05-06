@@ -38,12 +38,13 @@ export class AnimeLayoutComponent implements OnInit {
   }
 
   openEpisodeServersBottomSheet(episode: Episode) {
-    this.bottomSheet.open(ServersComponent, {
+    const bottom = this.bottomSheet.open(ServersComponent, {
       panelClass: DarkMode.enabled ? 'bottomSheet-dark' : '',
       data: {
         episode: episode
       }
     })
+    bottom.instance.serverSelected.subscribe(e => bottom.dismiss())
   }
 
   scrollLeft(view: HTMLElement) {

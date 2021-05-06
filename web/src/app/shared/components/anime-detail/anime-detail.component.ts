@@ -35,11 +35,15 @@ export class AnimeDetailComponent implements OnInit {
   openServersBottomSheet(episode: Episode) {
     if (episode.nextEpisodeDate)
       return
-    this.bottomSheet.open(ServersComponent, {
+    const bottom = this.bottomSheet.open(ServersComponent, {
       panelClass: DarkMode.enabled ? 'bottomSheet-dark' : '',
       data: {
         episode: episode
       }
+    })
+    bottom.instance.serverSelected.subscribe(e => {
+      bottom.dismiss()
+      this.close()
     })
   }
 

@@ -257,3 +257,13 @@ h3 {
 }
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+@import "~material-bottom-nav";
+
+.bottom-nav {
+  border: none !important;
+  @include bottom-nav(
+    $background-color: var(--background),
+    $active-color: var(--primary),
+    $inactive-color: var(--secondary-text-color)
+  );
+}

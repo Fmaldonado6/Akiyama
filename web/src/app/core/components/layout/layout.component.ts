@@ -1,3 +1,4 @@
+import { NavigationEnd, Router } from '@angular/router';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -28,7 +29,16 @@ export class LayoutComponent implements OnInit {
   ]
 
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) {
+    router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        const route = e.url.split("?").shift()
+        this.opened = route != '/watch'
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;

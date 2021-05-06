@@ -1,7 +1,7 @@
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimeService } from 'src/app/core/services/anime/anime.service';
 import { Episode, Server, Status } from 'src/app/core/models/modelst';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
 import { MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 
 interface SheetData {
@@ -18,6 +18,7 @@ export class ServersComponent implements OnInit {
   currentStatus = Status.loading
   episode: Episode
   servers: Server[] = []
+  @Output() serverSelected = new EventEmitter()
   constructor(
     private animeService: AnimeService,
     private router: Router,
@@ -40,6 +41,8 @@ export class ServersComponent implements OnInit {
         url: server.code
       }
     }
+
+    this.serverSelected.emit()
 
     this.router.navigate([`/watch`], extras)
   }

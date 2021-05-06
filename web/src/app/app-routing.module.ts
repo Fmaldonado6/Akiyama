@@ -10,6 +10,10 @@ const routes: Routes = [
     path: "watch",
     loadChildren: () => import('./screens/watch/watch.module').then(m => m.WatchModule)
   },
+  {
+    path: "favorites",
+    loadChildren: () => import('./screens/favorites/favorites.module').then(m => m.FavoritesModule)
+  },
 
 ];
 
