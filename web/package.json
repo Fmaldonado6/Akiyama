@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~11.2.3",
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
+    "@angular/service-worker": "~11.2.3",
     "angular-material": "^1.2.2",
     "material-bottom-nav": "^1.2.0",
     "rxjs": "~6.6.0",

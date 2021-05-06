@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  base_url: "http://localhost:4000"
+  base_url: "https://akiyamarest.herokuapp.com",
+  version:"v2.0"
 };
