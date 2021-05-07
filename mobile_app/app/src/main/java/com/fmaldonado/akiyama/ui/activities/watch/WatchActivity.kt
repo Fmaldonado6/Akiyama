@@ -2,18 +2,16 @@ package com.fmaldonado.akiyama.ui.activities.watch
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.activity.viewModels
-import com.fmaldonado.akiyama.R
+import androidx.appcompat.app.AppCompatActivity
 import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.databinding.ActivityWatchBinding
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
-import dagger.hilt.android.AndroidEntryPoint
 
 class WatchActivity : AppCompatActivity() {
 
@@ -41,6 +39,7 @@ class WatchActivity : AppCompatActivity() {
             }
             binding.webView.loadUrl(it.code)
         }
+        hideUI()
     }
 
     override fun onDestroy() {
@@ -48,4 +47,29 @@ class WatchActivity : AppCompatActivity() {
         super.onDestroy()
 
     }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        hideUI()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hideUI()
+    }
+
+    private fun hideUI() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.setDecorFitsSystemWindows(false)
+        } else {
+            window.decorView.systemUiVisibility = (
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            or SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_FULLSCREEN
+                            or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+        }
+    }
+
 }
