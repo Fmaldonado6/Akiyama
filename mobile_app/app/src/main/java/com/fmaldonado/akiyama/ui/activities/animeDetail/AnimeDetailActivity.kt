@@ -1,16 +1,10 @@
 package com.fmaldonado.akiyama.ui.activities.animeDetail
 
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
-import android.util.Log
 import android.view.View
-import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.annotation.ColorInt
-import androidx.databinding.BindingAdapter
-import androidx.databinding.BindingConversion
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -122,7 +116,7 @@ class AnimeDetailActivity : AppCompatActivity() {
     private fun setupEpisodesRecyler(episodes: List<Episode>) {
         val items = mutableListOf<EpisodesAdapter>()
         episodes.forEach {
-            if (it.nextEpisodeDate == null && episodes.first() == it)
+            if (it.nextEpisodeDate == null && episodes.first() == it && episodes.size > 1)
                 return@forEach
             items.add(EpisodesAdapter(it))
         }

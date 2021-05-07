@@ -26,7 +26,7 @@ constructor(
     suspend fun removeFavorite(anime: Anime) {
         val favorite = FavoritesMapper.animeToFavoritesMapper(anime)
         favoritesDao.removeFavorite(favorite.anime)
-        _favorites.remove(anime)
+        _favorites = _favorites.filter { s -> s.id != anime.id }.toMutableList()
         favorites.postValue(_favorites)
     }
 
