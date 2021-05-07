@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
   search(query: string) {
 
     this.currentStatus = Status.loading
-    this.animeService.search(query).subscribe(e => {
+    this.animeService.search(query.toLowerCase()).subscribe(e => {
       this.results = e
       this.currentStatus = Status.loaded
     })
