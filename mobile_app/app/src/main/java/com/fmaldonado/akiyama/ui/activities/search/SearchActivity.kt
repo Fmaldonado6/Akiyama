@@ -32,7 +32,6 @@ class SearchActivity : AppCompatActivity() {
         binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.searchBar.requestFocus()
-        binding.searchBar.setText(viewModel.currentSearchQuery)
 
         viewModel.currentStatus.observe(this, { binding.currentStatus = it })
         viewModel.searchResults.observe(this, {
