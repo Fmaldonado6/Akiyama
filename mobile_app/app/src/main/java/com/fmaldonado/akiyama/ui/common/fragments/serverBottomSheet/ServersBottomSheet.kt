@@ -64,7 +64,6 @@ class ServersBottomSheet : BottomSheetDialogFragment() {
 
 
         episode?.let {
-            Log.d("Count", (it.servers == null).toString())
 
             if (it.servers == null) {
                 val id = it.id
