@@ -5,13 +5,13 @@
     "kind": "Directory"
   },
   "applicationId": "com.fmaldonado.akiyama",
-  "variantName": "processReleaseResources",
+  "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 8,
-      "versionName": "v2.1.5",
+      "versionCode": 9,
+      "versionName": "v2.1.6",
       "outputFile": "app-release.apk"
     }
   ]
