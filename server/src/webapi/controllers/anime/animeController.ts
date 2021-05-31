@@ -98,11 +98,9 @@ class AnimeController extends BaseController {
         try {
             const animeId = req.params.animeId
             const animeTitle = req.params.animeTitle
-            console.log(animeTitle)
-            const animes = await axios.get<SearchResponse>(`${this.BASE_URL}/Search/${animeTitle}`)
+            const animes = await axios.get<SearchResponse>(`${this.BASE_URL}/Search/${animeTitle.toLowerCase()}`)
 
             for (let anime of animes.data.search) {
-                console.log(anime)
                 if (anime.id == `anime/${animeId}`)
                     return res.status(200).json(anime)
             }
@@ -115,7 +113,7 @@ class AnimeController extends BaseController {
         }
     }
 
-    
+
     async getSearch(req: Request, res: Response) {
         try {
             const search = req.params.search
