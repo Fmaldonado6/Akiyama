@@ -4,6 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.data.persistence.dao.FavoritesDao
 import com.fmaldonado.akiyama.data.persistence.mappers.FavoritesMapper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,6 +18,12 @@ constructor(
 ) {
     private var _favorites = mutableListOf<Anime>()
     val favorites = MutableLiveData<List<Anime>>()
+
+    init {
+        GlobalScope.launch(Dispatchers.IO) {
+            loadFavorites()
+        }
+    }
 
     suspend fun addFavorite(anime: Anime) {
         val favorite = FavoritesMapper.animeToFavoritesMapper(anime)

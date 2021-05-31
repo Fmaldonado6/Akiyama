@@ -17,6 +17,7 @@ import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.EpisodesAdapter
 import com.fmaldonado.akiyama.ui.activities.animeDetail.adapters.GenresAdapter
 import com.fmaldonado.akiyama.ui.common.FavoritesStatus
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
+import com.fmaldonado.akiyama.ui.common.Status
 import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.ServersBottomSheet
 import com.google.android.material.snackbar.Snackbar
 import com.xwray.groupie.GroupieAdapter
@@ -49,7 +50,6 @@ class AnimeDetailActivity : AppCompatActivity() {
                 else
                     resources.getString(R.string.finished_text)
             setupGenresRecycler(it.genres)
-            setupEpisodesRecyler(it.episodes)
             Glide.with(this)
                 .load(byteArray)
                 .centerCrop()
@@ -61,8 +61,11 @@ class AnimeDetailActivity : AppCompatActivity() {
                 .into(binding.animeCover)
         }
 
-        binding.backButton.setOnClickListener {
-            finish()
+        binding.backButton.setOnClickListener { finish() }
+
+        binding.swipeToRefresh.setOnRefreshListener {
+            anime?.let { viewModel.getAnimeEpisodes(it) }
+            binding.swipeToRefresh.isRefreshing = false
         }
 
         binding.moreButton.setOnClickListener {
@@ -94,7 +97,19 @@ class AnimeDetailActivity : AppCompatActivity() {
             ).show()
         })
 
-        viewModel.isFavorite.observe(this, { binding.isFavorite = it })
+        viewModel.isFavorite.observe(this, { isFavorite ->
+            binding.isFavorite = isFavorite
+            anime?.let { anime ->
+                if (isFavorite)
+                    viewModel.getAnimeEpisodes(anime)
+                else
+                    viewModel.setAnimeEpisodes(anime.episodes)
+            }
+        })
+
+        viewModel.episodesStatus.observe(this, { binding.episodeStatus = it })
+
+        viewModel.episodes.observe(this, { setupEpisodesRecyler(it) })
 
 
     }

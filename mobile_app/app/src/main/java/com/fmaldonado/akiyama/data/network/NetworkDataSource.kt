@@ -27,7 +27,7 @@ interface NetworkDataSource {
     @GET("search/{title}")
     suspend fun getSearch(@Path("title") title: String): List<Anime>
 
-    @GET("animeInfo/{animeId}/{animeTitle}")
+    @GET("{animeId}/{animeTitle}")
     suspend fun getAnimeInfo(
         @Path("animeId") animeId: String,
         @Path("animeTitle") title: String

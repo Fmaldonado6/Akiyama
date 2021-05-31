@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.databinding.ActivityWatchBinding
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
+import com.fmaldonado.akiyama.ui.common.Status
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,11 +36,12 @@ class WatchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityWatchBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         server = intent?.extras?.getParcelable(ParcelableKeys.SERVER_PARCELABLE)
-        server?.let {
-            viewModel.getVideoUrl(it)
-        }
+
+        getUrl()
+
         viewModel.urlValue.observe(this, {
             if (it.useWebView)
                 initializeWebview(it.file)
@@ -50,8 +52,19 @@ class WatchActivity : AppCompatActivity() {
             hideUI()
         })
 
+        viewModel.videoStatus.observe(this, { binding.videoStatus = it })
+
+        binding.videoError.retry.setOnClickListener { getUrl() }
+
         hideUI()
     }
+
+    private fun getUrl() {
+        server?.let {
+            viewModel.getVideoUrl(it)
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -61,6 +74,7 @@ class WatchActivity : AppCompatActivity() {
     }
 
     private fun initializeWebview(url: String) {
+        viewModel.setStatus(Status.Loaded)
         binding.videoView.visibility = View.GONE
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.settings.allowFileAccess = false

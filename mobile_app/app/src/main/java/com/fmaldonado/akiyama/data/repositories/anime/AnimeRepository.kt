@@ -54,6 +54,10 @@ constructor(
         return networkDataSource.getServers(split.first(), split.last())
     }
 
+    suspend fun getAnimeInfo(fullAnimeId: String, animeTitle: String): Anime {
+        val animeId = fullAnimeId.split("/").last()
+        return networkDataSource.getAnimeInfo(animeId, animeTitle)
+    }
 
     suspend fun makeSearch(search: String) {
         currentSearchQuery = search

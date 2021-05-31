@@ -40,7 +40,6 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getFavorites()
         viewModel.favorites.observe(viewLifecycleOwner, {
             when (it.isEmpty()) {
                 true -> viewModel.currentStatus.value = Status.Empty
