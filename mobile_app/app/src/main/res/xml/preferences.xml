@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Preference
-        android:icon="@drawable/help_outline_icon"
-        android:key="about"
-        android:title="@string/preferences_about_text" />
+        app:icon="@drawable/help_outline_icon"
+        app:key="about"
+        app:title="@string/preferences_about_text" />
     <Preference
-        android:icon="@drawable/twitter_icon"
-        android:key="twitter"
-        android:title="@string/preferences_twitter_text" />
+        app:icon="@drawable/twitter_icon"
+        app:key="twitter"
+        app:title="@string/preferences_twitter_text" />
     <Preference
-        android:icon="@drawable/download_icon"
-        android:key="updates"
-        android:title="@string/preferences_updates_text" />
+        app:icon="@drawable/download_icon"
+        app:key="updates"
+        app:title="@string/preferences_updates_text" />
     <Preference
-        android:icon="@drawable/version_icon"
-        android:key="version"
-        android:title="@string/preferences_version_text" />
+        app:icon="@drawable/version_icon"
+        app:key="version"
+        app:title="@string/preferences_version_text" />
     <Preference
-        android:icon="@drawable/code_icon"
-        android:key="sourceCode"
-        android:title="@string/preferences_source_code_text" />
+        app:icon="@drawable/code_icon"
+        app:key="sourceCode"
+        app:title="@string/preferences_source_code_text" />
 
-</PreferenceScreen>
+</androidx.preference.PreferenceScreen>

@@ -24,9 +24,14 @@
     </style>
 
     <style name="Theme.Akiyama.Fullscreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorPrimaryVariant">@color/blue_700</item>
+        <item name="colorSecondary">@color/blue_200</item>
+        <item name="colorSecondaryVariant">@color/blue_200</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:keepScreenOn">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
 

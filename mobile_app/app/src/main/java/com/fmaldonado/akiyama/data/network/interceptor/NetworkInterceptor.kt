@@ -1,5 +1,6 @@
 package com.fmaldonado.akiyama.data.network.interceptor
 
+import android.util.Log
 import com.fmaldonado.akiyama.data.network.exceptions.AppError
 import com.fmaldonado.akiyama.data.network.exceptions.BadInput
 import com.fmaldonado.akiyama.data.network.exceptions.EmptySearch

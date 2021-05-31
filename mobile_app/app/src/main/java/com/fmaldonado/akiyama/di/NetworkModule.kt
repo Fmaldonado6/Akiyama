@@ -4,6 +4,7 @@ import com.fmaldonado.akiyama.BuildConfig
 import com.fmaldonado.akiyama.data.network.LatestVersionDataSource
 import com.fmaldonado.akiyama.data.network.NetworkDataSource
 import com.fmaldonado.akiyama.data.network.interceptor.NetworkInterceptor
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -61,5 +62,9 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideNetworkInterceptor(): NetworkInterceptor = NetworkInterceptor()
+
+    @Singleton
+    @Provides
+    fun provideGson(): Gson = Gson()
 
 }

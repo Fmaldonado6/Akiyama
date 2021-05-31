@@ -20,16 +20,4 @@ constructor(
     val currentStatus = MutableLiveData(Status.Loading)
     val favorites = favoritesRepository.favorites
 
-    fun getFavorites() {
-        if (favorites.value != null)
-            return
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                favoritesRepository.loadFavorites()
-            } catch (e: Exception) {
-                currentStatus.postValue(Status.Error)
-            }
-        }
-    }
-
 }
