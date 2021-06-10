@@ -1,3 +1,4 @@
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { DarkModeService } from 'src/app/core/services/darkMode/dark-mode.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
@@ -18,24 +19,55 @@ export class SearchComponent implements OnInit {
   constructor(
     private animeService: AnimeService,
     private dialog: MatDialog,
-    private darkModeService: DarkModeService
+    private darkModeService: DarkModeService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
 
+    const query = this.route.snapshot.params.query
+
+    if (query)
+      this.loadPrevious(query)
+    else
+      this.loadInitial()
+  }
+
+  loadPrevious(query: string) {
+
+    if (this.animeService.lastQuery != query)
+      this.search(query)
+    else if (this.animeService.lastSearch.length != 0) {
+      this.results = this.animeService.lastSearch
+      this.currentStatus = Status.loaded
+    } else
+      this.loadInitial()
+
+  }
+
+  loadInitial() {
     if (this.animeService.animes.length == 0)
       this.currentStatus = Status.empty
 
     this.animeService.animeObserver.asObservable().subscribe(e => {
       this.results = e
-      this.currentStatus = Status.loaded
+
+      if (this.results.length != 0)
+        this.currentStatus = Status.loaded
     })
   }
+
   search(query: string) {
 
     this.currentStatus = Status.loading
+
+    this.router.navigate(["/search/" + query])
+
     this.animeService.search(query.toLowerCase()).subscribe(e => {
       this.results = e
+      this.animeService.lastSearch = e
+      this.animeService.lastQuery = query
       this.currentStatus = Status.loaded
     })
   }

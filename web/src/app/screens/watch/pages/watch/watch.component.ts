@@ -1,7 +1,11 @@
+import { DarkModeService } from './../../../../core/services/darkMode/dark-mode.service';
+import { AnimeDetailComponent } from 'src/app/shared/components/anime-detail/anime-detail.component';
+import { AnimeService } from 'src/app/core/services/anime/anime.service';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-watch',
@@ -12,8 +16,11 @@ export class WatchComponent implements OnInit {
   url: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl("");
 
   constructor(
+    private dialog: MatDialog,
+    private router: Router,
     private route: ActivatedRoute,
-    private location: Location,
+    private animeService: AnimeService,
+    private darkModeService: DarkModeService,
     private sanitizer: DomSanitizer,
   ) {
     route.queryParams.subscribe(params => {
@@ -30,7 +37,21 @@ export class WatchComponent implements OnInit {
   }
 
   back() {
-    this.location.back()
+
+    const last = this.animeService.lastRoute
+
+    if (last)
+      this.router.navigate([last])
+    else
+      this.router.navigate(["/"])
+
+    if (this.animeService.lastAnimeOpened)
+      this.dialog.open(AnimeDetailComponent, {
+        data: {
+          anime: this.animeService.lastAnimeOpened,
+        },
+        panelClass: this.darkModeService.enabled.value ? 'modal-dark' : 'modal',
+      })
   }
 
 }

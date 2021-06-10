@@ -17,6 +17,13 @@
   overflow-y: auto;
 }
 
+.episode-loading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
 .background {
   position: absolute;
   height: 300px;

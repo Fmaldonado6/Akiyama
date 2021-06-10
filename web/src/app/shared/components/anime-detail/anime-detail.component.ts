@@ -24,26 +24,51 @@ export class AnimeDetailComponent implements OnInit {
   currentStatus = Status.loading
   isFavorite = false
   expandedSynopsis = false
+
+  episodeStatus = Status.loading
+
   label = {
     favorite: "Remove from favorites",
     notFavorite: "Add to favorites"
   }
+
   icons = {
     favorite: "favorite",
     notFavorite: "favorite_border"
   }
+
   constructor(
     private dialogRef: MatDialogRef<AnimeDetailComponent>,
     private bottomSheet: MatBottomSheet,
     private darkModeService: DarkModeService,
+    private animeService: AnimeService,
     private favoritesService: FavoritesService,
     @Inject(MAT_DIALOG_DATA) private modalData: ModalData
   ) { }
 
   ngOnInit(): void {
     this.anime = this.modalData.anime
+    this.animeService.lastAnimeOpened = this.anime
     this.currentStatus = Status.loaded
     this.isFavorite = this.favoritesService.isFavorite(this.anime)
+
+    if (this.isFavorite)
+      this.getAnimeInfo()
+    else
+      this.episodeStatus = Status.loaded
+  }
+
+  getAnimeInfo() {
+    const id = this.anime.id.split("/").pop()
+    const title = this.anime.title
+
+    this.animeService.getAnimeInfo(id, title).subscribe(e => {
+      this.anime.episodes = e.episodes
+      this.episodeStatus = Status.loaded
+
+    }, () => {
+      this.episodeStatus = Status.loaded
+    })
   }
 
   openServersBottomSheet(episode: Episode) {

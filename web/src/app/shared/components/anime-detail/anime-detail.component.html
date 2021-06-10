@@ -36,21 +36,31 @@
       </div>
       <div class="episodes-container">
         <h3>Episodes</h3>
-        <ng-container *ngFor="let episode of anime.episodes; let i = index">
-          <div
-            class="episode"
-            mat-ripple
-            (click)="openServersBottomSheet(episode)"
-            *ngIf="episode.nextEpisodeDate && i == 0 ? true : i != 0"
-          >
-            <span *ngIf="!episode.nextEpisodeDate"
-              >Episode {{ episode.episode }}</span
+        <ng-container
+          *ngIf="episodeStatus == Status.loaded; else episodeSpinner"
+        >
+          <ng-container *ngFor="let episode of anime.episodes; let i = index">
+            <div
+              class="episode"
+              mat-ripple
+              (click)="openServersBottomSheet(episode)"
+              *ngIf="episode.nextEpisodeDate && i == 0 ? true : i != 0"
             >
-            <span *ngIf="episode.nextEpisodeDate"
-              >Next episode {{ episode.nextEpisodeDate }}</span
-            >
-          </div>
+              <span *ngIf="!episode.nextEpisodeDate"
+                >Episode {{ episode.episode }}</span
+              >
+              <span *ngIf="episode.nextEpisodeDate"
+                >Next episode {{ episode.nextEpisodeDate }}</span
+              >
+            </div>
+          </ng-container>
         </ng-container>
+
+        <ng-template #episodeSpinner>
+          <div class="episode-loading">
+            <mat-spinner [diameter]="30"></mat-spinner>
+          </div>
+        </ng-template>
       </div>
     </div>
   </ng-container>
