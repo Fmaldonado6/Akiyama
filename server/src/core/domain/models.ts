@@ -35,6 +35,7 @@ export class Anime {
     id: string = ""
     title: string = ""
     poster: string = ""
+    banner: string = ""
     synopsis: string = ""
     debut: string = ""
     type: string = ""

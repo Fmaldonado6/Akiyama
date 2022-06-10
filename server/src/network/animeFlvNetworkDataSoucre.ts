@@ -3,7 +3,7 @@ import puppeteer from "puppeteer";
 export class AnimeFlvNetworkDataSource {
 
 
-    protected BASE_URL = "https://www3.animeflv.net/";
+    protected BASE_URL = "https://www3.animeflv.net";
 
 
 

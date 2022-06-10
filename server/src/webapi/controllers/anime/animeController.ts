@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Request, Response } from "express";
 import { AnimeResponse, EpisodesResponse } from "../../../core/domain/models";
 import { animeDataSource } from '../../../network/animeDataSource';
+import { AnimeScrapper } from '../../scrapper/animeScrapper';
 class AnimeController extends BaseController {
 
     BASE_URL = "https://aruppi.jeluchu.xyz/apis/animeflv/v1"
@@ -29,8 +30,10 @@ class AnimeController extends BaseController {
 
             const response = await animeDataSource.getLatestAnimeResponse()
 
+            const scrapper = new AnimeScrapper(response);
+            const animes = await scrapper.getLatestAnimesByResponse();
 
-            res.status(200).send(response)
+            res.status(200).send(animes)
         } catch (error) {
             console.error(error)
             res.sendStatus(500)
@@ -51,10 +54,12 @@ class AnimeController extends BaseController {
 
     async getLatestMovies(req: Request, res: Response) {
         try {
-            const animes = await axios.get<MoviesResponse>(`${this.BASE_URL}/Movies/latest/1`)
+            const response = await animeDataSource.getLatestAnimeResponse("movie")
 
+            const scrapper = new AnimeScrapper(response);
+            const animes = await scrapper.getLatestAnimesByResponse();
 
-            res.status(200).json(animes.data.movies)
+            res.status(200).send(animes)
         } catch (error) {
             console.error(error)
             res.sendStatus(500)
@@ -63,9 +68,12 @@ class AnimeController extends BaseController {
 
     async getLatestSpecials(req: Request, res: Response) {
         try {
-            const animes = await axios.get<SpecialsReponse>(`${this.BASE_URL}/Special/latest/1`)
+            const response = await animeDataSource.getLatestAnimeResponse("special")
 
-            res.status(200).json(animes.data.special)
+            const scrapper = new AnimeScrapper(response);
+            const animes = await scrapper.getLatestAnimesByResponse();
+
+            res.status(200).send(animes)
         } catch (error) {
             console.error(error)
             res.sendStatus(500)
@@ -74,9 +82,12 @@ class AnimeController extends BaseController {
 
     async getLatestOvas(req: Request, res: Response) {
         try {
-            const animes = await axios.get<OvasResponse>(`${this.BASE_URL}/Ova/latest/1`)
+            const response = await animeDataSource.getLatestAnimeResponse("ova")
 
-            res.status(200).json(animes.data.ova)
+            const scrapper = new AnimeScrapper(response);
+            const animes = await scrapper.getLatestAnimesByResponse();
+
+            res.status(200).send(animes)
         } catch (error) {
             console.error(error)
             res.sendStatus(500)
