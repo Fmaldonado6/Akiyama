@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.data.models.content.Episode
+import com.fmaldonado.akiyama.data.network.exceptions.AppError
+import com.fmaldonado.akiyama.data.network.exceptions.NotFoundError
 import com.fmaldonado.akiyama.data.repositories.anime.AnimeRepository
 import com.fmaldonado.akiyama.data.repositories.favorites.FavoritesRepository
 import com.fmaldonado.akiyama.ui.common.FavoritesStatus
@@ -50,9 +52,11 @@ constructor(
             try {
                 val info = animeRepository.getAnimeInfo(anime.id, anime.title)
                 setAnimeEpisodes(info.episodes)
-            } catch (e: Exception) {
-                Log.e("Error", "Error", e)
+            } catch (e: NotFoundError) {
                 setAnimeEpisodes(anime.episodes)
+            }catch(e:AppError){
+                Log.e("Error", "Not Found", e)
+
             }
         }
     }
