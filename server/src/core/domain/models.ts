@@ -34,23 +34,22 @@ export interface ServersResponse {
 export class Anime {
     id: string = ""
     title: string = ""
-    poster: string = ""
-    banner: string = ""
+    image: string = ""
     synopsis: string = ""
-    debut: string = ""
+    status: string = ""
     type: string = ""
     genres: string[] = []
     rating: string = ""
+    nextEpisodeDate?:string 
     episodes: Episode[] = []
 }
 
 export class Episode {
     id: string = ""
     title: string = ""
-    poster: string = ""
+    image: string = ""
     episode: number = 0
     servers?: Server[]
-    nextEpisodeDate?= null
 }
 
 export class Server {
