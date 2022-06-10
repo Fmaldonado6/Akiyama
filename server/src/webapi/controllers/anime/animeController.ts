@@ -3,6 +3,7 @@ import { BaseController } from "../baseController";
 import axios from 'axios'
 import { Request, Response } from "express";
 import { AnimeResponse, EpisodesResponse } from "../../../core/domain/models";
+import { animeDataSource } from '../../../network/animeDataSource';
 class AnimeController extends BaseController {
 
     BASE_URL = "https://aruppi.jeluchu.xyz/apis/animeflv/v1"
@@ -25,9 +26,11 @@ class AnimeController extends BaseController {
 
     async getLatestAnimes(req: Request, res: Response) {
         try {
-            const animes = await axios.get<AnimeResponse>(`${this.BASE_URL}/TV/latest/1`)
 
-            res.status(200).json(animes.data.tv)
+            const response = await animeDataSource.getLatestAnimeResponse()
+
+
+            res.status(200).send(response)
         } catch (error) {
             console.error(error)
             res.sendStatus(500)

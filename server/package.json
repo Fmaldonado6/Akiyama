@@ -10,7 +10,6 @@
     "dev": "nodemon build/webapi/index.js",
     "build": "tsc",
     "postinstall": "npm run build"
-
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +27,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "puppeteer": "^14.3.0"
   }
 }
