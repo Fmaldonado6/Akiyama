@@ -6,7 +6,6 @@ class EpisodeDataSource extends AnimeFlvNetworkDataSource {
         const page = await this.init();
         await page.goto(`${this.BASE_URL}/ver/${episodeId}`);
         await page.waitForSelector("li[title]")
-
         return page?.content();
     }
 

@@ -6,7 +6,7 @@ export class AnimeScrapper extends WebScrapper {
 
     private IMAGE_BASE_URL = "https://www3.animeflv.net"
 
-    getLatestAnimesByResponse(): Anime[] {
+    getAnimesByResponse(): Anime[] {
         const animeList = this.$(".ListAnimes").first();
 
         const animeElements = this.$(animeList).find("li");
@@ -16,7 +16,7 @@ export class AnimeScrapper extends WebScrapper {
             const animeData = this.$(animeElement)
             const anime = new Anime();
 
-            anime.title = animeData.find(".Title").text();
+            anime.title = animeData.find(".Title").first().text();
             const imageUrl = animeData.find("img").attr("src") ?? null;
             anime.image = imageUrl ?? "";
             anime.id = animeData.find("a").first().attr("href")?.split("/").pop() ?? "";

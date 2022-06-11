@@ -30,10 +30,10 @@ class AnimeController extends BaseController {
     async getLatestAnimes(req: Request, res: Response) {
         try {
 
-            const response = await animeDataSource.getLatestAnimeResponse()
+            const response = await animeDataSource.getAnimeResponse()
 
             const scrapper = new AnimeScrapper(response);
-            const animes = scrapper.getLatestAnimesByResponse();
+            const animes = scrapper.getAnimesByResponse();
 
             res.status(200).send(animes)
         } catch (error) {
@@ -56,10 +56,10 @@ class AnimeController extends BaseController {
 
     async getLatestMovies(req: Request, res: Response) {
         try {
-            const response = await animeDataSource.getLatestAnimeResponse("movie")
+            const response = await animeDataSource.getAnimeResponse("movie")
 
             const scrapper = new AnimeScrapper(response);
-            const animes = scrapper.getLatestAnimesByResponse();
+            const animes = scrapper.getAnimesByResponse();
 
             res.status(200).send(animes)
         } catch (error) {
@@ -70,10 +70,10 @@ class AnimeController extends BaseController {
 
     async getLatestSpecials(req: Request, res: Response) {
         try {
-            const response = await animeDataSource.getLatestAnimeResponse("special")
+            const response = await animeDataSource.getAnimeResponse("special")
 
             const scrapper = new AnimeScrapper(response);
-            const animes = scrapper.getLatestAnimesByResponse();
+            const animes = scrapper.getAnimesByResponse();
 
             res.status(200).send(animes)
         } catch (error) {
@@ -84,10 +84,10 @@ class AnimeController extends BaseController {
 
     async getLatestOvas(req: Request, res: Response) {
         try {
-            const response = await animeDataSource.getLatestAnimeResponse("ova")
+            const response = await animeDataSource.getAnimeResponse("ova")
 
             const scrapper = new AnimeScrapper(response);
-            const animes = scrapper.getLatestAnimesByResponse();
+            const animes = scrapper.getAnimesByResponse();
 
             res.status(200).send(animes)
         } catch (error) {
@@ -114,7 +114,6 @@ class AnimeController extends BaseController {
             const response = await animeDataSource.getAnimeInfo(animeId);
             const scrapper = new AnimeScrapper(response);
             const animeInfo = scrapper.getAnimeInfo();
-            console.log(animeId)
             animeInfo.id = animeId;
             res.status(200).json(animeInfo)
 
@@ -130,10 +129,11 @@ class AnimeController extends BaseController {
         try {
             const search = req.params.search
 
-            const animes = await axios.get<SearchResponse>(`${this.BASE_URL}/Search/${search}`)
+            const response = await animeDataSource.getSearchResults(search)
 
-            res.status(200).json(animes.data.search)
-
+            const scrapper = new AnimeScrapper(response);
+            const animes = scrapper.getAnimesByResponse();
+            res.status(200).json(animes)
         } catch (error) {
             console.error(error)
             res.sendStatus(500)
