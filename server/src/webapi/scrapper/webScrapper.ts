@@ -3,6 +3,7 @@ import cheerio from 'cheerio'
 export class WebScrapper {
 
     private _$?: cheerio.Root
+    protected IMAGE_BASE_URL = "https://www3.animeflv.net"
 
     protected get $() {
 

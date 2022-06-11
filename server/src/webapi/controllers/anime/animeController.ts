@@ -1,15 +1,10 @@
 import { EpisodeScrapper } from './../../scrapper/episodeScrapper';
-import { OvasResponse, SpecialsReponse, AnimeInfo, MoviesResponse, SearchResponse, ServersResponse } from './../../../core/domain/models';
 import { BaseController } from "../baseController";
-import axios from 'axios'
 import { Request, Response } from "express";
-import { AnimeResponse, EpisodesResponse } from "../../../core/domain/models";
 import { animeDataSource } from '../../../network/animeDataSource';
 import { AnimeScrapper } from '../../scrapper/animeScrapper';
 import { episodeDataSource } from '../../../network/episodeDataSource';
 class AnimeController extends BaseController {
-
-    BASE_URL = "https://aruppi.jeluchu.xyz/apis/animeflv/v1"
 
     constructor() {
         super()
@@ -44,9 +39,11 @@ class AnimeController extends BaseController {
 
     async getLatestEpisodes(req: Request, res: Response) {
         try {
-            const animes = await axios.get<EpisodesResponse>(`${this.BASE_URL}/LatestEpisodesAdded`)
 
-            res.status(200).json(animes.data.episodes)
+            const response = await episodeDataSource.getLatestEpisodes();
+            const scrapper = new EpisodeScrapper(response)
+            const latestEpisodes = scrapper.getLatestEpisodesFromResponse();
+            res.status(200).send(latestEpisodes)
         } catch (error) {
             console.error(error)
             res.sendStatus(500)

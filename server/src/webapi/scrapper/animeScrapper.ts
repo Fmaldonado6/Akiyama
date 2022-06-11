@@ -4,7 +4,6 @@ import axios from "axios";
 import { StringUtils } from "../utils/utils";
 export class AnimeScrapper extends WebScrapper {
 
-    private IMAGE_BASE_URL = "https://www3.animeflv.net"
 
     getAnimesByResponse(): Anime[] {
         const animeList = this.$(".ListAnimes").first();
