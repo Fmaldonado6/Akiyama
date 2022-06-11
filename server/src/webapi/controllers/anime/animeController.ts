@@ -1,3 +1,4 @@
+import { EpisodeScrapper } from './../../scrapper/episodeScrapper';
 import { OvasResponse, SpecialsReponse, AnimeInfo, MoviesResponse, SearchResponse, ServersResponse } from './../../../core/domain/models';
 import { BaseController } from "../baseController";
 import axios from 'axios'
@@ -5,6 +6,7 @@ import { Request, Response } from "express";
 import { AnimeResponse, EpisodesResponse } from "../../../core/domain/models";
 import { animeDataSource } from '../../../network/animeDataSource';
 import { AnimeScrapper } from '../../scrapper/animeScrapper';
+import { episodeDataSource } from '../../../network/episodeDataSource';
 class AnimeController extends BaseController {
 
     BASE_URL = "https://aruppi.jeluchu.xyz/apis/animeflv/v1"
@@ -17,7 +19,7 @@ class AnimeController extends BaseController {
     config() {
         this.router.get("/latest", (req, res) => this.getLatestAnimes(req, res))
         this.router.get("/episodes", (req, res) => this.getLatestEpisodes(req, res))
-        this.router.get("/episodes/:id/:title", (req, res) => this.getEpisodeServers(req, res))
+        this.router.get("/episodes/:episodeId", (req, res) => this.getEpisodeServers(req, res))
         this.router.get("/specials", (req, res) => this.getLatestSpecials(req, res))
         this.router.get("/ovas", (req, res) => this.getLatestOvas(req, res))
         this.router.get("/movies", (req, res) => this.getLatestMovies(req, res))
@@ -96,13 +98,11 @@ class AnimeController extends BaseController {
 
     async getEpisodeServers(req: Request, res: Response) {
         try {
-            const animeId = req.params.id
-            const animeTitle = req.params.title
-
-            console.log(animeId)
-            const servers = await axios.get<ServersResponse>(`${this.BASE_URL}/GetAnimeServers/${animeId}/${animeTitle}`)
-
-            res.status(200).json(servers.data.servers)
+            const episodeId = req.params.episodeId;
+            const response = await episodeDataSource.getEpisodeServers(episodeId)
+            const scrapper = new EpisodeScrapper(response)
+            const servers = scrapper.getEpisodeServersFromResponse()
+            res.status(200).json(servers)
         } catch (error) {
 
         }
@@ -117,15 +117,7 @@ class AnimeController extends BaseController {
             console.log(animeId)
             animeInfo.id = animeId;
             res.status(200).json(animeInfo)
-            // const animeTitle = req.params.animeTitle
-            // const animes = await axios.get<SearchResponse>(`${this.BASE_URL}/Search/${animeTitle.toLowerCase()}`)
 
-            // for (let anime of animes.data.search) {
-            //     if (anime.id == `anime/${animeId}`)
-            //         return res.status(200).json(anime)
-            // }
-
-            // res.sendStatus(404)
 
         } catch (error) {
             console.error(error)

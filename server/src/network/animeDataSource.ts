@@ -9,7 +9,7 @@ class AnimeDataSource extends AnimeFlvNetworkDataSource {
     }
     async getAnimeInfo(animeId: string): Promise<string | undefined> {
         const page = await this.init();
-        const response = await page.goto(`${this.BASE_URL}/anime/${animeId}`);
+        await page.goto(`${this.BASE_URL}/anime/${animeId}`);
         await page.waitForSelector(".lazy")
         return page?.content();
 

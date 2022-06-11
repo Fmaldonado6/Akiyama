@@ -53,8 +53,8 @@ export class Episode {
 }
 
 export class Server {
-    server: string = ""
     title: string = ""
+    serverCode: string = ""
     allowMobile: boolean = false
-    code: string = ""
+    url: string = ""
 }
