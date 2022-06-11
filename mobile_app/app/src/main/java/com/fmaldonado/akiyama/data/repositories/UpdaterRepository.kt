@@ -1,4 +1,4 @@
-package com.fmaldonado.akiyama.data.repositories.updater
+package com.fmaldonado.akiyama.data.repositories
 
 
 import androidx.lifecycle.MutableLiveData

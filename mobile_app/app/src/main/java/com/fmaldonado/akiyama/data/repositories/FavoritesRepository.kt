@@ -1,4 +1,4 @@
-package com.fmaldonado.akiyama.data.repositories.favorites
+package com.fmaldonado.akiyama.data.repositories
 
 import androidx.lifecycle.MutableLiveData
 import com.fmaldonado.akiyama.data.models.content.Anime
@@ -44,7 +44,7 @@ constructor(
         return favoritesDao.favoriteExists(id) != null
     }
 
-    suspend fun loadFavorites() {
+    private suspend fun loadFavorites() {
         val favorites = favoritesDao.getFavoritesDao()
         val animes = FavoritesMapper.favoritesListToAnimeListMapper(favorites)
         _favorites.addAll(animes)

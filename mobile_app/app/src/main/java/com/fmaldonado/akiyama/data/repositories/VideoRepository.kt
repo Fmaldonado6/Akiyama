@@ -1,6 +1,5 @@
-package com.fmaldonado.akiyama.data.repositories.videos
+package com.fmaldonado.akiyama.data.repositories
 
-import android.util.Log
 import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.data.models.video.ServerTypes
 import com.fmaldonado.akiyama.data.models.video.VideoResponse
