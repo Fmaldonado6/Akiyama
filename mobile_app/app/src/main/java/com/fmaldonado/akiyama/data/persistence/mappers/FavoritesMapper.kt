@@ -18,8 +18,8 @@ object FavoritesMapper {
             id = anime.id,
             title = anime.title,
             rating = anime.rating,
-            debut = anime.debut,
-            poster = anime.poster,
+            debut = anime.status,
+            poster = anime.image,
             synopsis = anime.synopsis,
             type = anime.type,
             genres = anime.genres
@@ -43,7 +43,7 @@ object FavoritesMapper {
 
     }
 
-    fun favoriteToAnimeMapper(favorite: FavoritesWithEpisodesEntity): Anime {
+    private fun favoriteToAnimeMapper(favorite: FavoritesWithEpisodesEntity): Anime {
 
         val episodes = mutableListOf<Episode>()
 
@@ -61,12 +61,13 @@ object FavoritesMapper {
             id = favorite.anime.id,
             title = favorite.anime.title,
             type = favorite.anime.type,
-            debut = favorite.anime.debut,
+            status = favorite.anime.debut,
             synopsis = favorite.anime.synopsis,
-            poster = favorite.anime.poster,
+            image = favorite.anime.poster,
             rating = favorite.anime.rating,
             episodes = episodes,
-            genres = favorite.anime.genres
+            genres = favorite.anime.genres,
+            nextEpisodeDate = ""
         )
 
 

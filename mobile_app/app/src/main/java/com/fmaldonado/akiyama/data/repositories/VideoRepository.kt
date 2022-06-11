@@ -13,14 +13,14 @@ constructor(
 ) {
 
     suspend fun getVideoUrl(server: Server): VideoResponse {
-        return when (server.server) {
-            ServerTypes.GoCdn.value -> getGoCdnVideo(server.code)
-            ServerTypes.Fembed.value -> getFembedVideo(server.code)
-            else -> VideoResponse(server.code, true)
+        return when (server.serverCode) {
+            ServerTypes.GoCdn.value -> getGoCdnVideo(server.url)
+            ServerTypes.Fembed.value -> getFembedVideo(server.url)
+            else -> VideoResponse(server.url, true)
         }
     }
 
-    suspend fun getGoCdnVideo(url: String): VideoResponse {
+    private suspend fun getGoCdnVideo(url: String): VideoResponse {
         val value = url.split("#").last()
         return videoDataSource.fetchGocdnVideo(value)
     }
