@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/anime_background.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/anime_cover.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/favorite_tinted_icon.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/favorites_icon_outline.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/help_icon.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/help_outline_icon.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/light_ripple.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/rounded_border.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/rounded_light_ripple.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/rounded_textfield.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/search_icon.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/twitter_icon.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/version_icon.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/activity_main.xml" value="0.34479166666666666" />
       </map>
     </option>
