@@ -9,6 +9,7 @@ import coil.transform.RoundedCornersTransformation
 import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.data.models.content.MainScreenContent
 import com.fmaldonado.akiyama.databinding.ActivityDetailBinding
+import com.fmaldonado.akiyama.ui.activities.detail.adapters.GenreAdapter
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,6 +36,7 @@ class DetailActivity : AppCompatActivity() {
         viewModel.getAnimeInfoData().observe(this) {
             binding.description.text = it.synopsis
             binding.animeStatus.text = it.status
+            setupGenres(it.genres)
         }
 
         viewModel.getStatus().observe(this) {
@@ -53,5 +55,10 @@ class DetailActivity : AppCompatActivity() {
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
+    }
+
+    private fun setupGenres(genres: List<String>) {
+        val adapter = GenreAdapter(genres)
+        binding.genres.adapter = adapter
     }
 }
