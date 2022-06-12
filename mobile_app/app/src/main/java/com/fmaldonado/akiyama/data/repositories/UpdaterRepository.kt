@@ -56,7 +56,7 @@ constructor(
             val asset = it.assets.firstOrNull() ?: throw Exception()
             val req = Request.Builder().url(asset.browser_download_url).build()
             val res = okHttpClient.newCall(req).await()
-            val bytes = res.body()?.byteStream() ?: throw Exception()
+            val bytes = res.body?.byteStream() ?: throw Exception()
             val file = File(application.externalCacheDir, "update.apk")
             bytes.copyTo(file.outputStream())
             newVersionUri.postValue(file)

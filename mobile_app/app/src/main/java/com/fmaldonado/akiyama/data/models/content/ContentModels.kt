@@ -12,6 +12,15 @@ data class Server(
 ) : Parcelable
 
 @Parcelize
+data class MainScreenContent(
+    val id: String = "",
+    val subtitle: String = "",
+    val title: String = "",
+    val image: String = "",
+    val type: MainScreenContentType = MainScreenContentType.Anime
+) : Parcelable
+
+@Parcelize
 data class Episode(
     val id: String = "",
     val title: String = "",
@@ -33,3 +42,9 @@ data class Anime(
     val nextEpisodeDate: String?,
     val episodes: List<Episode> = mutableListOf()
 ) : Parcelable
+
+
+enum class MainScreenContentType {
+    Episode,
+    Anime
+}

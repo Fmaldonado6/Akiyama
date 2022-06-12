@@ -31,16 +31,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         createSections()
 
-        viewModel.getLatestEpisodes(true)
 
         LatestAnimeSections.values().forEach {
-            if (it == LatestAnimeSections.LatestEpisodes) return@forEach
             viewModel.getAnimeSection(true, it)
         }
 
         viewModel.getLatestAnimeData().observe(viewLifecycleOwner) {
             val section = sections[it.first.ordinal]
-            section.setContent(animes = it.second, episodes = it.third)
+            section.setContent(it.second)
         }
 
         viewModel.getLatestAnimeStatus().observe(viewLifecycleOwner) {

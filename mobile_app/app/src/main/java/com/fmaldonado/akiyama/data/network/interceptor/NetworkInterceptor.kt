@@ -15,14 +15,14 @@ class NetworkInterceptor : Interceptor {
         if (response.isSuccessful)
             return response
 
-        if (response.code() == 400)
-            throw BadInput(response.body())
-        if (response.code() == 404)
-            throw NotFoundError(response.body())
+        if (response.code == 400)
+            throw BadInput(response.body)
+        if (response.code == 404)
+            throw NotFoundError(response.body)
 
-        if (response.code() == 500)
-            throw  EmptySearch(response.body())
-        throw  AppError(response.body())
+        if (response.code == 500)
+            throw  EmptySearch(response.body)
+        throw  AppError(response.body)
 
     }
 }
