@@ -19,8 +19,9 @@
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_favorites.xml" value="0.25" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_home.xml" value="0.22" />
-        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_latest_anime.xml" value="0.34479166666666666" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_latest_anime.xml" value="0.33" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_more.xml" value="0.34479166666666666" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/latest_anime_item.xml" value="0.34479166666666666" />
       </map>
     </option>
   </component>
