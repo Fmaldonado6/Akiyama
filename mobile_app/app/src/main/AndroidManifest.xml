@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Akiyama"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activities.detail.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
             android:theme="@style/Theme.Akiyama.OpenSource" />
         <activity
