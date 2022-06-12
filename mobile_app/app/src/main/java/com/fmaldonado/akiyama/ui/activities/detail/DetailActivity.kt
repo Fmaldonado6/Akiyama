@@ -7,8 +7,10 @@ import androidx.core.view.WindowCompat
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.fmaldonado.akiyama.R
+import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.data.models.content.MainScreenContent
 import com.fmaldonado.akiyama.databinding.ActivityDetailBinding
+import com.fmaldonado.akiyama.ui.activities.detail.adapters.EpisodesAdapter
 import com.fmaldonado.akiyama.ui.activities.detail.adapters.GenreAdapter
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,6 +39,7 @@ class DetailActivity : AppCompatActivity() {
             binding.description.text = it.synopsis
             binding.animeStatus.text = it.status
             setupGenres(it.genres)
+            setupEpisodes(it.episodes)
         }
 
         viewModel.getStatus().observe(this) {
@@ -53,6 +56,8 @@ class DetailActivity : AppCompatActivity() {
                     resources.getString(R.string.more_text)
         }
 
+        binding.toolbar.setNavigationOnClickListener { finish() }
+
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
     }
@@ -60,5 +65,10 @@ class DetailActivity : AppCompatActivity() {
     private fun setupGenres(genres: List<String>) {
         val adapter = GenreAdapter(genres)
         binding.genres.adapter = adapter
+    }
+
+    private fun setupEpisodes(episodes: List<Episode>) {
+        val adapter = EpisodesAdapter(episodes)
+        binding.episodeList.adapter = adapter
     }
 }

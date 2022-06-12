@@ -1,6 +1,7 @@
 package com.fmaldonado.akiyama.ui.fragments.latestAnime
 
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,12 +18,14 @@ class LatestAnimeFragment : Fragment() {
 
     private lateinit var binding: FragmentLatestAnimeBinding
     private var title: String = "Titulo"
+    private var smallSection = false
     private var animeList: List<MainScreenContent>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             val title = it.getString(ParcelableKeys.TITLE_PARCELABLE) ?: "Titulo"
+            smallSection = it.getBoolean(ParcelableKeys.SMALL_SECTION_PARCEL)
             this.title = title
         }
     }
@@ -31,14 +34,32 @@ class LatestAnimeFragment : Fragment() {
         @JvmStatic
         fun newInstance(
             title: String = "Titulo",
+            smallSection: Boolean = false
         ) =
             LatestAnimeFragment().apply {
                 val bundle = Bundle()
                 bundle.putString(ParcelableKeys.TITLE_PARCELABLE, title)
+                bundle.putBoolean(ParcelableKeys.SMALL_SECTION_PARCEL, smallSection)
+
                 arguments = bundle
             }
     }
 
+    private fun setSmall() {
+        val smallHeight = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            100f,
+            resources.displayMetrics
+        )
+        val listParams = binding.animeList.layoutParams
+        val statusParams = binding.progressBar.layoutParams
+
+        listParams.height = smallHeight.toInt()
+        statusParams.height = smallHeight.toInt()
+
+        binding.animeList.layoutParams = listParams
+        binding.progressBar.layoutParams = statusParams
+    }
 
     fun setContent(
         animes: List<MainScreenContent>? = null
@@ -64,6 +85,7 @@ class LatestAnimeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.title.text = title
         binding.status = Status.Loading
+        if (smallSection) setSmall()
     }
 
     private fun setupRecycler() {

@@ -1,9 +1,10 @@
 package com.fmaldonado.akiyama.ui.common
 
 object ParcelableKeys {
-    val EPISODE_PARCELABLE = "episode-parcelable"
-    val TITLE_PARCELABLE = "title-parcelable"
-    val ANIME_PARCELABLE = "anime-parcelable"
-    val SERVER_PARCELABLE = "server-parcelable"
+    const val EPISODE_PARCELABLE = "episode-parcelable"
+    const val TITLE_PARCELABLE = "title-parcelable"
+    const val ANIME_PARCELABLE = "anime-parcelable"
+    const val SMALL_SECTION_PARCEL = "small-section-parcelable"
+    const val SERVER_PARCELABLE = "server-parcelable"
 }
 

@@ -61,23 +61,28 @@ class HomeFragment : Fragment() {
 
         sections.clear()
         sections = LatestAnimeSections.values().map {
-            createLatestAnimeFragment(it.title)
+            createLatestAnimeFragment(it.title, it.smallSection)
+
         }.toMutableList()
     }
 
-    private fun createLatestAnimeFragment(title: String): LatestAnimeFragment {
-        val fragment = LatestAnimeFragment.newInstance(title = title)
+    private fun createLatestAnimeFragment(
+        title: String,
+        smallSection: Boolean
+    ): LatestAnimeFragment {
+        val fragment = LatestAnimeFragment.newInstance(title, smallSection)
         childFragmentManager.beginTransaction()
             .add(binding.latestAnimeContainer.id, fragment, title)
             .commit()
+
 
         return fragment
     }
 
 }
 
-enum class LatestAnimeSections(val title: String) {
-    LatestEpisodes("Latest Episodes"),
+enum class LatestAnimeSections(val title: String, val smallSection: Boolean = false) {
+    LatestEpisodes("Latest Episodes", true),
     LatestAnime("Latest Anime"),
     LatestMovies("Latest Movies"),
     LatestOvas("Latest Ovas"),

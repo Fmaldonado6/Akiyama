@@ -22,8 +22,7 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
+            android:layout_height="wrap_content"
             android:padding="0dp">
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -49,7 +48,7 @@
                         tools:srcCompat="@tools:sample/avatars" />
 
                     <androidx.appcompat.widget.Toolbar
-                        android:id="@+id/toolbar2"
+                        android:id="@+id/toolbar"
                         android:layout_width="0dp"
                         android:layout_height="100dp"
                         android:layout_marginTop="20dp"
@@ -68,7 +67,7 @@
                         android:layout_marginTop="00dp"
                         android:scaleType="centerCrop"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+                        app:layout_constraintTop_toBottomOf="@+id/toolbar"
                         tools:srcCompat="@tools:sample/avatars" />
 
                     <TextView
@@ -85,7 +84,7 @@
                         app:layout_constraintBottom_toTopOf="@+id/animeStatus"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/poster"
-                        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+                        app:layout_constraintTop_toBottomOf="@+id/toolbar"
                         app:layout_constraintVertical_chainStyle="packed" />
 
                     <TextView
@@ -149,7 +148,6 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="10dp"
                         android:ellipsize="end"
                         android:padding="5dp"
                         android:text="@string/more_text"
@@ -170,7 +168,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:layout_marginRight="20dp"
                         android:text="@string/episodes_text"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
@@ -178,8 +176,10 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/episodeList"
                         android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:nestedScrollingEnabled="false"
+                        android:paddingBottom="50dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
