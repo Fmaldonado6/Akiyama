@@ -22,10 +22,13 @@ constructor(
     private val latestAnimeRepository: LatestAnimeRepository
 ) : ViewModel() {
 
-    private val latestAnimeData =
-        MutableLiveData<Pair<LatestAnimeSections, List<MainScreenContent>>>()
+    private val latestAnimeData = LatestAnimeSections.values().map {
+        MutableLiveData<List<MainScreenContent>>()
+    }
 
-    private val latestAnimeStatus = MutableLiveData<Pair<LatestAnimeSections, Status>>()
+    private val latestAnimeStatus = LatestAnimeSections.values().map {
+        MutableLiveData<Status>()
+    }
 
     private val animeRepositoryFunctions = listOf<suspend (Boolean) -> List<MainScreenContent>>(
         latestAnimeRepository::getLatestEpisodes,
@@ -35,20 +38,18 @@ constructor(
         latestAnimeRepository::getLatestSpecials
     )
 
-    fun getLatestAnimeData() =
-        latestAnimeData as LiveData<Pair<LatestAnimeSections, List<MainScreenContent>>>
+    fun getLatestAnimeData() = latestAnimeData as List<LiveData<List<MainScreenContent>>>
 
-    fun getLatestAnimeStatus() = latestAnimeStatus as LiveData<Pair<LatestAnimeSections, Status>>
+    fun getLatestAnimeStatus() = latestAnimeStatus as List<LiveData<Status>>
 
     fun getAnimeSection(shouldFetch: Boolean, section: LatestAnimeSections) {
         viewModelScope.launch(Dispatchers.IO) {
-            latestAnimeStatus.postValue(Pair(section, Status.Loading))
+            latestAnimeStatus[section.ordinal].postValue(Status.Loading)
 
             try {
                 val animes = animeRepositoryFunctions[section.ordinal](shouldFetch)
-                latestAnimeData.postValue(Pair(section, animes))
-                latestAnimeStatus.postValue(Pair(section, Status.Loaded))
-
+                latestAnimeData[section.ordinal].postValue(animes)
+                latestAnimeStatus[section.ordinal].postValue(Status.Loaded)
             } catch (e: Exception) {
 
             }

@@ -11,6 +11,7 @@
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/help_outline_icon.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/light_ripple.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/rounded_border.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/rounded_image.xml" value="0.214" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/rounded_light_ripple.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/rounded_textfield.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/search_icon.xml" value="0.2135" />
@@ -21,7 +22,7 @@
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_latest_anime.xml" value="0.22" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_more.xml" value="0.34479166666666666" />
-        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/latest_anime_item.xml" value="0.34479166666666666" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/latest_anime_item.xml" value="0.5" />
       </map>
     </option>
   </component>

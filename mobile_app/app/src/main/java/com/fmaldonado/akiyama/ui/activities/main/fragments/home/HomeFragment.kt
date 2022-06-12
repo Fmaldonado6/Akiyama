@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.children
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import com.fmaldonado.akiyama.R
@@ -17,7 +18,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
 
-    private lateinit var sections: List<LatestAnimeFragment>
+    private var sections: MutableList<LatestAnimeFragment> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,31 +34,41 @@ class HomeFragment : Fragment() {
 
 
         LatestAnimeSections.values().forEach {
-            viewModel.getAnimeSection(true, it)
+            viewModel.getAnimeSection(false, it)
         }
 
-        viewModel.getLatestAnimeData().observe(viewLifecycleOwner) {
-            val section = sections[it.first.ordinal]
-            section.setContent(it.second)
+        viewModel.getLatestAnimeData().forEachIndexed { index, item ->
+            item.observe(viewLifecycleOwner) {
+                val section = sections[index]
+                section.setContent(it)
+            }
         }
 
-        viewModel.getLatestAnimeStatus().observe(viewLifecycleOwner) {
-            val section = sections[it.first.ordinal]
-            section.setStatus(it.second)
+        viewModel.getLatestAnimeStatus().forEachIndexed { index, item ->
+            item.observe(viewLifecycleOwner) {
+                val section = sections[index]
+                section.setStatus(it)
+            }
         }
 
     }
 
     private fun createSections() {
+
+        childFragmentManager.fragments.forEach {
+            childFragmentManager.beginTransaction().remove(it).commit()
+        }
+
+        sections.clear()
         sections = LatestAnimeSections.values().map {
             createLatestAnimeFragment(it.title)
-        }
+        }.toMutableList()
     }
 
     private fun createLatestAnimeFragment(title: String): LatestAnimeFragment {
         val fragment = LatestAnimeFragment.newInstance(title = title)
         childFragmentManager.beginTransaction()
-            .add(binding.latestAnimeContainer.id, fragment)
+            .add(binding.latestAnimeContainer.id, fragment, title)
             .commit()
 
         return fragment
