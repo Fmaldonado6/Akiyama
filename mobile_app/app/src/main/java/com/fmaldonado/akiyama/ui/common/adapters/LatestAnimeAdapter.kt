@@ -1,6 +1,8 @@
 package com.fmaldonado.akiyama.ui.common.adapters
 
+import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +11,7 @@ import coil.transform.RoundedCornersTransformation
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.data.models.content.MainScreenContent
+import com.fmaldonado.akiyama.data.models.content.MainScreenContentType
 import com.fmaldonado.akiyama.databinding.LatestAnimeItemBinding
 import com.fmaldonado.akiyama.ui.activities.detail.DetailActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
@@ -44,12 +47,23 @@ class LatestAnimeAdapter(
         }
 
         holder.binding.image.setOnClickListener {
-            val context = holder.binding.root.context
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra(ParcelableKeys.ANIME_PARCELABLE, anime)
-            context.startActivity(intent)
+            if (anime.type == MainScreenContentType.Anime)
+                changeToDetail(anime, holder.binding.root.context)
+            else
+                openServerBottomSheet(anime)
         }
     }
+
+    private fun changeToDetail(anime: MainScreenContent, context: Context) {
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra(ParcelableKeys.ANIME_PARCELABLE, anime)
+        context.startActivity(intent)
+    }
+
+    private fun openServerBottomSheet(episode: MainScreenContent) {
+
+    }
+
 
     override fun getItemCount(): Int = animes.size
 
