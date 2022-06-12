@@ -70,5 +70,7 @@
 
     <string name="icon_credits"><a class="link" href='https://pngtree.com/so/coffee-mug-clipart'>coffee mug clipart png from pngtree.com</a></string>
     <string name="title_activity_main">MainActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
