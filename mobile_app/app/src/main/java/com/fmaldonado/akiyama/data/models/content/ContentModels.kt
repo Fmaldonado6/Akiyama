@@ -39,7 +39,7 @@ data class Anime(
     val status: String = "",
     val rating: String = "",
     val genres: List<String> = mutableListOf(),
-    val nextEpisodeDate: String?,
+    val nextEpisodeDate: String? = null,
     val episodes: List<Episode> = mutableListOf()
 ) : Parcelable
 

@@ -39,6 +39,7 @@ class LatestAnimeFragment : Fragment() {
             }
     }
 
+
     fun setContent(
         animes: List<MainScreenContent>? = null
     ) {

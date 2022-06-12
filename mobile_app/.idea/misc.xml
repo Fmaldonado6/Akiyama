@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/anime_background.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/anime_cover.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/fade_image.xml" value="0.214" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/favorite_tinted_icon.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/favorites_icon_outline.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/help_icon.xml" value="0.2135" />
@@ -17,6 +18,7 @@
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/search_icon.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/twitter_icon.xml" value="0.2135" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/drawable/version_icon.xml" value="0.2135" />
+        <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_favorites.xml" value="0.25" />
         <entry key="..\:/Escritorio/Programacion/Otros/Akiyama/mobile_app/app/src/main/res/layout/fragment_home.xml" value="0.22" />

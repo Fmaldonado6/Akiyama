@@ -2,14 +2,56 @@ package com.fmaldonado.akiyama.ui.activities.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.core.view.WindowCompat
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.fmaldonado.akiyama.R
+import com.fmaldonado.akiyama.data.models.content.MainScreenContent
 import com.fmaldonado.akiyama.databinding.ActivityDetailBinding
+import com.fmaldonado.akiyama.ui.common.ParcelableKeys
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
+    private val viewModel: DetailViewModel by viewModels()
+    private var expandedSynopsis = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val content = intent.getParcelableExtra<MainScreenContent>(ParcelableKeys.ANIME_PARCELABLE)
+        content?.let {
+            binding.cover.load(content.image)
+            binding.poster.load(content.image) {
+                transformations(RoundedCornersTransformation(10f))
+            }
+            binding.title.text = content.title
+            viewModel.getAnimeInfo(it)
+        }
+
+        viewModel.getAnimeInfoData().observe(this) {
+            binding.description.text = it.synopsis
+            binding.animeStatus.text = it.status
+        }
+
+        viewModel.getStatus().observe(this) {
+            binding.status = it
+        }
+
+        binding.moreButton.setOnClickListener {
+            expandedSynopsis = !expandedSynopsis
+            binding.description.maxLines = if (expandedSynopsis) Integer.MAX_VALUE else 3
+            binding.moreButton.text =
+                if (expandedSynopsis)
+                    resources.getString(R.string.less_text)
+                else
+                    resources.getString(R.string.more_text)
+        }
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
     }
 }
