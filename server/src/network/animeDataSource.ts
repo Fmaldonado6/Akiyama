@@ -12,14 +12,18 @@ class AnimeDataSource extends AnimeFlvNetworkDataSource {
         const page = await this.init();
         await page.goto(`${this.BASE_URL}/anime/${animeId}`);
         await page.waitForSelector(".lazy")
-        return page?.content();
+        const content = await page?.content();
+        await page.close();
+        return content
 
     }
 
     async getSearchResults(query: string) {
         const page = await this.init();
         const response = await page.goto(`${this.BASE_URL}/browse?q=${query}`);
-        return response?.text();
+        const content = await response?.text();
+        await page.close();
+        return content
     }
 
 }
