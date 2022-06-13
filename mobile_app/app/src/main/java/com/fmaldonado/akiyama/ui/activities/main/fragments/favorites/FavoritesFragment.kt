@@ -12,6 +12,7 @@ import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.databinding.FragmentFavoritesBinding
 import com.fmaldonado.akiyama.ui.activities.detail.DetailActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
+import com.fmaldonado.akiyama.ui.common.Status
 import com.fmaldonado.akiyama.ui.common.adapters.SearchResultAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,6 +34,8 @@ class FavoritesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.favorites.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) binding.currentStatus = Status.Empty
+            else binding.currentStatus = Status.Loaded
             setupFavorites(it)
         }
     }

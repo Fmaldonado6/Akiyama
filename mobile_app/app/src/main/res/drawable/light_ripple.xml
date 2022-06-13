@@ -7,7 +7,7 @@
         android:id="@android:id/mask"
         android:gravity="center">
         <shape android:shape="rectangle">
-            <corners android:radius="10dp"/>
+            <corners android:radius="15dp"/>
             <solid android:color="@android:color/black" />
         </shape>
     </item>

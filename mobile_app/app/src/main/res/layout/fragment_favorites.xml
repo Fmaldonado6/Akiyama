@@ -3,6 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="com.fmaldonado.akiyama.ui.common.Status" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="currentStatus"
+            type="Status" />
+    </data>
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -21,7 +32,6 @@
                 style="?attr/collapsingToolbarLayoutLargeStyle"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/collapsingToolbarLayoutMediumSize"
-                app:contentScrim="?colorSurfaceVariant"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:title="@string/favorites_menu">
 
@@ -32,12 +42,33 @@
                     android:layout_height="60dp"
                     app:layout_collapseMode="pin" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <TextView
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_textfield"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/light_ripple"
+                android:padding="15dp"
+                android:text="@string/search_favorites_text"
+                android:textSize="16sp"
+                app:drawableEndCompat="@drawable/search_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
+            android:visibility="@{currentStatus == Status.Loaded ? View.VISIBLE : View.GONE}"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             tools:ignore="SpeakableTextPresentCheck">
 
@@ -45,10 +76,18 @@
                 android:id="@+id/favorites"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </androidx.core.widget.NestedScrollView>
+
+        <include
+            layout="@layout/empty_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{currentStatus == Status.Empty ? View.VISIBLE : View.GONE}"
+            app:text="@{@string/empty_favorites_text}" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
