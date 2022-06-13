@@ -1,9 +1,6 @@
 package com.fmaldonado.akiyama.data.repositories
 
-import androidx.lifecycle.MutableLiveData
 import com.fmaldonado.akiyama.data.models.content.Anime
-import com.fmaldonado.akiyama.data.models.content.Episode
-import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.data.network.NetworkDataSource
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -23,9 +20,9 @@ constructor(
         return networkDataSource.getAnimeInfo(anime.id)
     }
 
-    suspend fun makeSearch(search: String) {
+    suspend fun makeSearch(search: String): List<Anime> {
         currentSearchQuery = search
-        val searchResults = networkDataSource.getSearch(search)
+        return networkDataSource.getSearch(search)
     }
 
     fun setInitialSearch(animes: List<Anime>) {

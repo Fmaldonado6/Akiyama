@@ -12,7 +12,8 @@ import javax.inject.Singleton
 class LatestAnimeRepository
 @Inject
 constructor(
-    private val networkDataSource: NetworkDataSource
+    private val networkDataSource: NetworkDataSource,
+    private val animeRepository: AnimeRepository
 ) {
 
     private var latestAnime: List<MainScreenContent>? = null
@@ -29,6 +30,7 @@ constructor(
         if (shouldFetch || latestAnime == null) {
             val animes = networkDataSource.getAnimes()
             latestAnime = animes.map { mapAnimeToMaiContent(it) }
+            animeRepository.setInitialSearch(animes)
         }
 
         return latestAnime ?: mutableListOf()

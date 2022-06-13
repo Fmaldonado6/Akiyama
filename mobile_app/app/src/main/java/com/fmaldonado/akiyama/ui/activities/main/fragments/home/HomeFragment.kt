@@ -1,5 +1,6 @@
 package com.fmaldonado.akiyama.ui.activities.main.fragments.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.databinding.FragmentHomeBinding
+import com.fmaldonado.akiyama.ui.activities.seacrhAnime.SearchAnimeActivity
 import com.fmaldonado.akiyama.ui.fragments.latestAnime.LatestAnimeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,6 +51,11 @@ class HomeFragment : Fragment() {
                 val section = sections[index]
                 section.setStatus(it)
             }
+        }
+
+        binding.searchBar.setOnClickListener {
+            val intent = Intent(context, SearchAnimeActivity::class.java)
+            startActivity(intent)
         }
 
     }

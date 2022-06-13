@@ -8,6 +8,7 @@ import androidx.core.view.WindowCompat
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.fmaldonado.akiyama.R
+import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.data.models.content.MainScreenContent
 import com.fmaldonado.akiyama.databinding.ActivityDetailBinding
@@ -28,13 +29,25 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val content = intent.getParcelableExtra<MainScreenContent>(ParcelableKeys.ANIME_PARCELABLE)
+        val content =
+            intent.getParcelableExtra<MainScreenContent>(ParcelableKeys.MAIN_CONTENT_PARCELABLE)
+        val anime = intent.getParcelableExtra<Anime>(ParcelableKeys.ANIME_PARCELABLE)
+
         content?.let {
-            binding.cover.load(content.image)
-            binding.poster.load(content.image) {
+            binding.cover.load(it.image)
+            binding.poster.load(it.image) {
                 transformations(RoundedCornersTransformation(10f))
             }
-            binding.title.text = content.title
+            binding.title.text = it.title
+            viewModel.getAnimeInfo(Anime(id = it.id))
+        }
+
+        anime?.let{
+            binding.cover.load(it.image)
+            binding.poster.load(it.image) {
+                transformations(RoundedCornersTransformation(10f))
+            }
+            binding.title.text = it.title
             viewModel.getAnimeInfo(it)
         }
 
