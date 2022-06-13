@@ -1,5 +1,6 @@
 package com.fmaldonado.akiyama.ui.fragments.serverSelectionSheet
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.databinding.ServerBottomSheetBinding
+import com.fmaldonado.akiyama.ui.activities.watch.WatchActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.fragments.serverSelectionSheet.adapters.ServerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -50,7 +52,9 @@ class ServerSelectionBottomSheet : BottomSheetDialogFragment() {
 
     private fun setupServerList(servers: List<Server>) {
         val adapter = ServerAdapter(servers) {
-
+            val intent = Intent(context, WatchActivity::class.java)
+            intent.putExtra(ParcelableKeys.SERVER_PARCELABLE, it)
+            startActivity(intent)
         }
         binding.serversList.layoutManager = GridLayoutManager(context, 2)
         binding.serversList.adapter = adapter

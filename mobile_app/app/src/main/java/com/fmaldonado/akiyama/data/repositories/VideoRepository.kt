@@ -25,12 +25,12 @@ constructor(
         return videoDataSource.fetchGocdnVideo(value)
     }
 
-    suspend fun getFembedVideo(url: String): VideoResponse {
+    private suspend fun getFembedVideo(url: String): VideoResponse {
         val value = url.split("/").last()
         return videoDataSource.fetchFembedVideo(value)
     }
 
-    suspend fun getStapeVideo(url: String): VideoResponse {
+    private suspend fun getStapeVideo(url: String): VideoResponse {
         videoDataSource.fetchStapeVideo(url)
         return VideoResponse("")
     }

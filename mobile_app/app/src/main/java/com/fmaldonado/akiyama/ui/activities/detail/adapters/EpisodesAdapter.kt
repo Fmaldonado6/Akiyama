@@ -10,7 +10,8 @@ import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.databinding.EpisodeItemBinding
 
 class EpisodesAdapter(
-    private val episodes: List<Episode>
+    private val episodes: List<Episode>,
+    private val onClick: (Episode) -> Unit
 ) : RecyclerView.Adapter<EpisodesAdapter.EpisodeVieHolder>() {
     inner class EpisodeVieHolder(val binding: EpisodeItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -27,11 +28,12 @@ class EpisodesAdapter(
 
     override fun onBindViewHolder(holder: EpisodeVieHolder, position: Int) {
         val episode = episodes[position]
+        holder.binding.root.setOnClickListener {
+            onClick(episode)
+        }
         holder.binding.episodeName.text = episode.title
         holder.binding.episodeThumbnail.load(episode.image) {
             error(R.drawable.missing_image)
-
-
             transformations(RoundedCornersTransformation(10f))
         }
     }

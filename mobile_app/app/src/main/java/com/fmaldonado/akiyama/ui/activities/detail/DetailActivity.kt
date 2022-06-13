@@ -1,5 +1,6 @@
 package com.fmaldonado.akiyama.ui.activities.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -12,7 +13,9 @@ import com.fmaldonado.akiyama.data.models.content.MainScreenContent
 import com.fmaldonado.akiyama.databinding.ActivityDetailBinding
 import com.fmaldonado.akiyama.ui.activities.detail.adapters.EpisodesAdapter
 import com.fmaldonado.akiyama.ui.activities.detail.adapters.GenreAdapter
+import com.fmaldonado.akiyama.ui.activities.watch.WatchActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
+import com.fmaldonado.akiyama.ui.fragments.serverSelectionSheet.ServerSelectionBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -68,7 +71,10 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setupEpisodes(episodes: List<Episode>) {
-        val adapter = EpisodesAdapter(episodes)
+        val adapter = EpisodesAdapter(episodes) {
+            val sheet = ServerSelectionBottomSheet.newInstance(it)
+            sheet.show(supportFragmentManager, ServerSelectionBottomSheet.TAG)
+        }
         binding.episodeList.adapter = adapter
     }
 }

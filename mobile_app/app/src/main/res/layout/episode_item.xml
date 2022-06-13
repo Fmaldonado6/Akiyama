@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/light_ripple"
     android:layout_height="wrap_content">
 
     <ImageView

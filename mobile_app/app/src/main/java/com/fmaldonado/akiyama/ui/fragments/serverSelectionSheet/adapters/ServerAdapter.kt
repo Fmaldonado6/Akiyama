@@ -27,6 +27,9 @@ class ServerAdapter(
     override fun onBindViewHolder(holder: ServerViewHolder, position: Int) {
         val item = servers[position]
         holder.binding.serverName.text = item.title
+        holder.binding.serverName.setOnClickListener {
+            onClick(item)
+        }
     }
 
     override fun getItemCount(): Int = servers.size
