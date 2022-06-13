@@ -22,15 +22,6 @@ data class FavoritesEntity(
     @ColumnInfo(name = "poster")
     val poster: String = "",
     @NotNull
-    @ColumnInfo(name = "synopsis")
-    val synopsis: String = "",
-    @NotNull
-    @ColumnInfo(name = "debut")
-    val debut: String = "",
-    @NotNull
-    @ColumnInfo(name = "rating")
-    val rating: String = "",
-    @NotNull
     @ColumnInfo(name = "genres")
     val genres: List<String> = mutableListOf(),
 )

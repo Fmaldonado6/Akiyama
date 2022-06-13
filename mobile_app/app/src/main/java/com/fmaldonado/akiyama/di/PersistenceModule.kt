@@ -18,6 +18,7 @@ object PersistenceModule {
     @Provides
     fun provideDatabase(app: AkiyamaApplication): Database =
         Room.databaseBuilder(app, Database::class.java, Database.DATABASE_NAME)
+            .fallbackToDestructiveMigration()
             .build()
 
     @Singleton

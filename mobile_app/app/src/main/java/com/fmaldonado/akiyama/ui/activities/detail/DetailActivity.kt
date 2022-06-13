@@ -17,6 +17,7 @@ import com.fmaldonado.akiyama.ui.activities.detail.adapters.GenreAdapter
 import com.fmaldonado.akiyama.ui.activities.watch.WatchActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.fragments.serverSelectionSheet.ServerSelectionBottomSheet
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,6 +25,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private val viewModel: DetailViewModel by viewModels()
     private var expandedSynopsis = false
+    private lateinit var anime: Anime
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +44,7 @@ class DetailActivity : AppCompatActivity() {
             viewModel.getAnimeInfo(Anime(id = it.id))
         }
 
-        anime?.let{
+        anime?.let {
             binding.cover.load(it.image)
             binding.poster.load(it.image) {
                 transformations(RoundedCornersTransformation(10f))
@@ -52,6 +54,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         viewModel.getAnimeInfoData().observe(this) {
+            this.anime = it
             binding.description.text = it.synopsis
             binding.animeStatus.text = it.status
             setupGenres(it.genres)
@@ -60,6 +63,22 @@ class DetailActivity : AppCompatActivity() {
 
         viewModel.getStatus().observe(this) {
             binding.status = it
+        }
+
+        viewModel.getIsFavorite().observe(this) {
+            binding.isFavorite = it
+        }
+
+        binding.favoriteButton.setOnClickListener {
+            viewModel.addToFavorites(this.anime)
+
+            val text = if (viewModel.getIsFavorite().value!!)
+                resources.getString(R.string.removed_from_favorites_text)
+            else
+                resources.getString(R.string.added_to_favorites_text)
+
+            Snackbar.make(binding.favoriteButton, text, Snackbar.LENGTH_SHORT).show()
+
         }
 
         binding.moreButton.setOnClickListener {

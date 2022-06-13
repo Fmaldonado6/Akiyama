@@ -12,6 +12,10 @@
         <variable
             name="status"
             type="Status" />
+
+        <variable
+            name="isFavorite"
+            type="Boolean" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -109,23 +113,42 @@
                     android:visibility="@{status == Status.Loaded ? View.VISIBLE : View.GONE}">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/favoriteButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="20dp"
                         android:gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="@drawable/light_ripple"
                         android:orientation="vertical"
                         android:padding="10dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/favorites_icon_outline" />
+                            android:src="@drawable/favorites_icon_outline"
+                            android:visibility="@{!isFavorite ? View.VISIBLE : View.GONE}" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/add_to_favorites_text" />
+                            android:text="@string/add_to_favorites_text"
+                            android:visibility="@{!isFavorite ? View.VISIBLE : View.GONE}" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/favorite_tinted_icon"
+                            android:visibility="@{isFavorite ? View.VISIBLE : View.GONE}" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="?colorPrimary"
+                            android:text="@string/remove_from_favorites_text"
+                            android:visibility="@{isFavorite ? View.VISIBLE : View.GONE}" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <TextView
@@ -176,8 +199,8 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/episodeList"
                         android:layout_width="match_parent"
-                        android:layout_marginTop="10dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:nestedScrollingEnabled="false"
                         android:paddingBottom="50dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

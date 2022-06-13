@@ -6,13 +6,12 @@ import androidx.room.TypeConverters
 import com.fmaldonado.akiyama.data.persistence.converters.StringListConverter
 import com.fmaldonado.akiyama.data.persistence.dao.FavoritesDao
 import com.fmaldonado.akiyama.data.persistence.entities.FavoritesEntity
-import com.fmaldonado.akiyama.data.persistence.entities.FavoritesEpisodesEntity
 
 @Database(
     version = 2,
     entities = [
-        FavoritesEntity::class,
-        FavoritesEpisodesEntity::class]
+        FavoritesEntity::class
+    ]
 )
 @TypeConverters(StringListConverter::class)
 abstract class Database : RoomDatabase() {
