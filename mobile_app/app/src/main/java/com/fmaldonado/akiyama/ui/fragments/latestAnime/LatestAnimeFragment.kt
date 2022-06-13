@@ -106,7 +106,13 @@ class LatestAnimeFragment : Fragment() {
 
     private fun changeToDetail(anime: MainScreenContent) {
         val intent = Intent(context, DetailActivity::class.java)
-        intent.putExtra(ParcelableKeys.MAIN_CONTENT_PARCELABLE, anime)
+        intent.putExtra(
+            ParcelableKeys.ANIME_PARCELABLE, Anime(
+                title = anime.title,
+                id = anime.id,
+                image = anime.image
+            )
+        )
         startActivity(intent)
     }
 

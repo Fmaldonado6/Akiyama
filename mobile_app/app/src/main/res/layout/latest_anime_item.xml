@@ -35,6 +35,7 @@
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
         android:maxLines="1"
+        android:singleLine="true"
         android:padding="5dp"
         android:textAppearance="?attr/textAppearanceBodyMedium"
         android:text="TextView"
