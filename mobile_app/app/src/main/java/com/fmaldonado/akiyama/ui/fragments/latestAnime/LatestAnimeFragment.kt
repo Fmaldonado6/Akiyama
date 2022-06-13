@@ -1,18 +1,24 @@
 package com.fmaldonado.akiyama.ui.fragments.latestAnime
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.data.models.content.MainScreenContent
+import com.fmaldonado.akiyama.data.models.content.MainScreenContentType
 import com.fmaldonado.akiyama.databinding.FragmentLatestAnimeBinding
+import com.fmaldonado.akiyama.ui.activities.detail.DetailActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.Status
 import com.fmaldonado.akiyama.ui.common.adapters.LatestAnimeAdapter
+import com.fmaldonado.akiyama.ui.fragments.serverSelectionSheet.ServerSelectionBottomSheet
 
 class LatestAnimeFragment : Fragment() {
 
@@ -89,7 +95,23 @@ class LatestAnimeFragment : Fragment() {
     }
 
     private fun setupRecycler() {
-        val adapter = LatestAnimeAdapter(animeList ?: listOf())
+        val adapter = LatestAnimeAdapter(animeList ?: listOf()) {
+            if (it.type == MainScreenContentType.Anime)
+                changeToDetail(it)
+            else
+                openServerBottomSheet(it)
+        }
         binding.animeList.adapter = adapter
+    }
+
+    private fun changeToDetail(anime: MainScreenContent) {
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra(ParcelableKeys.ANIME_PARCELABLE, anime)
+        startActivity(intent)
+    }
+
+    private fun openServerBottomSheet(episode: MainScreenContent) {
+        val sheet = ServerSelectionBottomSheet.newInstance(Episode(episode.id))
+        sheet.show(this.childFragmentManager, ServerSelectionBottomSheet.TAG)
     }
 }

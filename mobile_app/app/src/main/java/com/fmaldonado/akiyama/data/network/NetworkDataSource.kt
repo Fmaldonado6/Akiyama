@@ -32,8 +32,8 @@ interface NetworkDataSource {
         @Path("animeId") animeId: String,
     ): Anime
 
-    @GET("episodes/{episodeId}}")
+    @GET("episodes/{episodeId}")
     suspend fun getServers(
-        @Path("id") id: String,
+        @Path("episodeId") id: String,
     ): List<Server>
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
@@ -15,9 +16,11 @@ import com.fmaldonado.akiyama.data.models.content.MainScreenContentType
 import com.fmaldonado.akiyama.databinding.LatestAnimeItemBinding
 import com.fmaldonado.akiyama.ui.activities.detail.DetailActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
+import com.fmaldonado.akiyama.ui.fragments.serverSelectionSheet.ServerSelectionBottomSheet
 
 class LatestAnimeAdapter(
     private val animes: List<MainScreenContent>,
+    private val onClick: (content: MainScreenContent) -> Unit
 ) : RecyclerView.Adapter<LatestAnimeAdapter.LatestAnimeViewHolder>() {
 
 
@@ -47,22 +50,11 @@ class LatestAnimeAdapter(
         }
 
         holder.binding.image.setOnClickListener {
-            if (anime.type == MainScreenContentType.Anime)
-                changeToDetail(anime, holder.binding.root.context)
-            else
-                openServerBottomSheet(anime)
+            onClick(anime)
         }
     }
 
-    private fun changeToDetail(anime: MainScreenContent, context: Context) {
-        val intent = Intent(context, DetailActivity::class.java)
-        intent.putExtra(ParcelableKeys.ANIME_PARCELABLE, anime)
-        context.startActivity(intent)
-    }
 
-    private fun openServerBottomSheet(episode: MainScreenContent) {
-
-    }
 
 
     override fun getItemCount(): Int = animes.size
