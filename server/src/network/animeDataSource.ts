@@ -29,6 +29,7 @@ class AnimeDataSource extends AnimeFlvNetworkDataSource {
 
 
         })
+        await page.waitForSelector(".lazy")
         const content = await page?.content();
         await page.close();
         return content

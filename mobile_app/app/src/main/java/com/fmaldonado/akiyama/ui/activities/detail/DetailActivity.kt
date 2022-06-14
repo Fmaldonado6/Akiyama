@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.view.WindowCompat
+import androidx.core.widget.NestedScrollView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.fmaldonado.akiyama.R
@@ -57,9 +60,11 @@ class DetailActivity : AppCompatActivity() {
             this.anime = it
             binding.description.text = it.synopsis
             binding.animeStatus.text = it.status
-            setupGenres(it.genres)
             setupEpisodes(it.episodes)
+            setupGenres(it.genres)
         }
+
+
 
         viewModel.getStatus().observe(this) {
             binding.status = it
@@ -80,6 +85,7 @@ class DetailActivity : AppCompatActivity() {
             Snackbar.make(binding.favoriteButton, text, Snackbar.LENGTH_SHORT).show()
 
         }
+
 
         binding.moreButton.setOnClickListener {
             expandedSynopsis = !expandedSynopsis
@@ -103,6 +109,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setupEpisodes(episodes: List<Episode>) {
+
         val adapter = EpisodesAdapter(episodes) {
             val sheet = ServerSelectionBottomSheet.newInstance(it)
             sheet.show(supportFragmentManager, ServerSelectionBottomSheet.TAG)
