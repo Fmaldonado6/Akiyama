@@ -12,6 +12,23 @@ class AnimeDataSource extends AnimeFlvNetworkDataSource {
         const page = await this.init();
         await page.goto(`${this.BASE_URL}/anime/${animeId}`);
         await page.waitForSelector(".lazy")
+        await page.evaluate(() => {
+            return new Promise((res, rej) => {
+                const episodeList = document.getElementById("episodeList")
+                if (episodeList == null) return
+                setInterval(() => {
+
+                    let last = episodeList.children[episodeList.children.length - 1]
+                    let lastLabel = last.children[1].attributes.getNamedItem("for")?.value
+                    if (lastLabel == "epi1" || lastLabel == null) return res(true)
+                    episodeList.scrollTop = episodeList.scrollHeight
+
+                }, 200)
+
+            })
+
+
+        })
         const content = await page?.content();
         await page.close();
         return content
@@ -24,6 +41,12 @@ class AnimeDataSource extends AnimeFlvNetworkDataSource {
         const content = await response?.text();
         await page.close();
         return content
+    }
+
+    async delay(ms: number) {
+        return new Promise((res, rej) => {
+            setTimeout(res, ms)
+        })
     }
 
 }
