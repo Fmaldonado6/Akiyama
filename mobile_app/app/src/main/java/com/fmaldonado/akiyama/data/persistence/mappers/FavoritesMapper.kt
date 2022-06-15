@@ -3,6 +3,7 @@ package com.fmaldonado.akiyama.data.persistence.mappers
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.data.models.content.Episode
 import com.fmaldonado.akiyama.data.persistence.entities.FavoritesEntity
+import java.util.*
 
 object FavoritesMapper {
 
@@ -11,12 +12,16 @@ object FavoritesMapper {
     }
 
     fun animeToFavoritesMapper(anime: Anime): FavoritesEntity {
+
+        val currentTime = Calendar.getInstance().time
+
         return FavoritesEntity(
             id = anime.id,
             title = anime.title,
             poster = anime.image,
             type = anime.type,
-            genres = anime.genres
+            genres = anime.genres,
+            dateAdded = currentTime.time
         )
 
     }
