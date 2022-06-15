@@ -35,8 +35,11 @@ class HomeFragment : Fragment() {
         createSections()
 
 
-        LatestAnimeSections.values().forEach {
-            viewModel.getAnimeSection(false, it)
+        fetchData(false)
+
+        binding.swipeToRefresh.setOnRefreshListener {
+            fetchData(true)
+            binding.swipeToRefresh.isRefreshing = false
         }
 
         viewModel.getLatestAnimeData().forEachIndexed { index, item ->
@@ -60,6 +63,13 @@ class HomeFragment : Fragment() {
 
     }
 
+    private fun fetchData(forceFetch: Boolean) {
+        LatestAnimeSections.values().forEach {
+            viewModel.getAnimeSection(forceFetch, it)
+        }
+    }
+
+
     private fun createSections() {
 
         childFragmentManager.fragments.forEach {
@@ -68,19 +78,21 @@ class HomeFragment : Fragment() {
 
         sections.clear()
         sections = LatestAnimeSections.values().map {
-            createLatestAnimeFragment(it.title, it.smallSection)
+            createLatestAnimeFragment(it)
 
         }.toMutableList()
     }
 
     private fun createLatestAnimeFragment(
-        title: String,
-        smallSection: Boolean
+        section: LatestAnimeSections
     ): LatestAnimeFragment {
-        val fragment = LatestAnimeFragment.newInstance(title, smallSection)
+        val fragment = LatestAnimeFragment.newInstance(section.title, section.smallSection) {
+            viewModel.getAnimeSection(true, section)
+        }
         childFragmentManager.beginTransaction()
-            .add(binding.latestAnimeContainer.id, fragment, title)
+            .add(binding.latestAnimeContainer.id, fragment, section.title)
             .commit()
+
 
 
         return fragment

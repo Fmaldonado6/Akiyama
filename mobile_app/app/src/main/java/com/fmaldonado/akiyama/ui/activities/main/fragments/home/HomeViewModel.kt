@@ -51,6 +51,7 @@ constructor(
                 latestAnimeData[section.ordinal].postValue(animes)
                 latestAnimeStatus[section.ordinal].postValue(Status.Loaded)
             } catch (e: Exception) {
+                latestAnimeStatus[section.ordinal].postValue(Status.Error)
 
             }
 

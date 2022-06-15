@@ -26,6 +26,8 @@ class LatestAnimeFragment : Fragment() {
     private var title: String = "Titulo"
     private var smallSection = false
     private var animeList: List<MainScreenContent>? = null
+    private var retryListener: () -> Unit = {}
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,13 +42,15 @@ class LatestAnimeFragment : Fragment() {
         @JvmStatic
         fun newInstance(
             title: String = "Titulo",
-            smallSection: Boolean = false
+            smallSection: Boolean = false,
+            retryListener: () -> Unit
         ) =
+
             LatestAnimeFragment().apply {
                 val bundle = Bundle()
                 bundle.putString(ParcelableKeys.TITLE_PARCELABLE, title)
                 bundle.putBoolean(ParcelableKeys.SMALL_SECTION_PARCEL, smallSection)
-
+                this.retryListener = retryListener
                 arguments = bundle
             }
     }
@@ -54,17 +58,22 @@ class LatestAnimeFragment : Fragment() {
     private fun setSmall() {
         val smallHeight = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
-            100f,
+            105f,
             resources.displayMetrics
         )
         val listParams = binding.animeList.layoutParams
         val statusParams = binding.progressBar.layoutParams
+        val errorParams = binding.errorLayout.root.layoutParams
 
         listParams.height = smallHeight.toInt()
         statusParams.height = smallHeight.toInt()
+        errorParams.height = smallHeight.toInt()
+
 
         binding.animeList.layoutParams = listParams
         binding.progressBar.layoutParams = statusParams
+        binding.errorLayout.root.layoutParams = errorParams
+
     }
 
     fun setContent(
@@ -92,6 +101,8 @@ class LatestAnimeFragment : Fragment() {
         binding.title.text = title
         binding.status = Status.Loading
         if (smallSection) setSmall()
+        binding.errorLayout.retry.setOnClickListener { retryListener() }
+
     }
 
     private fun setupRecycler() {

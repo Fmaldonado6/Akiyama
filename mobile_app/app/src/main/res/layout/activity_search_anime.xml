@@ -93,6 +93,14 @@
 
         </androidx.core.widget.NestedScrollView>
 
+        <include
+            android:id="@+id/errorLayout"
+            layout="@layout/error_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:visibility="@{currentStatus == Status.Error ? View.VISIBLE : View.GONE}" />
+
         <ProgressBar
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"

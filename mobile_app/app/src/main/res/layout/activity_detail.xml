@@ -208,6 +208,14 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+                <include
+                    android:id="@+id/errorLayout"
+                    layout="@layout/error_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:visibility="@{status == Status.Error ? View.VISIBLE : View.GONE}" />
+
                 <ProgressBar
                     android:id="@+id/progressBar2"
                     style="?android:attr/progressBarStyle"
@@ -221,20 +229,6 @@
 
         </androidx.core.widget.NestedScrollView>
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:visibility="invisible">
-
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:minHeight="80dp"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:title="Hola" />
-
-        </com.google.android.material.appbar.AppBarLayout>
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
