@@ -34,7 +34,7 @@ constructor(
                 searchResults.postValue(result)
                 status.postValue(Status.Loaded)
             } catch (e: Exception) {
-
+                status.postValue(Status.Error)
             }
         }
     }
@@ -45,8 +45,12 @@ constructor(
             try {
                 val result = animeRepository.makeSearch(query)
                 searchResults.postValue(result)
-                status.postValue(Status.Loaded)
+                if (result.isEmpty())
+                    status.postValue(Status.Empty)
+                else
+                    status.postValue(Status.Loaded)
             } catch (e: Exception) {
+                status.postValue(Status.Error)
             }
         }
     }

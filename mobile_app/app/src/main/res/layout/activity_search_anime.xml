@@ -94,6 +94,15 @@
         </androidx.core.widget.NestedScrollView>
 
         <include
+            android:id="@+id/emptySearch"
+            layout="@layout/empty_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:text="@{@string/empty_search_text}"
+            app:visibility="@{currentStatus == Status.Empty ? View.VISIBLE : View.GONE}" />
+
+        <include
             android:id="@+id/errorLayout"
             layout="@layout/error_layout"
             android:layout_width="wrap_content"
