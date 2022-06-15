@@ -86,6 +86,9 @@ class DetailActivity : AppCompatActivity() {
 
         }
 
+        binding.errorLayout.retry.setOnClickListener {
+            viewModel.getAnimeInfo(this.anime)
+        }
 
         binding.moreButton.setOnClickListener {
             expandedSynopsis = !expandedSynopsis

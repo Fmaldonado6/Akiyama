@@ -43,6 +43,7 @@ constructor(
                 animeInfo.postValue(result)
                 status.postValue(Status.Loaded)
             } catch (e: Exception) {
+                status.postValue(Status.Error)
             }
         }
     }
