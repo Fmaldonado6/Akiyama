@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity() {
                 UpdateStatus.Looking -> showSnackBar(getString(R.string.looking_for_update_text))
                 UpdateStatus.NewUpdate -> showSnackBar(
                     getString(R.string.new_update_text),
-                    "Download"
+                    getString(R.string.updated_text)
                 ) {
-                    DownloadDialog().show(supportFragmentManager, "Dialog")
+                    DownloadDialog().show(supportFragmentManager, DownloadDialog.TAG)
                 }
                 UpdateStatus.Updated -> if (manual) showSnackBar(getString(R.string.updated_text))
                 UpdateStatus.Error -> showSnackBar(getString(R.string.error_update_text))

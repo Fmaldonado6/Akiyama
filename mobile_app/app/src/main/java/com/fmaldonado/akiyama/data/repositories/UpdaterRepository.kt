@@ -39,7 +39,7 @@ constructor(
         version?.let {
             if (it.prerelease)
                 return
-            val status = if (it.tag_name != BuildConfig.VERSION_NAME )
+            val status = if (it.tag_name != BuildConfig.VERSION_NAME && !BuildConfig.DEBUG)
                 UpdateStatus.NewUpdate
             else
                 UpdateStatus.Updated

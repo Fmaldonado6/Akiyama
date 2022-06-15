@@ -43,4 +43,8 @@ class DownloadDialog : DialogFragment() {
             ApkInstaller.installApplication(requireContext(), it)
         }
     }
+
+    companion object {
+        const val TAG = "DownloadDialog"
+    }
 }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import androidx.core.view.children
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
@@ -86,25 +87,36 @@ class HomeFragment : Fragment() {
     private fun createLatestAnimeFragment(
         section: LatestAnimeSections
     ): LatestAnimeFragment {
-        val fragment = LatestAnimeFragment.newInstance(section.title, section.smallSection) {
+
+        val fragment = LatestAnimeFragment.newInstance(
+            getString(section.title),
+            section.smallSection
+        ) {
             viewModel.getAnimeSection(true, section)
         }
+
         childFragmentManager.beginTransaction()
-            .add(binding.latestAnimeContainer.id, fragment, section.title)
+            .add(
+                binding.latestAnimeContainer.id,
+                fragment,
+                getString(section.title)
+            )
             .commit()
-
-
 
         return fragment
     }
 
 }
 
-enum class LatestAnimeSections(val title: String, val smallSection: Boolean = false) {
-    LatestEpisodes("Latest Episodes", true),
-    LatestAnime("Latest Anime"),
-    LatestMovies("Latest Movies"),
-    LatestOvas("Latest Ovas"),
-    LatestSpecials("Latest Specials"),
+enum class LatestAnimeSections(
+    @StringRes
+    val title: Int,
+    val smallSection: Boolean = false
+) {
+    LatestEpisodes(R.string.latest_episodes_text, true),
+    LatestAnime(R.string.latest_animes_text),
+    LatestMovies(R.string.latest_movies_text),
+    LatestOvas(R.string.latest_ovas_text),
+    LatestSpecials(R.string.latest_specials_text),
 
 }

@@ -12,7 +12,7 @@
 
     <string name="retry_text">Retry</string>
 
-    <string name="recently_added_text">Recently Added</string>
+    <string name="latest_episodes_text">Latest Episodes</string>
     <string name="latest_animes_text">Latest Animes</string>
     <string name="latest_movies_text">Latest Movies</string>
     <string name="latest_ovas_text">Latest Ovas</string>
@@ -53,6 +53,7 @@
     <string name="updated_text">No updates available</string>
     <string name="new_update_text">New update available</string>
     <string name="error_update_text">Couldn\'t get latest update</string>
+    <string name="download_update_text">Download</string>
 
 
     <string name="about_p1">
@@ -70,7 +71,5 @@
 
     <string name="icon_credits"><a class="link" href='https://pngtree.com/so/coffee-mug-clipart'>coffee mug clipart png from pngtree.com</a></string>
     <string name="title_activity_main">MainActivity</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
