@@ -1,6 +1,7 @@
 package com.fmaldonado.akiyama.data.repositories
 
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.fmaldonado.akiyama.AkiyamaApplication
 import com.fmaldonado.akiyama.BuildConfig
@@ -38,7 +39,7 @@ constructor(
         version?.let {
             if (it.prerelease)
                 return
-            val status = if (it.tag_name != BuildConfig.VERSION_NAME && !BuildConfig.DEBUG)
+            val status = if (it.tag_name != BuildConfig.VERSION_NAME )
                 UpdateStatus.NewUpdate
             else
                 UpdateStatus.Updated

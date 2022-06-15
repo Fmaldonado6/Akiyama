@@ -1,26 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="About app" />
     <Preference
         app:icon="@drawable/help_outline_icon"
         app:key="about"
+        app:summary="Information about the app"
         app:title="@string/preferences_about_text" />
     <Preference
         app:icon="@drawable/twitter_icon"
-        app:key="twitter"
+        app:key="Developer"
+        app:summary="Fernando Maldonado"
         app:title="@string/preferences_twitter_text" />
     <Preference
         app:icon="@drawable/download_icon"
         app:key="updates"
+        app:summary="Download latest version"
         app:title="@string/preferences_updates_text" />
     <Preference
         app:icon="@drawable/version_icon"
         app:key="version"
+        app:summary="1.5.4"
         app:title="@string/preferences_version_text" />
     <Preference
         app:icon="@drawable/code_icon"
         app:key="sourceCode"
+        app:summary="Github"
         app:title="@string/preferences_source_code_text" />
 
 </androidx.preference.PreferenceScreen>

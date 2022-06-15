@@ -42,6 +42,10 @@
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             tools:ignore="SpeakableTextPresentCheck">
 
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/containerSettings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </androidx.core.widget.NestedScrollView>
 

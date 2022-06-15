@@ -44,7 +44,7 @@
     <string name="preferences_about_text">About</string>
     <string name="preferences_twitter_text">Twitter</string>
     <string name="preferences_updates_text">Check for updates</string>
-    <string name="preferences_version_text">Version: %1$s</string>
+    <string name="preferences_version_text">Version</string>
     <string name="preferences_source_code_text">Source Code</string>
 
     <string name="work_in_progress_text">Work in progress</string>
