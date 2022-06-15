@@ -9,6 +9,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.fmaldonado.akiyama.BuildConfig
 import com.fmaldonado.akiyama.R
+import com.fmaldonado.akiyama.ui.activities.about.AboutActivity
 import com.fmaldonado.akiyama.ui.activities.main.MainActivityViewModel
 import com.fmaldonado.akiyama.ui.activities.watch.WatchActivity
 import com.fmaldonado.akiyama.ui.common.PreferenceKeys
@@ -29,7 +30,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onPreferenceTreeClick(preference: Preference): Boolean {
 
         when (preference.key) {
-            PreferenceKeys.ABOUT -> startIntent(WatchActivity::class.java)
+            PreferenceKeys.ABOUT -> startIntent(AboutActivity::class.java)
             PreferenceKeys.TWITTER -> startURLIntent("https://twitter.com/Fmaldonado4202")
             PreferenceKeys.SOURCE_CODE -> startURLIntent("https://github.com/Fmaldonado6/Akiyama")
             PreferenceKeys.CHECK_UPDATES -> checkUpdates()

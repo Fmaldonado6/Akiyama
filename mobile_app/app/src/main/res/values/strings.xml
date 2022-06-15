@@ -57,7 +57,7 @@
 
 
     <string name="about_p1">
-        Akiyama is an open-source anime website that uses the Unofficial AnimeFLV REST API,
+        Akiyama is an open-source anime website that web scrapes the AnimeFLV website,
         developed with the objective of learning and improving my coding skills.
     </string>
 

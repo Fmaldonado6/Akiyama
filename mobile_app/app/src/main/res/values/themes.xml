@@ -45,11 +45,11 @@
     </style>
 
 
-
-    <style name="Theme.Akiyama.OpenSource" parent="Theme.Material3.Light.NoActionBar">
-        <item name="android:windowBackground">@color/md_theme_light_surface</item>
-        <item name="background">@color/md_theme_light_surfaceVariant</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/md_theme_light_surfaceVariant
+    <style name="Theme.Akiyama.OpenSource" parent="Theme.Material3.Light">
+        <item name="android:windowBackground">?colorSurface</item>
+        <item name="background">?colorSurface</item>
+        <item name="toolbarStyle">@style/Theme.Akiyama.ActionBar</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?colorSurface
         </item>
     </style>
 
