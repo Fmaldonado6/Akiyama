@@ -11,6 +11,7 @@ import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.databinding.FragmentFavoritesBinding
 import com.fmaldonado.akiyama.ui.activities.detail.DetailActivity
+import com.fmaldonado.akiyama.ui.activities.filterFavorites.FilterFavorites
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.Status
 import com.fmaldonado.akiyama.ui.common.adapters.SearchResultAdapter
@@ -25,13 +26,18 @@ class FavoritesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFavoritesBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.searchBar.setOnClickListener {
+            val intent = Intent(requireContext(), FilterFavorites::class.java)
+            startActivity(intent)
+        }
 
         viewModel.favorites.observe(viewLifecycleOwner) {
             if (it.isEmpty()) binding.currentStatus = Status.Empty

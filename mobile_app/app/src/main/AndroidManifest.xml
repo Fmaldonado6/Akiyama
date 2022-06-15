@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Akiyama"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activities.filterFavorites.FilterFavorites"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.seacrhAnime.SearchAnimeActivity"
             android:exported="false" />
         <activity

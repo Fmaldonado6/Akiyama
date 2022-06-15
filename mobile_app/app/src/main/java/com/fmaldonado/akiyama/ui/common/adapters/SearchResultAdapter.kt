@@ -1,5 +1,6 @@
 package com.fmaldonado.akiyama.ui.common.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +10,7 @@ import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.databinding.AnimeSearchItemBinding
 
 class SearchResultAdapter(
-    private val searchResult: List<Anime>,
+    private var searchResult: List<Anime>,
     private val onClick: (Anime) -> Unit
 ) : RecyclerView.Adapter<SearchResultAdapter.SearchResultViewHolder>() {
 
@@ -24,6 +25,12 @@ class SearchResultAdapter(
         )
 
         return SearchResultViewHolder(binding)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateList(list: List<Anime>) {
+        searchResult = list
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: SearchResultViewHolder, position: Int) {
