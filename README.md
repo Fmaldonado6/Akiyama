@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!--
 *** Thanks for checking out this README Template. If you have a suggestion that would
 *** make this better, please fork the repo and create a pull request or simply open
@@ -108,6 +109,8 @@ Fernando Maldonado - [@Fmaldonado4202](https://twitter.com/Fmaldonado4202) - fma
 
 Project Link: [https://github.com/Fmaldonado6/Akiyama](https://github.com/Fmaldonado6/Akiyama)
 =======
+=======
+>>>>>>> 099f534d9c1a9f041b348fdb57e987bb69e1d2ce
 # **Aruppi API** (v3.2.4)
 
 > This API has everything about Japan, from anime, music, radio, images, videos ... to japanese culture 
@@ -238,4 +241,7 @@ _*Jéluchu*_
 ---
 
 Copyright © 2020 [Jéluchu](https://about.jeluchu.com/).
+<<<<<<< HEAD
+>>>>>>> 099f534d9c1a9f041b348fdb57e987bb69e1d2ce
+=======
 >>>>>>> 099f534d9c1a9f041b348fdb57e987bb69e1d2ce
