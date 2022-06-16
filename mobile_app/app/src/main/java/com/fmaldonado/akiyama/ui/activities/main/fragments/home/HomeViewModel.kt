@@ -1,127 +1,62 @@
 package com.fmaldonado.akiyama.ui.activities.main.fragments.home
 
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fmaldonado.akiyama.data.repositories.anime.AnimeRepository
+import com.fmaldonado.akiyama.data.models.content.Anime
+import com.fmaldonado.akiyama.data.models.content.Episode
+import com.fmaldonado.akiyama.data.models.content.MainScreenContent
+import com.fmaldonado.akiyama.data.repositories.LatestAnimeRepository
 import com.fmaldonado.akiyama.ui.common.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @HiltViewModel
 class HomeViewModel
 @Inject
 constructor(
-    private val animeRepository: AnimeRepository
+    private val latestAnimeRepository: LatestAnimeRepository
 ) : ViewModel() {
-    val latestEpisodesStatus = MutableLiveData(Status.Loading)
-    val latestAnimesStatus = MutableLiveData(Status.Loading)
-    val latestMoviesStatus = MutableLiveData(Status.Loading)
-    val latestSpecialsStatus = MutableLiveData(Status.Loading)
-    val latestOvasStatus = MutableLiveData(Status.Loading)
 
-
-    val latestEpisodes = animeRepository.latestEpisodes
-    val latestAnimes = animeRepository.latestAnimes
-    val latestMovies = animeRepository.latestMovies
-    val latestOvas = animeRepository.latestOvas
-    val latestSpecials = animeRepository.latestSpecials
-
-    fun getLatestEpisodes(useCache: Boolean = true) {
-
-        if (latestEpisodes.value != null && useCache) {
-            latestEpisodesStatus.postValue(Status.Loaded)
-            return
-        }
-
-        latestEpisodesStatus.postValue(Status.Loading)
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                animeRepository.getLatestEpisodes()
-                latestEpisodesStatus.postValue(Status.Loaded)
-            } catch (e: Exception) {
-                Log.e("Error", "Error", e)
-                latestEpisodesStatus.postValue(Status.Error)
-            }
-        }
+    private val latestAnimeData = LatestAnimeSections.values().map {
+        MutableLiveData<List<MainScreenContent>>()
     }
 
-    fun getLatestAnimes(useCache: Boolean = true) {
-        if (latestAnimes.value != null && useCache) {
-            latestAnimesStatus.postValue(Status.Loaded)
-            return
-        }
-
-        latestAnimesStatus.postValue(Status.Loading)
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                animeRepository.getLatestAnimes()
-                latestAnimesStatus.postValue(Status.Loaded)
-            } catch (e: Exception) {
-                Log.e("Error", "Error", e)
-                latestAnimesStatus.postValue(Status.Error)
-            }
-        }
+    private val latestAnimeStatus = LatestAnimeSections.values().map {
+        MutableLiveData<Status>()
     }
 
-    fun getLatestMovies(useCache: Boolean = true) {
-        if (latestMovies.value != null && useCache) {
-            latestMoviesStatus.postValue(Status.Loaded)
-            return
-        }
+    private val animeRepositoryFunctions = listOf<suspend (Boolean) -> List<MainScreenContent>>(
+        latestAnimeRepository::getLatestEpisodes,
+        latestAnimeRepository::getLatestAnimes,
+        latestAnimeRepository::getLatestMovies,
+        latestAnimeRepository::getLatestOvas,
+        latestAnimeRepository::getLatestSpecials
+    )
 
-        latestMoviesStatus.postValue(Status.Loading)
+    fun getLatestAnimeData() = latestAnimeData as List<LiveData<List<MainScreenContent>>>
+
+    fun getLatestAnimeStatus() = latestAnimeStatus as List<LiveData<Status>>
+
+    fun getAnimeSection(shouldFetch: Boolean, section: LatestAnimeSections) {
         viewModelScope.launch(Dispatchers.IO) {
+            latestAnimeStatus[section.ordinal].postValue(Status.Loading)
+
             try {
-                animeRepository.getLatestMovies()
-                latestMoviesStatus.postValue(Status.Loaded)
+                val animes = animeRepositoryFunctions[section.ordinal](shouldFetch)
+                latestAnimeData[section.ordinal].postValue(animes)
+                latestAnimeStatus[section.ordinal].postValue(Status.Loaded)
             } catch (e: Exception) {
-                Log.e("Error", "Error", e)
-                latestMoviesStatus.postValue(Status.Error)
+                latestAnimeStatus[section.ordinal].postValue(Status.Error)
 
-            }
-        }
-    }
-
-    fun getLatestOvas(useCache: Boolean = true) {
-        if (latestOvas.value != null && useCache) {
-            latestOvasStatus.postValue(Status.Loaded)
-            return
-        }
-
-        latestOvasStatus.postValue(Status.Loading)
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                animeRepository.getLatestOvas()
-                latestOvasStatus.postValue(Status.Loaded)
-            } catch (e: Exception) {
-                Log.e("Error", "Error", e)
-                latestOvasStatus.postValue(Status.Error)
-            }
-        }
-    }
-
-    fun getLatestSpecials(useCache: Boolean = true) {
-        if (latestSpecials.value != null && useCache) {
-            latestSpecialsStatus.postValue(Status.Loaded)
-            return
-        }
-        latestSpecialsStatus.postValue(Status.Loading)
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                animeRepository.getLatestSpecials()
-                latestSpecialsStatus.postValue(Status.Loaded)
-            } catch (e: Exception) {
-                Log.e("Error", "Error", e)
-                latestSpecialsStatus.postValue(Status.Error)
             }
 
         }
     }
+
 
 }

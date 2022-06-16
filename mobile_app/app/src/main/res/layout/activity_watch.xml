@@ -5,8 +5,9 @@
 
     <data>
 
-        <import type="com.fmaldonado.akiyama.ui.common.Status"/>
-        <import type="android.view.View"/>
+        <import type="com.fmaldonado.akiyama.ui.common.Status" />
+
+        <import type="android.view.View" />
 
         <variable
             name="videoStatus"
@@ -15,9 +16,10 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black"
+        android:background="@android:color/black"
         tools:context=".ui.activities.watch.WatchActivity">
 
         <WebView
@@ -30,17 +32,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.exoplayer2.ui.PlayerView
+
+        <com.google.android.exoplayer2.ui.StyledPlayerView
             android:id="@+id/videoView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-        </com.google.android.exoplayer2.ui.PlayerView>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:show_buffering="when_playing">
+
+        </com.google.android.exoplayer2.ui.StyledPlayerView>
 
         <ProgressBar
             android:id="@+id/videoProgress"
@@ -48,21 +53,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:visibility="@{videoStatus == Status.Loading ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibility="@{videoStatus == Status.Loading ? View.VISIBLE : View.GONE}" />
 
         <include
             android:id="@+id/videoError"
             layout="@layout/error_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:visibility="@{videoStatus == Status.Error ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibility="@{videoStatus == Status.Error ? View.VISIBLE : View.GONE}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

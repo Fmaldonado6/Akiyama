@@ -2,36 +2,38 @@ package com.fmaldonado.akiyama.ui.activities.watch
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
-import android.os.Build
 import android.os.Build.VERSION.SDK_INT
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import com.fmaldonado.akiyama.R
 import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.databinding.ActivityWatchBinding
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
 import com.fmaldonado.akiyama.ui.common.Status
+import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.SimpleExoPlayer
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class WatchActivity : AppCompatActivity() {
-    private val viewModel: WatchActivityViewModel by viewModels()
-    private var server: Server? = null
     private lateinit var binding: ActivityWatchBinding
-    private var player: SimpleExoPlayer? = null
+    private val viewModel: WatchActivityViewModel by viewModels()
+
+    private var server: Server? = null
+    private var player: ExoPlayer? = null
     private var url: String? = null
     private var useWebView = false
     private var playWhenReady = true
     private var currentWindow = 0
     private var playbackPosition: Long = 0
 
-    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWatchBinding.inflate(layoutInflater)
@@ -42,7 +44,7 @@ class WatchActivity : AppCompatActivity() {
 
         getUrl()
 
-        viewModel.urlValue.observe(this, {
+        viewModel.getUrlValue().observe(this) {
             if (it.useWebView)
                 initializeWebview(it.file)
             else if (player == null)
@@ -50,9 +52,9 @@ class WatchActivity : AppCompatActivity() {
             this.url = it.file
             this.useWebView = it.useWebView
             hideUI()
-        })
+        }
 
-        viewModel.videoStatus.observe(this, { binding.videoStatus = it })
+        viewModel.getStatus().observe(this) { binding.videoStatus = it }
 
         binding.videoError.retry.setOnClickListener { getUrl() }
 
@@ -73,10 +75,13 @@ class WatchActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun initializeWebview(url: String) {
         viewModel.setStatus(Status.Loaded)
         binding.videoView.visibility = View.GONE
         binding.webView.settings.javaScriptEnabled = true
+        binding.webView.settings.domStorageEnabled = true
+
         binding.webView.settings.allowFileAccess = false
         binding.webView.settings.javaScriptCanOpenWindowsAutomatically = false
         binding.webView.webViewClient = object : WebViewClient() {
@@ -106,7 +111,7 @@ class WatchActivity : AppCompatActivity() {
     private fun initializePlayer() {
         url?.let {
             binding.webView.visibility = View.GONE
-            player = SimpleExoPlayer.Builder(this).build()
+            player = ExoPlayer.Builder(this).build()
             binding.videoView.player = player
             val item = MediaItem.fromUri(it)
             player!!.setMediaItem(item)
@@ -120,7 +125,7 @@ class WatchActivity : AppCompatActivity() {
         player?.let {
             playWhenReady = it.playWhenReady;
             playbackPosition = it.currentPosition;
-            currentWindow = it.currentWindowIndex;
+            currentWindow = it.currentMediaItemIndex;
             it.release()
             player = null
         }
@@ -141,20 +146,11 @@ class WatchActivity : AppCompatActivity() {
     }
 
     private fun hideUI() {
-
-        val immersive = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                or View.SYSTEM_UI_FLAG_FULLSCREEN)
-
-        window.decorView.systemUiVisibility = immersive
-
-        binding.videoView.systemUiVisibility = immersive
-
-        binding.webView.systemUiVisibility = immersive
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        WindowInsetsControllerCompat(window, binding.layout).let { controller ->
+            controller.hide(WindowInsetsCompat.Type.systemBars())
+            controller.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
     }
-
-
 }

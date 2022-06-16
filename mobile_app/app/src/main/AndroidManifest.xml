@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-
     <application
         android:name=".AkiyamaApplication"
         android:allowBackup="true"
@@ -16,9 +15,20 @@
         android:theme="@style/Theme.Akiyama"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activities.about.AboutActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.filterFavorites.FilterFavorites"
-            android:windowSoftInputMode="stateVisible" />
-        <activity android:name=".ui.activities.about.AboutActivity" />
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.seacrhAnime.SearchAnimeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.watch.WatchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.detail.DetailActivity"
+            android:exported="false" />
         <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
             android:theme="@style/Theme.Akiyama.OpenSource" />
@@ -26,13 +36,8 @@
             android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
             android:theme="@style/Theme.Akiyama.OpenSource" />
         <activity
-            android:name=".ui.activities.search.SearchActivity"
-            android:windowSoftInputMode="stateVisible" />
-        <activity
-            android:name=".ui.activities.watch.WatchActivity"
-            android:theme="@style/Theme.Akiyama.Fullscreen" />
-        <activity android:name=".ui.activities.animeDetail.AnimeDetailActivity" />
-        <activity android:name=".ui.activities.main.MainActivity">
+            android:name=".ui.activities.main.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

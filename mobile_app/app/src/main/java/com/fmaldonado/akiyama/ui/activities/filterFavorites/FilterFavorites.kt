@@ -1,87 +1,59 @@
 package com.fmaldonado.akiyama.ui.activities.filterFavorites
 
-import android.app.Activity
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.inputmethod.InputMethodManager
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.fmaldonado.akiyama.R
-import com.fmaldonado.akiyama.data.models.content.Anime
 import com.fmaldonado.akiyama.databinding.ActivityFilterFavoritesBinding
-import com.fmaldonado.akiyama.ui.activities.animeDetail.AnimeDetailActivity
+import com.fmaldonado.akiyama.ui.activities.detail.DetailActivity
 import com.fmaldonado.akiyama.ui.common.ParcelableKeys
-import com.fmaldonado.akiyama.ui.common.Status
-import com.fmaldonado.akiyama.ui.common.adapters.AnimeListAdapter
-import com.xwray.groupie.GroupieAdapter
-import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.Item
+import com.fmaldonado.akiyama.ui.common.adapters.SearchResultAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class FilterFavorites : AppCompatActivity() {
 
-    private val viewModel: FilterFavoritesViewModel by viewModels()
     private lateinit var binding: ActivityFilterFavoritesBinding
-    private var favorites: List<Anime> = mutableListOf<Anime>()
+    private val viewModel: FilterFavoritesViewModel by viewModels()
+    private var adapter: SearchResultAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFilterFavoritesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.backButton.setOnClickListener { finish() }
-
-        viewModel.favorites.observe(this, {
-            favorites = it
-            when (it.isEmpty()) {
-                true -> viewModel.currentStatus.value = Status.Empty
-                else -> {
-                    viewModel.currentStatus.value = Status.Loaded
-                    setupRecycler(it)
-                }
-            }
-        })
-
-        viewModel.currentStatus.observe(this, { binding.currentStatus = it })
-
+        binding.toolbar.setNavigationOnClickListener { finish() }
         binding.searchBar.requestFocus()
+        setupRecycler()
+
+        viewModel.getStatus().observe(this) {
+            binding.currentStatus = it
+        }
 
         binding.searchBar.addTextChangedListener {
-            setupRecycler(favorites, it.toString())
+            Log.d("QUery", it.toString())
+            viewModel.filterFavorites(it.toString())
+            setupRecycler()
         }
+
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    private fun setupRecycler() {
 
-    private fun setupRecycler(searchResults: List<Anime>, filter: String = "") {
-        val items = mutableListOf<AnimeListAdapter>()
-        searchResults.forEach {
-            if (filter.isEmpty() || it.title.contains(filter, true))
-                items.add(AnimeListAdapter(it))
-        }
-
-        if (items.isEmpty()) {
-            viewModel.currentStatus.value = Status.Empty
+        if (adapter != null) {
+            adapter!!.updateList(viewModel.getFavorites())
             return
         }
 
-        viewModel.currentStatus.value = Status.Loaded
-
-        val adapter = GroupieAdapter().apply { addAll(items) }
-
-        adapter.setOnItemClickListener { item: Item<GroupieViewHolder>, view: View ->
-            val animeItem = item as AnimeListAdapter
-            val intent = Intent(this, AnimeDetailActivity::class.java)
-            intent.putExtra(ParcelableKeys.ANIME_PARCELABLE, animeItem.anime)
+        adapter = SearchResultAdapter(viewModel.getFavorites()) {
+            val intent = Intent(this, DetailActivity::class.java)
+            intent.putExtra(ParcelableKeys.ANIME_PARCELABLE, it)
             startActivity(intent)
         }
-
-        binding.searchResults.apply {
-            layoutManager = LinearLayoutManager(context)
-            this.adapter = adapter
-        }
+        binding.searchResults.adapter = adapter
     }
 }

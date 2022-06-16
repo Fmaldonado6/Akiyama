@@ -1,17 +1,16 @@
 package com.fmaldonado.akiyama.ui.activities.watch
 
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fmaldonado.akiyama.data.models.content.Server
 import com.fmaldonado.akiyama.data.models.video.VideoResponse
-import com.fmaldonado.akiyama.data.repositories.videos.VideoRepository
+import com.fmaldonado.akiyama.data.repositories.VideoRepository
 import com.fmaldonado.akiyama.ui.common.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,10 +19,13 @@ class WatchActivityViewModel
 constructor(
     private val videoRepository: VideoRepository
 ) : ViewModel() {
+    private val videoStatus = MutableLiveData(Status.Loading)
 
-    val videoStatus = MutableLiveData(Status.Loading)
+    private val urlValue = MutableLiveData<VideoResponse>()
 
-    val urlValue = MutableLiveData<VideoResponse>()
+    fun getStatus() = videoStatus as LiveData<Status>
+
+    fun getUrlValue() = urlValue as LiveData<VideoResponse>
 
     fun getVideoUrl(server: Server) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -33,14 +35,12 @@ constructor(
                 urlValue.postValue(video)
                 videoStatus.postValue(Status.Loaded)
             } catch (e: Exception) {
-                Log.e("E", "e", e)
                 videoStatus.postValue(Status.Error)
             }
         }
     }
 
-    fun setStatus(status: Status){
+    fun setStatus(status: Status) {
         videoStatus.postValue(status)
     }
-
 }

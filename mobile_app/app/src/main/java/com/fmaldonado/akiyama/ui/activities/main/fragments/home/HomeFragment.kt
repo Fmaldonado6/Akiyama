@@ -2,125 +2,121 @@ package com.fmaldonado.akiyama.ui.activities.main.fragments.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
+import androidx.core.view.children
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.fmaldonado.akiyama.data.models.content.Anime
-import com.fmaldonado.akiyama.data.models.content.Episode
-import com.fmaldonado.akiyama.databinding.AnimeSectionBinding
-import com.fmaldonado.akiyama.databinding.HomeFragmentBinding
-import com.fmaldonado.akiyama.ui.activities.animeDetail.AnimeDetailActivity
-import com.fmaldonado.akiyama.ui.activities.search.SearchActivity
-import com.fmaldonado.akiyama.ui.common.ParcelableKeys
-import com.fmaldonado.akiyama.ui.common.adapters.AnimeAdapter
-import com.fmaldonado.akiyama.ui.common.fragments.serverBottomSheet.ServersBottomSheet
-import com.xwray.groupie.GroupieAdapter
-import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.Item
+import com.fmaldonado.akiyama.R
+import com.fmaldonado.akiyama.databinding.FragmentHomeBinding
+import com.fmaldonado.akiyama.ui.activities.seacrhAnime.SearchAnimeActivity
+import com.fmaldonado.akiyama.ui.fragments.latestAnime.LatestAnimeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-
+    private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
-    private lateinit var binding: HomeFragmentBinding
+
+    private var sections: MutableList<LatestAnimeFragment> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = HomeFragmentBinding.inflate(inflater)
+        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        createSections()
 
-        fetch()
 
-        viewModel.latestEpisodes.observe(viewLifecycleOwner, {
-            setUpRecycler(binding.latestEpisode, it)
-        })
-        viewModel.latestAnimes.observe(viewLifecycleOwner, {
-            setUpRecycler(binding.latestAnime, anime = it)
-        })
-        viewModel.latestMovies.observe(viewLifecycleOwner, {
-            setUpRecycler(binding.latestMovies, anime = it)
-        })
-        viewModel.latestSpecials.observe(viewLifecycleOwner, {
-            setUpRecycler(binding.latestSpecials, anime = it)
-        })
-        viewModel.latestOvas.observe(viewLifecycleOwner, {
-            setUpRecycler(binding.latestOvas, anime = it)
-        })
+        fetchData(false)
 
-        viewModel.latestEpisodesStatus.observe(viewLifecycleOwner, { binding.episodesStatus = it })
-        viewModel.latestAnimesStatus.observe(viewLifecycleOwner, { binding.animesStatus = it })
-        viewModel.latestMoviesStatus.observe(viewLifecycleOwner, { binding.moviesStatus = it })
-        viewModel.latestOvasStatus.observe(viewLifecycleOwner, { binding.ovasStatus = it })
-        viewModel.latestSpecialsStatus.observe(viewLifecycleOwner, { binding.specialsStatus = it })
+        binding.swipeToRefresh.setOnRefreshListener {
+            fetchData(true)
+            binding.swipeToRefresh.isRefreshing = false
+        }
+
+        viewModel.getLatestAnimeData().forEachIndexed { index, item ->
+            item.observe(viewLifecycleOwner) {
+                val section = sections[index]
+                section.setContent(it)
+            }
+        }
+
+        viewModel.getLatestAnimeStatus().forEachIndexed { index, item ->
+            item.observe(viewLifecycleOwner) {
+                val section = sections[index]
+                section.setStatus(it)
+            }
+        }
 
         binding.searchBar.setOnClickListener {
-            val intent = Intent(context, SearchActivity::class.java)
+            val intent = Intent(context, SearchAnimeActivity::class.java)
             startActivity(intent)
         }
 
-        binding.latestEpisode.errorLayout.retry.setOnClickListener { viewModel.getLatestEpisodes() }
-        binding.latestAnime.errorLayout.retry.setOnClickListener { viewModel.getLatestAnimes() }
-        binding.latestMovies.errorLayout.retry.setOnClickListener { viewModel.getLatestMovies() }
-        binding.latestSpecials.errorLayout.retry.setOnClickListener { viewModel.getLatestSpecials() }
-        binding.latestOvas.errorLayout.retry.setOnClickListener { viewModel.getLatestOvas() }
-        binding.swipeToRefresh.setOnRefreshListener {
-            fetch(false)
-            binding.swipeToRefresh.isRefreshing = false
+    }
+
+    private fun fetchData(forceFetch: Boolean) {
+        LatestAnimeSections.values().forEach {
+            viewModel.getAnimeSection(forceFetch, it)
         }
     }
 
-    private fun fetch(useCache: Boolean = true) {
-        viewModel.getLatestEpisodes(useCache = useCache)
-        viewModel.getLatestAnimes(useCache = useCache)
-        viewModel.getLatestMovies(useCache = useCache)
-        viewModel.getLatestOvas(useCache = useCache)
-        viewModel.getLatestSpecials(useCache = useCache)
+
+    private fun createSections() {
+
+        childFragmentManager.fragments.forEach {
+            childFragmentManager.beginTransaction().remove(it).commit()
+        }
+
+        sections.clear()
+        sections = LatestAnimeSections.values().map {
+            createLatestAnimeFragment(it)
+
+        }.toMutableList()
     }
 
-    private fun setUpRecycler(
-        view: AnimeSectionBinding,
-        episodes: List<Episode>? = null,
-        anime: List<Anime>? = null
-    ) {
-        val items = mutableListOf<AnimeAdapter>()
-        episodes?.forEach {
-            items.add(AnimeAdapter(episode = it))
+    private fun createLatestAnimeFragment(
+        section: LatestAnimeSections
+    ): LatestAnimeFragment {
+
+        val fragment = LatestAnimeFragment.newInstance(
+            getString(section.title),
+            section.smallSection
+        ) {
+            viewModel.getAnimeSection(true, section)
         }
 
-        anime?.forEach {
-            items.add(AnimeAdapter(anime = it))
-        }
+        childFragmentManager.beginTransaction()
+            .add(
+                binding.latestAnimeContainer.id,
+                fragment,
+                getString(section.title)
+            )
+            .commit()
 
-        val adapter = GroupieAdapter().apply { this.addAll(items) }
-        adapter.setOnItemClickListener { item: Item<GroupieViewHolder>, view: View ->
-            val animeItem = item as AnimeAdapter
-
-            if (animeItem.anime != null) {
-                val intent = Intent(context, AnimeDetailActivity::class.java)
-                intent.putExtra(ParcelableKeys.ANIME_PARCELABLE, animeItem.anime)
-                startActivity(intent)
-            } else if (animeItem.episode != null) {
-                ServersBottomSheet.newInstance(animeItem.episode)
-                    .show(requireActivity().supportFragmentManager, this.tag)
-            }
-
-        }
-        view.animeList.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            this.adapter = adapter
-        }
-
+        return fragment
     }
+
+}
+
+enum class LatestAnimeSections(
+    @StringRes
+    val title: Int,
+    val smallSection: Boolean = false
+) {
+    LatestEpisodes(R.string.latest_episodes_text, true),
+    LatestAnime(R.string.latest_animes_text),
+    LatestMovies(R.string.latest_movies_text),
+    LatestOvas(R.string.latest_ovas_text),
+    LatestSpecials(R.string.latest_specials_text),
 
 }

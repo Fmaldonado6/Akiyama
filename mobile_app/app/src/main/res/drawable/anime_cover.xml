@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:color="@color/dark_background_color"
+    android:color="@color/md_theme_light_surface"
     tools:targetApi="lollipop"> <!-- ripple effect color -->
     <item android:gravity="center">
         <shape android:shape="rectangle">
@@ -20,8 +20,7 @@
         android:gravity="center">
         <shape android:shape="rectangle">
             <corners android:radius="5dp" />
-            <solid android:color="@color/black" />
+            <solid android:color="@android:color/black" />
         </shape>
     </item>
 </ripple>
-

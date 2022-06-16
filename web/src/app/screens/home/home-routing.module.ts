@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: "search",
     component: SearchComponent
+  },
+  {
+    path: "search/:query",
+    component: SearchComponent
   }
 ];
 

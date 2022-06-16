@@ -1,31 +1,29 @@
-export class Server {
-    server: string = ""
+export class Anime {
+    id: string = ""
     title: string = ""
-    allowMobile: boolean = false
-    code: string = ""
+    image: string = ""
+    synopsis: string = ""
+    status: string = ""
+    type: string = ""
+    genres: string[] = []
+    rating: string = ""
+    nextEpisodeDate?:string 
+    episodes: Episode[] = []
 }
-
 
 export class Episode {
     id: string = ""
     title: string = ""
-    poster: string = ""
+    image: string = ""
     episode: number = 0
-    servers: Server[] = null
-    nextEpisodeDate: string = null
+    servers?: Server[]
 }
 
-
-export class Anime {
-    id: string = ""
+export class Server {
     title: string = ""
-    type: string = ""
-    poster: string = ""
-    synopsis: string = ""
-    debut: string = ""
-    rating: string = ""
-    genres: string[] = []
-    episodes: Episode[] = []
+    serverCode: string = ""
+    allowMobile: boolean = false
+    url: string = ""
 }
 
 

@@ -5,22 +5,25 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/genre"
+    <com.google.android.material.chip.Chip
+        android:id="@+id/genreChip"
+        style="@style/Widget.Material3.Chip.Filter.Elevated"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/rounded_border"
-        android:paddingStart="10dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="5dp"
-        android:text="TextView"
-        android:textColor="@color/blue_500"
-        android:textSize="12sp"
+        android:layout_height="45dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/md_theme_light_primary"
+        android:backgroundTint="?colorSurfaceVariant"
+        android:clickable="false"
+        android:elevation="2dp"
+        android:focusable="false"
+        android:minWidth="70dp"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Hola" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

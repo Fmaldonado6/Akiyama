@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   base_url: "https://akiyamarest.herokuapp.com",
-  version:"v2.0"
+  version:"v3.0.0"
 };

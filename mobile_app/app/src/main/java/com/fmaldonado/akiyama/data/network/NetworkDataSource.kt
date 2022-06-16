@@ -27,16 +27,13 @@ interface NetworkDataSource {
     @GET("search/{title}")
     suspend fun getSearch(@Path("title") title: String): List<Anime>
 
-    @GET("{animeId}/{animeTitle}")
+    @GET("{animeId}")
     suspend fun getAnimeInfo(
         @Path("animeId") animeId: String,
-        @Path("animeTitle") title: String
     ): Anime
 
-    @GET("episodes/{id}/{title}")
+    @GET("episodes/{episodeId}")
     suspend fun getServers(
-        @Path("id") id: String,
-        @Path("title") title: String,
-
+        @Path("episodeId") id: String,
     ): List<Server>
 }

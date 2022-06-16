@@ -4,15 +4,15 @@
   </button>
   <ng-container *ngSwitchCase="Status.loaded">
     <div class="background">
-      <img src="data:image/png;base64,{{ anime.poster }}" />
+      <img referrerpolicy="no-referrer" [src]="anime.image" />
     </div>
 
     <div class="content">
       <div class="header">
-        <img src="data:image/png;base64,{{ anime.poster }}" />
+        <img referrerpolicy="no-referrer" [src]="anime.image" />
         <div class="title">
           <h2>{{ anime.title }}</h2>
-          <span>{{ anime.debut }}</span>
+          <span>{{ anime.status }}</span>
         </div>
       </div>
       <div class="buttons">
@@ -27,7 +27,9 @@
         <p [ngClass]="{ expanded: expandedSynopsis }">
           {{ anime.synopsis }}
         </p>
-        <button mat-button color="primary" (click)="expand()">More</button>
+        <button mat-button color="primary" (click)="expand()">
+          {{ expandedSynopsis ? "Less" : "More" }}
+        </button>
       </div>
       <div class="genres-container">
         <div class="genre" *ngFor="let genre of anime.genres">
@@ -36,20 +38,19 @@
       </div>
       <div class="episodes-container">
         <h3>Episodes</h3>
-        <ng-container *ngFor="let episode of anime.episodes; let i = index">
-          <div
-            class="episode"
-            mat-ripple
-            (click)="openServersBottomSheet(episode)"
-            *ngIf="episode.nextEpisodeDate && i == 0 ? true : i != 0"
+        <ng-container>
+          <span *ngIf="anime.nextEpisodeDate"
+            >Next episode {{ anime.nextEpisodeDate }}</span
           >
-            <span *ngIf="!episode.nextEpisodeDate"
-              >Episode {{ episode.episode }}</span
+          <ng-container *ngFor="let episode of anime.episodes; let i = index">
+            <div
+              class="episode"
+              mat-ripple
+              (click)="openServersBottomSheet(episode)"
             >
-            <span *ngIf="episode.nextEpisodeDate"
-              >Next episode {{ episode.nextEpisodeDate }}</span
-            >
-          </div>
+              <span>Episode {{ episode.episode }}</span>
+            </div>
+          </ng-container>
         </ng-container>
       </div>
     </div>
@@ -57,5 +58,9 @@
 
   <div class="loading" *ngSwitchCase="Status.loading">
     <mat-spinner [diameter]="40"></mat-spinner>
+  </div>
+
+  <div class="error" *ngSwitchCase="Status.error">
+    <error (buttonClicked)="retry()"></error>
   </div>
 </div>

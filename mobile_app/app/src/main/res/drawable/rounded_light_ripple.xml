@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:color="@color/dark_background_color"
+    android:color="?colorSurfaceVariant"
     tools:targetApi="lollipop"> <!-- ripple effect color -->
     <item
         android:id="@android:id/mask"
         android:gravity="center">
         <shape android:shape="rectangle">
             <corners android:radius="20dp"/>
-            <solid android:color="@color/black" />
+            <solid android:color="@android:color/black" />
         </shape>
     </item>
 </ripple>

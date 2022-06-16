@@ -2,19 +2,38 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:foreground="@drawable/rounded_light_ripple"
+    android:layout_width="match_parent"
     android:clickable="true"
     android:focusable="true"
-    android:layout_width="match_parent"
+    android:foreground="@drawable/light_ripple"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/episodeThumbnail"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
-        android:id="@+id/episode"
+        android:id="@+id/episodeName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="13dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
         android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:drawableEnd="@drawable/right_icon"
+        app:layout_constraintStart_toEndOf="@+id/episodeThumbnail"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

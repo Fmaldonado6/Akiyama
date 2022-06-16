@@ -30,7 +30,7 @@ constructor(
         val req = Request.Builder().url(goCdnUrl + id).build()
         val response = client.newCall(req).await()
         val body = withContext(Dispatchers.IO) {
-            kotlin.runCatching { response.body()?.string() }.getOrThrow()
+            kotlin.runCatching { response.body?.string() }.getOrThrow()
         }
         return gson.fromJson(body, VideoResponse::class.java)
     }
@@ -41,7 +41,7 @@ constructor(
                 .post(RequestBody.create(null, byteArrayOf())).build()
         val response = client.newCall(req).await()
         val body = withContext(Dispatchers.IO) {
-            kotlin.runCatching { response.body()?.string() }.getOrThrow()
+            kotlin.runCatching { response.body?.string() }.getOrThrow()
         }
         val fembedVideoResponse = gson.fromJson(body, FembedVideoResponse::class.java)
 
@@ -63,7 +63,7 @@ constructor(
         val req = Request.Builder().url("https://streamtape.com/e/VrGka6PrmLIKd6O").build()
         val response = client.newCall(req).await()
         val body = withContext(Dispatchers.IO) {
-            kotlin.runCatching { response.body()?.string() }.getOrThrow()
+            kotlin.runCatching { response.body?.string() }.getOrThrow()
         }
         val document = Jsoup.parse(body)
         val link = document.getElementById("videolink")

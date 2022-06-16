@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.fmaldonado.akiyama.data.models.content.Episode
 import org.jetbrains.annotations.NotNull
+import java.util.*
 
 @Entity(tableName = "favorites")
 data class FavoritesEntity(
@@ -22,15 +23,9 @@ data class FavoritesEntity(
     @ColumnInfo(name = "poster")
     val poster: String = "",
     @NotNull
-    @ColumnInfo(name = "synopsis")
-    val synopsis: String = "",
-    @NotNull
-    @ColumnInfo(name = "debut")
-    val debut: String = "",
-    @NotNull
-    @ColumnInfo(name = "rating")
-    val rating: String = "",
-    @NotNull
     @ColumnInfo(name = "genres")
     val genres: List<String> = mutableListOf(),
+    @NotNull
+    @ColumnInfo(name = "date")
+    val dateAdded: Long = Date().time,
 )
