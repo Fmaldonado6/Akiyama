@@ -41,7 +41,7 @@ android {
 
         debug {
             buildConfigField "String", "GITHUB_URL", "\"https://api.github.com/repos/Fmaldonado6/Akiyama/releases/\""
-            buildConfigField "String", "BASE_URL", "\"https://akiyamarest.herokuapp.com/\""
+            buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:4000/\""
             applicationIdSuffix ".debug"
 
         }
