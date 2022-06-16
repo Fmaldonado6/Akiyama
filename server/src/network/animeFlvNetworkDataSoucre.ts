@@ -32,6 +32,14 @@ export class AnimeFlvNetworkDataSource {
     protected async init(): Promise<puppeteer.Page> {
         const browser = await browserInstance.getBrowser()
         const page = await browser.newPage();
+        await page.setRequestInterception(true);
+        page.on('request', (req) => {
+            if (req.resourceType() == 'stylesheet' || req.resourceType() == 'font' || req.resourceType() == 'image')
+                req.abort();
+            else
+                req.continue();
+
+        });
         page.setDefaultNavigationTimeout(30000);
         await page.setUserAgent('Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0')
 
