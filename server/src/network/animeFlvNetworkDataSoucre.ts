@@ -1,13 +1,11 @@
 import axios from "axios";
 import puppeteer, { Puppeteer } from "puppeteer";
-export class AnimeFlvNetworkDataSource {
+
+class BroswerInstance {
+    private browser?: puppeteer.Browser
 
 
-    protected BASE_URL = "https://www3.animeflv.net";
-
-    protected browser?: puppeteer.Browser
-
-    protected async init(): Promise<puppeteer.Page> {
+    async getBrowser() {
         if (!this.browser)
             this.browser = await puppeteer.launch({
                 args: [
@@ -17,7 +15,23 @@ export class AnimeFlvNetworkDataSource {
                     '--single-process'
                 ], headless: true
             })
-        const page = await this.browser.newPage();
+
+        return this.browser
+    }
+
+}
+
+const browserInstance = new BroswerInstance()
+
+export class AnimeFlvNetworkDataSource {
+
+
+    protected BASE_URL = "https://www3.animeflv.net";
+
+
+    protected async init(): Promise<puppeteer.Page> {
+        const browser = await browserInstance.getBrowser()
+        const page = await browser.newPage();
         page.setDefaultNavigationTimeout(30000);
         await page.setUserAgent('Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0')
 
