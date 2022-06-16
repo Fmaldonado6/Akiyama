@@ -43,7 +43,7 @@
 
 ## About The Project
 
-Akiyama is an open source website and android app to watch anime using the unofficial [AnimeFLV API](https://github.com/Jeluchu/animeflv), developed with the objective of learning and improving my coding skills
+Akiyama is an open source website and android app to watch anime that web scrapes AnimeFLV, developed with the objective of learning and improving my coding skills
 
 All the content that can be found in this application is hosted in third party servers such as Mega, YourUpload, FEMBED, etc. All this services are available for free online. For any legal trouble, related to the content shown in this website, must be addressed with the owners of the servers that are storing this content, as we are not affilliated nor colaborating with them.
 
