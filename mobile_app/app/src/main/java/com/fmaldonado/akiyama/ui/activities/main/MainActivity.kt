@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 UpdateStatus.Looking -> showSnackBar(getString(R.string.looking_for_update_text))
                 UpdateStatus.NewUpdate -> showSnackBar(
                     getString(R.string.new_update_text),
-                    getString(R.string.updated_text)
+                    getString(R.string.download_update_text)
                 ) {
                     DownloadDialog().show(supportFragmentManager, DownloadDialog.TAG)
                 }
