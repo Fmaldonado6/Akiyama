@@ -21,8 +21,8 @@ android {
         applicationId "com.fmaldonado.akiyama"
         minSdkVersion 23
         targetSdkVersion 32
-        versionCode 12
-        versionName "v3.0.1"
+        versionCode 13
+        versionName "v3.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -41,7 +41,7 @@ android {
 
         debug {
             buildConfigField "String", "GITHUB_URL", "\"https://api.github.com/repos/Fmaldonado6/Akiyama/releases/\""
-            buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:4000/\""
+            buildConfigField "String", "BASE_URL", "\"https://akiyamarest.herokuapp.com/\""
             applicationIdSuffix ".debug"
 
         }

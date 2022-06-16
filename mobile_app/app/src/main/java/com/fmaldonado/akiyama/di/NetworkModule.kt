@@ -13,6 +13,8 @@ import okhttp3.ConnectionSpec
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.Duration
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -26,7 +28,10 @@ object NetworkModule {
         val okHttpClient =
             OkHttpClient.Builder()
                 .addInterceptor(networkInterceptor)
+                .connectTimeout(30, TimeUnit.SECONDS)
                 .build()
+
+
 
         return Retrofit.Builder()
             .baseUrl("${BuildConfig.BASE_URL}animes/")
