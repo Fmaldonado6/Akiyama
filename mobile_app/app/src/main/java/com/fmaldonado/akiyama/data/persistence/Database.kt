@@ -8,7 +8,7 @@ import com.fmaldonado.akiyama.data.persistence.dao.FavoritesDao
 import com.fmaldonado.akiyama.data.persistence.entities.FavoritesEntity
 
 @Database(
-    version = 2,
+    version = 3,
     entities = [
         FavoritesEntity::class
     ]
