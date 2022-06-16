@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
         app:iconSpaceReserved="false"
-        app:title="About app" />
+        app:title="@string/preferences_about_section_text" />
     <Preference
         app:icon="@drawable/help_outline_icon"
         app:key="about"
-        app:summary="Information about the app"
+        app:summary="@string/preferences_about_summary"
         app:title="@string/preferences_about_text" />
     <Preference
         app:icon="@drawable/twitter_icon"
@@ -17,7 +17,7 @@
     <Preference
         app:icon="@drawable/download_icon"
         app:key="updates"
-        app:summary="Download latest version"
+        app:summary="@string/preferences_updates_summary"
         app:title="@string/preferences_updates_text" />
     <Preference
         app:icon="@drawable/version_icon"

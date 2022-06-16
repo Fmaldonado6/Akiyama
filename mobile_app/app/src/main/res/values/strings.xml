@@ -41,9 +41,15 @@
     <string name="more_text">More</string>
     <string name="less_text">Less</string>
 
+    <string name="cancel_text">Cancel</string>
+
+    <string name="preferences_about_section_text">About App</string>
+
     <string name="preferences_about_text">About</string>
-    <string name="preferences_twitter_text">Twitter</string>
+    <string name="preferences_about_summary">Information about the app</string>
+    <string name="preferences_twitter_text">Developer</string>
     <string name="preferences_updates_text">Check for updates</string>
+    <string name="preferences_updates_summary">Download latest version</string>
     <string name="preferences_version_text">Version</string>
     <string name="preferences_source_code_text">Source Code</string>
 
@@ -54,6 +60,7 @@
     <string name="new_update_text">New update available</string>
     <string name="error_update_text">Couldn\'t get latest update</string>
     <string name="download_update_text">Download</string>
+    <string name="downloading_update_text">Downloading</string>
 
 
     <string name="about_p1">
@@ -62,11 +69,9 @@
     </string>
 
     <string name="about_p2">
-        All the content that can be found in this applications is hosted in third party servers such
-        as Mega, YourUpload, FEMBED, etc. All of this services are available for free online. For any
-        legal trouble, related to the content shown in this website, must be addressed with the owners
-        of the servers that are storing this content, as we are not affiliated nor collaborating with
-        them.
+        All the content that can be found in this application is extracted from AnimeFLV.
+        Akiyama doesn\'t store any content on our servers and we are not affiliated nor
+        collaborating with the website
     </string>
 
     <string name="icon_credits"><a class="link" href='https://pngtree.com/so/coffee-mug-clipart'>coffee mug clipart png from pngtree.com</a></string>

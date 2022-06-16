@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Akiyama</string>
+
+    <string name="open_source_licenses">Licencias Open Source</string>
+
+    <string name="home_menu">Inicio</string>
+    <string name="more_menu">Más</string>
+    <string name="favorites_menu">Favoritos</string>
+    <string name="search_text">Buscar</string>
+    <string name="search_favorites_text">Buscar Favoritos</string>
+
+
+    <string name="retry_text">Reintentar</string>
+
+    <string name="latest_episodes_text">Episodios Recientes</string>
+    <string name="latest_animes_text">Animes Recientes</string>
+    <string name="latest_movies_text">Películas Recientes</string>
+
+    <string name="latest_ovas_text">Ovas Recientes</string>
+    <string name="latest_specials_text">Especiales Recientes</string>
+
+    <string name="add_to_favorites_text">Añadir a favoritos</string>
+    <string name="remove_from_favorites_text">Eliminar de favoritos</string>
+
+    <string name="finished_text">Finalizado</string>
+    <string name="airing_text">En Emisión</string>
+
+    <string name="empty_search_text">No hay resultados para tu búsqueda</string>
+    <string name="empty_favorites_text">No has añadido ningún favorito</string>
+
+    <string name="added_to_favorites_text">Añadido a favoritos</string>
+    <string name="removed_from_favorites_text">Eliminado de favoritos</string>
+    <string name="error_favorites_text">Ocurrió un error al añadir a favoritos</string>
+
+
+    <string name="episodes_text">Episodios</string>
+    <string name="episodes_label_text">Episodio</string>
+    <string name="next_episode_text">Siguiente episodio</string>
+
+    <string name="select_an_option_text">Selecciona una opción</string>
+
+    <string name="more_text">Más</string>
+    <string name="less_text">Menos</string>
+
+    <string name="cancel_text">Cancelar</string>
+
+    <string name="preferences_about_section_text">About de la App</string>
+
+    <string name="preferences_about_text">Acerca de</string>
+    <string name="preferences_about_summary">Información acerca de la app</string>
+    <string name="preferences_twitter_text">Desarrollador</string>
+    <string name="preferences_updates_text">Buscar actualizaciones</string>
+    <string name="preferences_updates_summary">Descargar la última versión</string>
+    <string name="preferences_version_text">Versión</string>
+    <string name="preferences_source_code_text">Código fuente</string>
+
+    <string name="work_in_progress_text">Proximamente</string>
+
+    <string name="looking_for_update_text">Buscando actualizaciones…</string>
+    <string name="updated_text">No hay actualizaciones disponibles</string>
+    <string name="new_update_text">Nueva actualización disponible</string>
+    <string name="error_update_text">No se pudo descargar la actualización</string>
+    <string name="download_update_text">Descargar</string>
+    <string name="downloading_update_text">Descargando</string>
+
+
+    <string name="about_p1">
+        Akiyama es una aplicación open source para ver anime que hace web scraping a la página de AnimeFLV,
+        desarrollada con el objetivo de aprender y mejorar.
+    </string>
+
+    <string name="about_p2">
+        Todo el contenido de la aplicación es extraído de la página de AnimeFLV.
+        Akiyama no aloja ningún contenido en sus servidores y no estamos afiliados ni colaborando el sitio
+    </string>
+
+    <string name="icon_credits"><a class="link" href='https://pngtree.com/so/coffee-mug-clipart'>coffee mug clipart png from pngtree.com</a></string>
+    <string name="title_activity_main">MainActivity</string>
+
+</resources>
