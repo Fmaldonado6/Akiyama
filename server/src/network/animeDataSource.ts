@@ -3,16 +3,18 @@ import { AnimeFlvNetworkDataSource } from "./animeFlvNetworkDataSoucre";
 class AnimeDataSource extends AnimeFlvNetworkDataSource {
 
     async getAnimeResponse(type: string = "tv"): Promise<string | undefined> {
-        const page = await this.init();
-        const response = await page.goto(`${this.BASE_URL}/browse?type%5B%5D=${type}&order=default`);
-        return response?.text();
+        const ctx = await this.init();
+        const response = await ctx.page.goto(`${this.BASE_URL}/browse?type%5B%5D=${type}&order=default`);
+        const text = await response?.text();
+        await ctx.context.close()
+        return text;
     }
 
     async getAnimeInfo(animeId: string): Promise<string | undefined> {
-        const page = await this.init();
-        await page.goto(`${this.BASE_URL}/anime/${animeId}`);
-        await page.waitForSelector(".lazy")
-        await page.evaluate(() => {
+        const ctx = await this.init();
+        await ctx.page.goto(`${this.BASE_URL}/anime/${animeId}`);
+        await ctx.page.waitForSelector(".lazy")
+        await ctx.page.evaluate(() => {
             return new Promise((res, rej) => {
                 const episodeList = document.getElementById("episodeList")
                 if (episodeList == null) return
@@ -29,18 +31,19 @@ class AnimeDataSource extends AnimeFlvNetworkDataSource {
 
 
         })
-        await page.waitForSelector(".lazy")
-        const content = await page?.content();
-        await page.close();
+        await ctx.page.waitForSelector(".lazy")
+        const content = await ctx.page?.content();
+        await ctx.context.close();
         return content
 
     }
 
     async getSearchResults(query: string) {
-        const page = await this.init();
+        const ctx = await this.init();
+        const page = ctx.page
         const response = await page.goto(`${this.BASE_URL}/browse?q=${query}`);
         const content = await response?.text();
-        await page.close();
+        await ctx.context.close();
         return content
     }
 
