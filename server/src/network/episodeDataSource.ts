@@ -3,20 +3,21 @@ import { AnimeFlvNetworkDataSource } from "./animeFlvNetworkDataSoucre";
 class EpisodeDataSource extends AnimeFlvNetworkDataSource {
 
     async getLatestEpisodes(): Promise<string | undefined> {
-        const page = await this.init();
-        const response = await page.goto(`${this.BASE_URL}`);
+        const ctx = await this.init();
+        const response = await ctx.page.goto(`${this.BASE_URL}`);
         const content = await response?.text();
-        await page.close();
+        await ctx.context.close();
+
         return content
     }
 
     async getEpisodeServers(episodeId: string): Promise<string | undefined> {
-        const page = await this.init();
-        await page.goto(`${this.BASE_URL}/ver/${episodeId}`);
-        await page.waitForSelector("li[title]")
+        const ctx = await this.init();
+        await ctx.page.goto(`${this.BASE_URL}/ver/${episodeId}`);
+        await ctx.page.waitForSelector("li[title]")
 
-        const content = await page?.content();
-        await page.close();
+        const content = await ctx.page?.content();
+        await ctx.context.close();
         return content
     }
 
