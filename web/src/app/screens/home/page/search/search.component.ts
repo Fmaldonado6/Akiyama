@@ -75,7 +75,10 @@ export class SearchComponent implements OnInit {
   changeToDetail(anime: Anime) {
     this.dialog.open(AnimeDetailComponent,
       {
-        data: { anime: anime },
+        data: {
+          anime: anime,
+          animeId: anime.id
+        },
         panelClass: this.darkModeService.enabled ? 'modal-dark' : 'modal',
       }
     )

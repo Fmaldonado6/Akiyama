@@ -52,7 +52,7 @@ export class ServersComponent implements OnInit, OnDestroy {
   openServer(server: Server) {
     const extras: NavigationExtras = {
       queryParams: {
-        url: server.code
+        url: server.url
       }
     }
 

@@ -1,7 +1,7 @@
 import { FavoritesService } from './../../../core/services/favorites/favorites.service';
 import { ServersComponent } from './../servers/servers.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AnimeService } from 'src/app/core/services/anime/anime.service';
 import { Anime, Status, Episode } from 'src/app/core/models/modelst';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -10,6 +10,7 @@ import { DarkModeService } from 'src/app/core/services/darkMode/dark-mode.servic
 
 interface ModalData {
   anime: Anime
+  animeId: string
 }
 
 @Component({
@@ -25,7 +26,6 @@ export class AnimeDetailComponent implements OnInit {
   isFavorite = false
   expandedSynopsis = false
 
-  episodeStatus = Status.loading
 
   label = {
     favorite: "Remove from favorites",
@@ -43,37 +43,54 @@ export class AnimeDetailComponent implements OnInit {
     private darkModeService: DarkModeService,
     private animeService: AnimeService,
     private favoritesService: FavoritesService,
+    private _router: Router,
+    private route: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) private modalData: ModalData
   ) { }
 
   ngOnInit(): void {
-    this.anime = this.modalData.anime
-    this.animeService.lastAnimeOpened = this.anime
-    this.currentStatus = Status.loaded
-    this.isFavorite = this.favoritesService.isFavorite(this.anime)
 
-    if (this.isFavorite)
-      this.getAnimeInfo()
-    else
-      this.episodeStatus = Status.loaded
+    this.getAnimeInfo(this.modalData.animeId)
+
   }
 
-  getAnimeInfo() {
-    const id = this.anime.id.split("/").pop()
-    const title = this.anime.title
-
-    this.animeService.getAnimeInfo(id, title).subscribe(e => {
-      this.anime.episodes = e.episodes
-      this.episodeStatus = Status.loaded
-
-    }, () => {
-      this.episodeStatus = Status.loaded
+  loadAnime(anime: Anime) {
+    this.anime = anime
+    this.animeService.lastAnimeOpened = this.anime
+    this.isFavorite = this.favoritesService.isFavorite(this.anime)
+    this._router.navigate([], {
+      queryParams: {
+        id: this.anime.id
+      }
     })
   }
 
+  ngOnDestroy() {
+    this._router.navigate([], {
+      queryParams: {
+      }
+    })
+  }
+
+  getAnimeInfo(animeId: string) {
+    this.currentStatus = Status.loading
+
+    this.animeService.getAnimeInfo(animeId).subscribe(e => {
+      this.anime = e
+      this.currentStatus = Status.loaded
+      this.loadAnime(e)
+
+    }, () => {
+      this.currentStatus = Status.error
+    })
+  }
+
+  retry() {
+    this.getAnimeInfo(this.modalData.animeId)
+  }
+
   openServersBottomSheet(episode: Episode) {
-    if (episode.nextEpisodeDate)
-      return
+
     const bottom = this.bottomSheet.open(ServersComponent, {
       panelClass: this.darkModeService.enabled.value ? 'bottomSheet-dark' : '',
       data: {

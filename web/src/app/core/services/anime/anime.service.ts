@@ -46,7 +46,7 @@ export class AnimeService extends DataService {
   }
 
   fetchEpisodes() {
-    return this.http.get<Episode[]>(`${this.url}/animes/episodes`).pipe(timeout(10000),catchError(this.handleError))
+    return this.http.get<Episode[]>(`${this.url}/animes/episodes`).pipe(timeout(10000), catchError(this.handleError))
   }
 
   fetchAnimes() {
@@ -59,30 +59,35 @@ export class AnimeService extends DataService {
   }
 
   fetchSpecials() {
-    return this.http.get<Anime[]>(`${this.url}/animes/specials`).pipe(timeout(10000),catchError(this.handleError))
+    return this.http.get<Anime[]>(`${this.url}/animes/specials`).pipe(timeout(10000), catchError(this.handleError))
   }
 
 
 
   fetchOvas() {
-    return this.http.get<Anime[]>(`${this.url}/animes/ovas`).pipe(timeout(10000),catchError(this.handleError))
+    return this.http.get<Anime[]>(`${this.url}/animes/ovas`).pipe(timeout(10000), catchError(this.handleError))
   }
 
   fetchMovies() {
-    return this.http.get<Anime[]>(`${this.url}/animes/movies`).pipe(timeout(10000),catchError(this.handleError))
+    return this.http.get<Anime[]>(`${this.url}/animes/movies`).pipe(timeout(10000), catchError(this.handleError))
   }
 
-  getAnimeInfo(id: string, name: string) {
-    return this.http.get<Anime>(`${this.url}/animes/${id}/${name}`).pipe(timeout(10000),catchError(this.handleError))
+  getAnimeInfo(id: string) {
+    return this.http.get<Anime>(`${this.url}/animes/${id}`).pipe(timeout(10000), catchError(this.handleError))
 
+  }
+
+  getAnimeImage(url: string) {
+    return this.http.get(url, { responseType: 'blob' })
+    
   }
 
   getEpisoderServers(id: string) {
-    return this.http.get<Server[]>(`${this.url}/animes/episodes/${id}`).pipe(timeout(10000),catchError(this.handleError))
+    return this.http.get<Server[]>(`${this.url}/animes/episodes/${id}`).pipe(timeout(10000), catchError(this.handleError))
   }
 
   search(query: string) {
-    return this.http.get<Anime[]>(`${this.url}/animes/search/${query}`).pipe(timeout(10000),catchError(this.handleError))
+    return this.http.get<Anime[]>(`${this.url}/animes/search/${query}`).pipe(timeout(10000), catchError(this.handleError))
   }
 
 }

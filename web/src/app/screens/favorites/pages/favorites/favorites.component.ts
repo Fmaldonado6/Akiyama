@@ -52,7 +52,10 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   changeToDetail(anime: Anime) {
     this.dialog.open(AnimeDetailComponent,
       {
-        data: { anime: anime },
+        data: {
+          anime: anime,
+          animeId: anime.id
+        },
         panelClass: this.darkModeService.enabled.value ? 'modal-dark' : 'modal',
       }
     )
