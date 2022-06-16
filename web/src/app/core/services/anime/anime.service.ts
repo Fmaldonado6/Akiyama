@@ -23,6 +23,8 @@ export class AnimeService extends DataService {
 
   lastRoute?: string = null
 
+  private timeout = 30000
+
   setAnimes(animes: Anime[]) {
     this.animes = animes
     this.animeObserver.next(animes)
@@ -46,11 +48,11 @@ export class AnimeService extends DataService {
   }
 
   fetchEpisodes() {
-    return this.http.get<Episode[]>(`${this.url}/animes/episodes`).pipe(timeout(10000), catchError(this.handleError))
+    return this.http.get<Episode[]>(`${this.url}/animes/episodes`).pipe(timeout(this.timeout), catchError(this.handleError))
   }
 
   fetchAnimes() {
-    return this.http.get<Anime[]>(`${this.url}/animes/latest`).pipe(timeout(10000),
+    return this.http.get<Anime[]>(`${this.url}/animes/latest`).pipe(timeout(this.timeout),
       catchError(this.handleError),
       map(e => {
         this.setAnimes(e)
@@ -59,21 +61,21 @@ export class AnimeService extends DataService {
   }
 
   fetchSpecials() {
-    return this.http.get<Anime[]>(`${this.url}/animes/specials`).pipe(timeout(10000), catchError(this.handleError))
+    return this.http.get<Anime[]>(`${this.url}/animes/specials`).pipe(timeout(this.timeout), catchError(this.handleError))
   }
 
 
 
   fetchOvas() {
-    return this.http.get<Anime[]>(`${this.url}/animes/ovas`).pipe(timeout(10000), catchError(this.handleError))
+    return this.http.get<Anime[]>(`${this.url}/animes/ovas`).pipe(timeout(this.timeout), catchError(this.handleError))
   }
 
   fetchMovies() {
-    return this.http.get<Anime[]>(`${this.url}/animes/movies`).pipe(timeout(10000), catchError(this.handleError))
+    return this.http.get<Anime[]>(`${this.url}/animes/movies`).pipe(timeout(this.timeout), catchError(this.handleError))
   }
 
   getAnimeInfo(id: string) {
-    return this.http.get<Anime>(`${this.url}/animes/${id}`).pipe(timeout(10000), catchError(this.handleError))
+    return this.http.get<Anime>(`${this.url}/animes/${id}`).pipe(timeout(this.timeout), catchError(this.handleError))
 
   }
 
@@ -83,11 +85,11 @@ export class AnimeService extends DataService {
   }
 
   getEpisoderServers(id: string) {
-    return this.http.get<Server[]>(`${this.url}/animes/episodes/${id}`).pipe(timeout(10000), catchError(this.handleError))
+    return this.http.get<Server[]>(`${this.url}/animes/episodes/${id}`).pipe(timeout(this.timeout), catchError(this.handleError))
   }
 
   search(query: string) {
-    return this.http.get<Anime[]>(`${this.url}/animes/search/${query}`).pipe(timeout(10000), catchError(this.handleError))
+    return this.http.get<Anime[]>(`${this.url}/animes/search/${query}`).pipe(timeout(this.timeout), catchError(this.handleError))
   }
 
 }
