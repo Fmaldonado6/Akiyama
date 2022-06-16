@@ -40,6 +40,8 @@ export class WatchComponent implements OnInit {
 
     const last = this.animeService.lastRoute
 
+    console.log(last)
+
     if (last)
       this.router.navigate([last])
     else
@@ -49,6 +51,7 @@ export class WatchComponent implements OnInit {
       this.dialog.open(AnimeDetailComponent, {
         data: {
           anime: this.animeService.lastAnimeOpened,
+          animeId:this.animeService.lastAnimeOpened.id,
         },
         panelClass: this.darkModeService.enabled.value ? 'modal-dark' : 'modal',
       })

@@ -58,8 +58,9 @@ export class ServersComponent implements OnInit, OnDestroy {
 
     this.serverSelected.emit()
 
-    this.animeService.lastRoute = this.router.url
+    this.animeService.lastRoute = this.router.url.split("?").shift()
 
+    console.log(this.router.url)
 
     this.router.navigate([`/watch`], extras)
   }

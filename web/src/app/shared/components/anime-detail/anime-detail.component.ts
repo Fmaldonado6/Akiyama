@@ -68,7 +68,10 @@ export class AnimeDetailComponent implements OnInit {
   ngOnDestroy() {
     this._router.navigate([], {
       queryParams: {
-      }
+        id: null
+      },
+      queryParamsHandling: 'merge'
+
     })
   }
 
