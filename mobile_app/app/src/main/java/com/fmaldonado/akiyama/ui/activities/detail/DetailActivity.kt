@@ -44,10 +44,12 @@ class DetailActivity : AppCompatActivity() {
                 transformations(RoundedCornersTransformation(10f))
             }
             binding.title.text = it.title
-            viewModel.getAnimeInfo(Anime(id = it.id))
+            this.anime = Anime(id = it.id)
+            viewModel.getAnimeInfo(this.anime)
         }
 
         anime?.let {
+            this.anime = it
             binding.cover.load(it.image)
             binding.poster.load(it.image) {
                 transformations(RoundedCornersTransformation(10f))
