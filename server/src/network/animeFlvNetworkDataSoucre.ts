@@ -20,7 +20,7 @@ class BroswerInstance {
 
 }
 
-const browserInstance = new BroswerInstance()
+export const browserInstance = new BroswerInstance()
 
 export interface PageContext {
     page: puppeteer.Page

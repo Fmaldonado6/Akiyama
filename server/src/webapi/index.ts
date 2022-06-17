@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import cors from 'cors';
 import morgan from "morgan";
 import { animeController } from './controllers/anime/animeController';
+import { browserInstance } from '../network/animeFlvNetworkDataSoucre';
 
 const PORT = 'port'
 
@@ -15,6 +16,7 @@ class Server {
         this.routes()
     }
 
+
     config() {
         dotenv.config();
         this.app.set(PORT, process.env.PORT);
@@ -26,12 +28,13 @@ class Server {
 
     routes() {
         this.app.use("/animes", animeController.router)
-       
+
     }
 
 
-    start() {
+    async start() {
         const port = this.app.get(PORT)
+        await browserInstance.getBrowser();
         this.app.listen(port, () => {
             console.log("App listening on port " + port)
         })
