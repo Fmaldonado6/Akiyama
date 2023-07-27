@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng deploy --base-href=https://bumbleb.uber.space/akiyama/"
+    "deploy": "ng deploy --base-href=https://fmaldonado6.github.io/Akiyama/"
   },
   "private": true,
   "dependencies": {
